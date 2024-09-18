@@ -1,13 +1,13 @@
 ---
-title : "Build an CI/CD Pipeline for MERN App with Github Actions"
+title : "Build an CI/CD Pipeline for MERN App with Github"
 date :  "`r Sys.Date()`" 
 weight : 1 
 chapter : false
 ---
-# Build an CI/CD Pipeline for MERN App with Github Actions
+# Build an CI/CD Pipeline for MERN App with Github
 
 ### Overall
- This workshop will describe step by step how to build an CI/CD Pipeline using Github Actions and some cloud native tools provided by AWS such as AWS CodeDeploy, AWS CodePipeline and AWS CodeBuild.
+ This workshop will describe step by step how to build an CI/CD Pipeline using Github and some cloud native tools provided by AWS such as AWS CodeDeploy, AWS CodePipeline and AWS CodeBuild.
 
 ![ConnectPrivate](/images/arc-log.png) 
 

@@ -1,10 +1,10 @@
 [
 {
 	"uri": "//localhost:1313/",
-	"title": "Build an CI/CD Pipeline for MERN App with Github Actions",
+	"title": "Build an CI/CD Pipeline for MERN App with Github",
 	"tags": [],
 	"description": "",
-	"content": "Build an CI/CD Pipeline for MERN App with Github Actions Overall This workshop will describe step by step how to build an CI/CD Pipeline using Github Actions and some cloud native tools provided by AWS such as AWS CodeDeploy, AWS CodePipeline and AWS CodeBuild.\nContent Introduction Preparation Connect to EC2 instance Manage session logs Port Forwarding Clean up resources "
+	"content": "Build an CI/CD Pipeline for MERN App with Github Overall This workshop will describe step by step how to build an CI/CD Pipeline using Github and some cloud native tools provided by AWS such as AWS CodeDeploy, AWS CodePipeline and AWS CodeBuild.\nContent Introduction Preparation Connect to EC2 instance Manage session logs Port Forwarding Clean up resources "
 },
 {
 	"uri": "//localhost:1313/3-accessibilitytoinstances/3.1-public-instance/",
