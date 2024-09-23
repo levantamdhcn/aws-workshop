@@ -7,15 +7,24 @@ pre : " <b> 2. </b> "
 ---
 
 {{% notice info %}}
-You need to create 1 Linux instance on the public subnet and 1 Window instance on the private subnet to perform this lab.
+We need to learn some basics of Docker, Nginx to perform this lab.
 {{% /notice %}}
 
-To learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:
-  - [About Amazon EC2](https://000004.awsstudygroup.com/en/)
-  - [Works with Amazon VPC](https://000003.awsstudygroup.com/en/)
+#### Nginx
+nginx (engine x) is an HTTP server, reverse proxy, content cache, load balancer, TCP/UDP proxy server. In this workshop, we use nginx as a reverse proxy.
 
-In order to use System Manager to manage our window instances in particular and our instances in general on AWS, we need to give permission to our instances to be able to work with System Manager. In this preparation, we will also proceed to create an IAM Role to grant permissions to instances that can work with System Manager.
+To learn what is Nginx, how to Nginx works, Nginx basic concepts and how to configure a simple Nginx server:
+  - [Nginx for beginner](https://nginx.org/en/docs/beginners_guide.html)
+  - [Nginx with Docker](https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/)
+
+#### Docker
+Docker is an open platform for developing, shipping, and running applications.
+
+Learn basic concepts of Docker:
+  - [Docker for beginner](https://docs.docker.com/get-started/)
+  - [Containerize Nodejs App](https://docs.docker.com/guides/language/nodejs/containerize/)
 
 ### Content
-  - [Prepare VPC and EC2](2.1-createec2/)
-  - [Create IAM Role](2.2-createiamrole/)
+  - [Prepare Nginx config file](2.1-createec2/)
+  - [Prepare Docker images](2.1-createec2/)
+  - [Write docker-compose.yml file](2.2-createiamrole/)
