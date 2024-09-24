@@ -25,6 +25,6 @@ Learn basic concepts of Docker:
   - [Containerize Nodejs App](https://docs.docker.com/guides/language/nodejs/containerize/)
 
 ### Content
-  - [Prepare Nginx config file](2.1-createec2/)
-  - [Prepare Docker images](2.1-createec2/)
+  - [Prepare Nginx Config](2.1-createnginx/)
+  - [Prepare Docker Resources](2.1-createec2/)
   - [Write docker-compose.yml file](2.2-createiamrole/)
