@@ -14,7 +14,7 @@
 	"content": "Để các EC2 instance của chúng ta có thể gửi session log tới S3 bucket , chúng ta sẽ cần cập nhật IAM Role đã gán vào EC2 instance bằng cách thêm vào policy cho phép quyền truy cập vào S3.\nCập nhật IAM Role Truy cập vào giao diện quản trị dịch vụ IAM Click Roles. Tại ô tìm kiếm , điền SSM. Click vào role SSM-Role. Click Attach policies. Tại ô Search điền S3. Click chọn policy AmazonS3FullAccess. Click Attach policy. Trong thực tế chúng ta sẽ cấp quyền chặt chẽ hơn tới S3 bucket chỉ định. Trong khuôn khổ bài lab này chúng ta sử dụng policy AmazonS3FullAccess cho tiện dụng.\nTiếp theo chúng ta sẽ tiến hành tạo S3 bucket để lưu trữ session logs.\n"
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createec2/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/",
 	"title": "Chuẩn bị VPC và EC2",
 	"tags": [],
 	"description": "",
@@ -49,7 +49,7 @@
 	"content": "Tạo VPC Endpoint SSM Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSM. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: SSM sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ssm. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ssm. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint cho SSM. "
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createec2/2.1.1-createvpc/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.1.1-createserverimage/",
 	"title": "Tạo VPC ",
 	"tags": [],
 	"description": "",
@@ -70,11 +70,11 @@
 	"content": "Tạo VPC Endpoint SSMMESSAGES Truy cập đến giao diện quản trị của dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền SSMMESSAGES. Tại mục Service Category chọn AWS Services. Tại mục Service Name, Tại mục Service category chọn: AWS services Tại mục Service Name nhập: ssmmessages sau đó chọn Service Name: com.amazonaws.ap-southeast-1.ssmmessages. Tại cột Service Name, click chọn com.amazonaws.ap-southeast-1.ssmmessages. Tại mục VPC, chọn Lab VPC. Chọn AZ đầu tiên, sau đó chọn subnet Lab Private Subnet. Kéo chuột xuống dưới. Tại mục Security Group, chọn Security group SG VPC Endpoint mà chúng ta đã tạo trước đó. Tại mục Policy, chọn Full access Kéo chuột xuống dưới cùng. Click Create endpoint. Chúng ta đã tạo xong VPC Interface Endpoint SSMMESSAGES. "
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createiamrole/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createiamrole/",
 	"title": "Tạo IAM Role",
 	"tags": [],
 	"description": "",
-	"content": "Tạo IAM Role Trong bước này chúng ta sẽ tiến hành tạo IAM Role. Trong IAM Role này sẽ được gán policy AmazonSSMManagedInstanceCore, đây là policy cho phép máy chủ EC2 có thể giao tiếp với Session Manager.\nTruy cập vào giao diện quản trị dịch vụ IAM Ở thanh điều hướng bên trái, click Roles. Click Create role. Click AWS service và click EC2. Click Next: Permissions. Trong ô Search, điền AmazonSSMManagedInstanceCore và ấn phím Enter để tìm kiếm policy này. Click chọn policy AmazonSSMManagedInstanceCore. Click Next: Tags. Click Next: Review. Đặt tên cho Role là SSM-Role ở Role Name Click Create Role . Tiếp theo chúng ta sẽ thực hiện kết nối đến các máy chủ EC2 chúng ta đã tạo bằng Session Manager.\n"
+	"content": "Tạo IAM Role cho EC2 Ở bước này, chúng ta sẽ tiến hành tạo IAM Role cho EC2. Trong IAM Role, chúng ta sẽ tiến hành gán policy AmazonS3ReadOnlyAccess, policy này cho phép EC2 server lấy artifact từ S3 Bucket và tiến hành triển khai.\nĐi tới IAM service administration interface Ở thanh điều hướng phía bên trái, chọn vào Roles. Chọn Create role. Chọn AWS service, tiếp theo chọn EC2. Chọn vào Next: Permissions. Tại ô tìm kiếm, nhập S3 và bấm Enter để tìm policy. Chọn vào policy có tên AmazonS3ReadOnlyAccess. Chọn vào Next: Tags. Chọn Next: Review. Đặt tên Role EC2S3ReadPermission tại trường Role Name Click vào Create Role . Create IAM Role For AWS CodeDeploy Quay lại màn hình Roles. Click vào Create role. Click vào AWS service và chọn vào CodeDeploy. Click vào Next: Permissions. Đặt tên Role ChatAppCodeDeploy tại trường Role Name Click vào Create Role . Tiếp theo, chúng ta sẽ tiếp tục tạo VPC và EC2 để triển khai ứng dụng.\n"
 },
 {
 	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/",
@@ -84,7 +84,7 @@
 	"content": "Đối với Windows instance nằm trong private subnet, không có public IP, không có internet gateway nên không thể đi ra ngoài internet.\nVới loại instance này, cách làm truyền thống là ta sẽ sử dụng kỹ thuật Bastion host tốn nhiều chi phí và công sức, nhưng ở đây chúng ta sẽ sử dụng Session Manager với loại này.\nCơ bản là private instance vẫn phải mở cổng TCP 443 tới System Manager, nhưng không cho kết nối đó đi ra ngoài internet mà chỉ cho đi trong chính VPC của mình, nên đảm bảo được vấn đề bảo mật.\nĐể làm được điều đó, ta phải đưa endpoint của System Manager vào trong VPC, nghĩa là sử dụng VPC interface endpoint:\nVPC interface endpoint được gắn với subnet nên cách làm này không những với private subnet mà còn có thể làm với public subnet, nghĩa là với public subnet, bạn hoàn toàn có thể không cho TCP 443 đi ra ngoài internet.\nNội dung: Kích hoạt DNS hostnames Tạo VPC Endpoint Kết nối Private Instance "
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createec2/2.1.2-createpublicsubnet/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.1.2-createpublicsubnet/",
 	"title": "Tạo Public subnet",
 	"tags": [],
 	"description": "",
@@ -103,6 +103,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Tạo VPC Endpoint SSM Chúng ta sẽ tạo 3 interface endpoint yêu cầu bởi Session Manager: Interface endpoint: com.amazonaws.region.ssm com.amazonaws.region.ec2messages com.amazonaws.region.ssmmessages Bạn có thể tham khảo thêm tại đây\nNội dung: Tạo Endpoint ssm Tạo Endpoint ssmmessages Tạo Endpoint ec2messages "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createnginx/",
+	"title": "Thiết lập cài đặt nginx",
+	"tags": [],
+	"description": "",
+	"content": "Cấu trúc thư mục của dự án: Tạo 1 file mới đặt tên là nginx.conf năm trong thư mục nginx ở cấp ngoài cùng với nội dung sau:\nserver { listen 80; root /usr/share/nginx/html; index index.html; location / { try_files $uri /index.html =404; } location /api { proxy_pass http://localhost:4000; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header Host $host; proxy_redirect off; } } Chi tiết các cài đặt:\nTạo 1 server ảo, mỗi server có thể lắng nghe request từ cổng hoặc máy chủ khác nhau. server {} Chỉ định block server này sẽ lắng nghe các request từ cổng 80, cổng mặc định của HTTP traffic. listen 80; Chỉ định thư mục chứa các files mà nginx sẽ trả về cho các connection hợp lệ. root /usr/share/nginx/html; Chỉ định file mặc định được trả về khi có request từ client. index index.html; Định nghĩa một block địa chỉ bao gồm các cài đặt để xử lý các request có dạng (/). location / {} Nếu request có địa chỉ $uri không tồn tại, trả về file mặc định (/index.html) trong root folder đã cài đặt ở block server. Nếu cả $uri và file index.html đều không tồn tại thì trả về trang 404. try_files $uri /index.html =404; Định nghĩa một block địa chỉ bao gồm các cài đặt để xử lý các request có dạng (/api). Trong dự án này, chúng ta sử dụng tiền tố /api để phân loại các request đến Backend. Bằng cách này ta có thể chạy cả Backend và Frontend trên cùng 1 ec2 instance. location /api proxy_pass directive điều hướng các requests phù hợp với dạng địa chỉ (/api) to đến một server khác (cụ thể ở đây là cùng server đó nhưng ở 1 cổng cụ thể - 4000). proxy_pass http://localhost:4000; Chỉ định các thuộc tính của HTTP headers proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\rproxy_set_header Host $host;\rproxy_redirect off; Kết thúc. Phần chuẩn bị cài đặt cho Nginx đến đây là hoàn thành.\n"
 },
 {
 	"uri": "//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/",
@@ -126,7 +133,7 @@
 	"content": "Trong bước này, chúng ta sẽ thực hiện tạo kết nối đến các máy chủ EC2 của chúng ta, nằm trong cả public và private subnet.\nNội dung 3.1. Tạo Kết nối đến máy chủ EC2 Public 3.2. Tạo Kết nối đến máy chủ EC2 Private\n"
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createec2/2.1.3-createprivatesubnet/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.1.3-createprivatesubnet/",
 	"title": "Tạo Private subnet",
 	"tags": [],
 	"description": "",
@@ -147,7 +154,7 @@
 	"content": "Với Session Manager chúng ta có thể xem được lịch sử các kết nối tới các instance thông qua Session history. Tuy nhiên chúng ta chưa xem được chi tiết các câu lệnh được sử dụng.\nTrong phần này chúng ta sẽ tiến hành tạo S3 bucket và thực hiện cấu hình lưu trữ các session logs để xem được chi tiết các câu lệnh được sử dụng trong session.\nNội dung: Cập nhật IAM Role Tạo S3 Bucket Tạo S3 Gateway endpoint Cấu hình Session logs "
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createec2/2.1.4-createsecgroup/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.1.4-createsecgroup/",
 	"title": "Tạo các security group",
 	"tags": [],
 	"description": "",
@@ -168,7 +175,7 @@
 	"content": "\rPort Forwarding là mốt cách thức hữu ích để chuyển hướng lưu lượng mạng từ 1 địa chỉ IP - Port này sang 1 địa chỉ IP - Port khác. Với Port Forwarding chúng ta có thể truy cập một EC2 instance nằm trong private subnet từ máy trạm của chúng ta.\nChúng ta sẽ cấu hình Port Forwarding cho kết nối RDP giữa máy của mình với Private Windows Instance nằm trong private subnet mà chúng ta đã tạo cho bài thực hành này.\nTạo IAM User có quyền kết nối SSM Truy cập vào giao diện quản trị dịch vụ IAM Click Users , sau đó click Add users. Tại trang Add user. Tại mục User name, điền Portfwd. Click chọn Access key - Programmatic access. Click Next: Permissions. Click Attach existing policies directly. Tại ô tìm kiếm , điền ssm. Click chọn AmazonSSMFullAccess. Click Next: Tags, click Next: Reviews. Click Create user. Lưu lại thông tin Access key ID và Secret access key để thực hiện cấu hình AWS CLI. Cài đặt và cấu hình AWS CLI và Session Manager Plugin Để thực hiện phần thực hành này, đảm bảo máy trạm của bạn đã cài AWS CLI và Session Manager Plugin\nBạn có thể tham khảo thêm bài thực hành về cài đặt và cấu hình AWS CLI tại đây.\nVới Windows thì khi giải nén thư mục cài đặt Session Manager Plugin bạn hãy chạy file install.bat với quyền Administrator để thực hiện cài đặt.\nThực hiện Portforwarding Chạy command dưới đây trong Command Prompt trên máy của bạn để cấu hình Port Forwarding. aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region (your region) Thông tin Instance ID của Windows Private Instance có thể tìm được khi bạn xem chi tiết máy chủ EC2 Windows Private Instance.\nCâu lệnh ví dụ C:\\Windows\\system32\u0026gt;aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region ap-southeast-1 Nếu câu lệnh của bạn báo lỗi như dưới đây : SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\nChứng tỏ bạn chưa cài Session Manager Plugin thành công. Bạn có thể cần khởi chạy lại Command Prompt sau khi cài Session Manager Plugin.\nKết nối tới Private Windows Instance bạn đã tạo bằng công cụ Remote Desktop trên máy trạm của bạn. Tại mục Computer: điền localhost:9999. Quay trở lại giao diện quản trị của dịch vụ System Manager - Session Manager. Click tab Session history. Chúng ta sẽ thấy các session logs với tên Document là AWS-StartPortForwardingSession. Chúc mừng bạn đã hoàn tất bài thực hành hướng dẫn cách sử dụng Session Manager để kết nối cũng như lưu trữ các session logs trong S3 bucket. Hãy nhớ thực hiện bước dọn dẹp tài nguyên để tránh sinh chi phí ngoài ý muốn nhé.\n"
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createec2/2.1.5-createec2linux/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.1.5-createec2linux/",
 	"title": "Tạo Public Linux EC2",
 	"tags": [],
 	"description": "",
@@ -182,18 +189,11 @@
 	"content": "Chúng ta sẽ tiến hành các bước sau để xóa các tài nguyên chúng ta đã tạo trong bài thực hành này.\nXóa EC2 instance Truy cập giao diện quản trị dịch vụ EC2 Click Instances. Click chọn cả 2 instance Public Linux Instance và Private Windows Instance. Click Instance state. Click Terminate instance, sau đó click Terminate để xác nhận. Truy cập giao diện quản trị dịch vụ IAM Click Roles. Tại ô tìm kiếm , điền SSM. Click chọn SSM-Role. Click Delete, sau đó điền tên role SSM-Role và click Delete để xóa role. Click Users. Click chọn user Portfwd. Click Delete, sau đó điền tên user Portfwd và click Delete để xóa user. Xóa S3 bucket Truy cập giao diện quản trị dịch vụ System Manager - Session Manager. Click tab Preferences. Click Edit. Kéo chuột xuống dưới. Tại mục S3 logging. Bỏ chọn Enable để tắt tính năng logging. Kéo chuột xuống dưới. Click Save. Truy cập giao diện quản trị dịch vụ S3 Click chọn S3 bucket chúng ta đã tạo cho bài thực hành. ( Ví dụ : lab-fcj-bucket-0001 ) Click Empty. Điền permanently delete, sau đó click Empty để tiến hành xóa object trong bucket. Click Exit. Sau khi xóa hết object trong bucket, click Delete Điền tên S3 bucket, sau đó click Delete bucket để tiến hành xóa S3 bucket. Xóa các VPC Endpoint Truy cập vào giao diện quản trị dịch vụ VPC Click Endpoints. Chọn 4 endpoints chúng ta đã tạo cho bài thực hành bao gồm SSM, SSMMESSAGES, EC2MESSAGES, S3GW. Click Actions. Click Delete VPC endpoints. Tại ô confirm , điền delete. Click Delete để tiến hành xóa các endpoints. Click biểu tượng refresh, kiểm tra tất cả các endpoints đã bị xóa trước khi làm bước tiếp theo. Xóa VPC Truy cập vào giao diện quản trị dịch vụ VPC Click Your VPCs. Click chọn Lab VPC. Click Actions. Click Delete VPC. Tại ô confirm, điền delete để xác nhận, click Delete để thực hiện xóa Lab VPC và các tài nguyên liên quan. "
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createec2/2.1.6-createec2windows/",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.1.6-createec2windows/",
 	"title": "Tạo Private Windows EC2",
 	"tags": [],
 	"description": "",
 	"content": " Truy cập giao diện quản trị dịch vụ EC2 Click Instances. Click Launch instances. Tại trang Step 1: Choose an Amazon Machine Image (AMI). Kéo chuột xuống phía dưới. Click Select để lựa chọn AMI Microsoft Windows Server 2019 Base. Tại trang Step 2: Choose an Instance Type. Click chọn Instance type t2.micro. Click Next: Configure Instance Details. Tại trang Step 3: Configure Instance Details Tại mục Network chọn Lab VPC. Tại mục Subnet chọn Lab Private Subnet. Tại mục Auto-assign Public IP chọn Use subnet setting (Disable) Click Next: Add Storage. Click Next: Add Tags để chuyển sang bước kế tiếp. Click Next: Configure Security Group để chuyển sang bước kế tiếp. Tại trang Step 6: Configure Security Group. Chọn Select an existing security group. Chọn security group SG Private Windows Instance. Click Review and Launch. Hộp thoại cảnh báo hiện lên vì chúng ta không cấu hình tường lửa cho phép kết nối vào port 22, Click Continue để tiếp tục.\nTại trang Step 7: Review Instance Launch.\nClick Launch. Tại hộp thoại Select an existing key pair or create a new key pair. Click chọn Choose an existing key pair. Tại mục Key pair name chọn LabKeypair. Click chọn I acknowledge that I have access to the corresponding private key file, and that without this file, I won\u0026rsquo;t be able to log into my instance.. Click Launch Instances để tạo máy chủ EC2. Click View Instances để quay lại danh mục EC2 instances.\nClick vào biểu tượng edit dưới cột Name.\nTại hộp thoại Edit Name điền Private Windows Instance. Click Save. Tiếp theo chúng ta sẽ tiến hành tạo các IAM Role để phục vụ cho Session Manager.\n"
-},
-{
-	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createnginx/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": ""
 },
 {
 	"uri": "//localhost:1313/vi/categories/",

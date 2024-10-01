@@ -25,6 +25,12 @@ Learn basic concepts of Docker:
   - [Containerize Nodejs App](https://docs.docker.com/guides/language/nodejs/containerize/)
 
 ### Content
-  - [Prepare Nginx Config](2.1-createnginx/)
-  - [Prepare Docker Resources](2.1-createec2/)
-  - [Write docker-compose.yml file](2.2-createiamrole/)
+  - [Preparing Nginx Config](2.1-createnginx/)
+  - [Preparing Docker Resources](2.2-createdocker/)
+  - [Preparing VPC and EC2](2.3-createec2/)
+  - [Create IAM Role](2.4-createiamrole/)
+  - [Create S3 Bucket](2.5-creates3bucket/)
+  - [Preparing spec files](2.6-createspecfiles/)
+  - [Create CodeBuild service](2.7-createcodebuild/)
+  - [Create CodeDeploy service](2.8-createcodedeploy/)
+  - [Create CodePipeline service](2.9-createcodepipeline/)
