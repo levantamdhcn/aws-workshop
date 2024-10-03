@@ -14,8 +14,4 @@ The folder structure overview after you complete this step will be as follows:
 
 ### Content
   - [Create Server's Dockerfile](2.1.1-createserverimage/)
-  - [Create Public Subnet](2.1.2-createpublicsubnet/)
-  - [Create Private Subnet](2.1.3-createprivatesubnet/)
-  - [Create security group](2.1.4-createsecgroup/)
-  - [Create public Linux server](2.1.5-createec2linux/)
-  - [Create private Windows server](2.1.6-createec2windows/)
+  - [Create Nginx's Dockerfile](2.1.2-createnginximage)

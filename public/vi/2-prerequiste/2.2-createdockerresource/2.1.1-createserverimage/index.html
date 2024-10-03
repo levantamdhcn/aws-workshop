@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tạo VPC  :: AWS System Manager</title>
+    <title>Viết Dockerfile cho Server :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1727798785" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1727798785" rel="stylesheet">
-    <link href="/css/hybrid.css?1727798785" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1727798785" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1727798785" rel="stylesheet">
-    <link href="/css/auto-complete.css?1727798785" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1727798785" rel="stylesheet">
-    <link href="/css/theme.css?1727798785" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1727798785" rel="stylesheet">
+    <link href="/css/nucleus.css?1727972585" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1727972585" rel="stylesheet">
+    <link href="/css/hybrid.css?1727972585" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1727972585" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1727972585" rel="stylesheet">
+    <link href="/css/auto-complete.css?1727972585" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1727972585" rel="stylesheet">
+    <link href="/css/theme.css?1727972585" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1727972585" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1727798785" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1727972585" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1727798785"></script>
+    <script src="/js/jquery-3.3.1.min.js?1727972585"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1727798785"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1727798785"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1727972585"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1727972585"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1727798785"></script>
+<script type="text/javascript" src="/js/search.js?1727972585"></script>
 
     
   </div>
@@ -170,153 +170,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.2-createdockerresource/2.1.1-createserverimage/" title="Tạo VPC " class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.2-createdockerresource/2.1.1-createserverimage/" title="Viết Dockerfile cho Server" class="dd-item 
         
         active
         
         ">
       <a href="/vi/2-prerequiste/2.2-createdockerresource/2.1.1-createserverimage/">
-           <b> 2.1.1 </b> Tạo VPC 
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/2-prerequiste/2.2-createdockerresource/2.1.2-createpublicsubnet/" title="Tạo Public subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/2-prerequiste/2.2-createdockerresource/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Tạo Public subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/2-prerequiste/2.2-createdockerresource/2.1.3-createprivatesubnet/" title="Tạo Private subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/2-prerequiste/2.2-createdockerresource/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Tạo Private subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/2-prerequiste/2.2-createdockerresource/2.1.4-createsecgroup/" title="Tạo các security group" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/2-prerequiste/2.2-createdockerresource/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Tạo các security group
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/2-prerequiste/2.2-createdockerresource/2.1.5-createec2linux/" title="Tạo Public Linux EC2" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/2-prerequiste/2.2-createdockerresource/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Tạo Public Linux EC2
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/vi/2-prerequiste/2.2-createdockerresource/2.1.6-createec2windows/" title="Tạo Private Windows EC2" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/vi/2-prerequiste/2.2-createdockerresource/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Tạo Private Windows EC2
+           <b> 2.1.1 </b> Viết Dockerfile cho Server
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1035,7 +895,7 @@
             
           
           
-            <a href='/vi/'>Build an CI/CD Pipeline for MERN App with Github Actions</a> > <a href='/vi/2-prerequiste/'>Các bước chuẩn bị</a> > <a href='/vi/2-prerequiste/2.2-createdockerresource/'>Chuẩn bị VPC và EC2</a> > Tạo VPC 
+            <a href='/vi/'>Build an CI/CD Pipeline for MERN App with Github Actions</a> > <a href='/vi/2-prerequiste/'>Các bước chuẩn bị</a> > <a href='/vi/2-prerequiste/2.2-createdockerresource/'>Chuẩn bị VPC và EC2</a> > Viết Dockerfile cho Server
           
         
           
@@ -1074,7 +934,7 @@
           
             <h1>
               
-              Tạo VPC 
+              Viết Dockerfile cho Server
             </h1>
           
 
@@ -1082,24 +942,62 @@
 
 
 
-	<h4 id="tạo-vpc-lab-vpc">Tạo VPC <strong>Lab VPC</strong></h4>
+	<h4 id="tạo-dockerfile">Tạo Dockerfile</h4>
+<p>Trong thư mục server, tạo 1 file mới và đặt tên là Dockerfile với nội dung sau:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Build node server</span>
+</span></span><span style="display:flex;"><span>FROM node:18.17.0-alpine3.18
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Working directory</span>
+</span></span><span style="display:flex;"><span>WORKDIR /src
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>COPY package*.json ./
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Installing dependencies</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>RUN npm ci
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># copy local files to app folder</span>
+</span></span><span style="display:flex;"><span>COPY . .
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">4000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;npm&#34;</span>, <span style="color:#e6db74">&#34;run dev&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Cùng đi sâu và tìm hiểu ý nghĩa của từng dòng lệnh:</p>
 <ol>
-<li>Truy cập <a href="https://console.aws.amazon.com/vpc/home">giao diện quản trị dịch vụ VPC</a></li>
+<li>Chọn base image cho container. Ở dòng này, ta sẽ sử dụng Node.js runtime phiên bản 18.17.0 trên hệ điều hành Alpine Linux 3.18. Alpine là một một bản phân phối Linux nhẹ, giữ cho kích thước của image được tối ưu.</li>
 </ol>
-<ul>
-<li>Click <strong>Your VPC</strong>.</li>
-<li>Click <strong>Create VPC</strong>.</li>
-</ul>
-<p><img alt="VPC" src="/images/2.prerequisite/001-createvpc.png"></p>
-<ol start="2">
-<li>Tại trang <strong>Create VPC</strong>.</li>
+<pre tabindex="0"><code>FROM node:18.17.0-alpine3.18
+</code></pre><ol start="2">
+<li>Cài đặt working directory trong container là /src. Mọi commands sau này sẽ được thực thi tại thư mục này. Nếu thư mục này chưa tồn tại, Docker sẽ tự động tạo mới.</li>
 </ol>
-<ul>
-<li>Tại mục <strong>Name tag</strong> điền <strong>Lab VPC</strong>.</li>
-<li>Tại mục <strong>IPv4 CIDR</strong> điền : <strong>10.10.0.0/16</strong>.</li>
-<li>Click <strong>Create VPC</strong>.</li>
-</ul>
-<p><img alt="VPC" src="/images/2.prerequisite/002-createvpc.png"></p>
+<pre tabindex="0"><code>WORKDIR /src
+</code></pre><ol start="3">
+<li>Chép 2 files package.json và package-lock.json (nếu tồn tại) từ thư mục server vào trong đường dẫn /src bên trong container</li>
+</ol>
+<pre tabindex="0"><code>COPY package*.json ./
+</code></pre><ol start="4">
+<li>Thực thi lệnh npm ci bên trong container để cài đặt các gói, thư viện được liệt kê trong file package.json. Với lệnh npm ci, ta đảm bảo rằng sẽ cài đặt chính xác phiên bản của các gói, thư viện đã được cài lần trước đó trong package-lock.json.</li>
+</ol>
+<pre tabindex="0"><code>RUN npm ci
+</code></pre><ol start="5">
+<li>Copy tất cả các files còn lại trong thư mục server vào trong đường dẫn /src trong container.</li>
+</ol>
+<pre tabindex="0"><code>COPY . .
+</code></pre><ol start="6">
+<li>Lệnh này dùng để cài đặt cho container sẽ lắng nghe trên cổng 4000. Cho pháp các container khác trong cùng mạng có thể liên lạc qua với container này qua cổng 4000.</li>
+</ol>
+<pre tabindex="0"><code>EXPOSE 4000
+</code></pre><ol start="7">
+<li>Chỉ định lệnh mặc định được chạy khi container được khởi tạo.</li>
+</ol>
+<pre tabindex="0"><code>CMD [&#34;npm&#34;, &#34;run dev&#34;]
+</code></pre>
+<div class="notices info" ><p>Bước cuối cùng, ta tạo thêm 1 file đặt tên .dockerignore trong thư mục server với nội dung sau:</p>
+<pre tabindex="0"><code>/node_modules
+</code></pre><p>Khi build image, lệnh COPY . . sẽ bỏ qua thư mục này (do rất nặng, ta sẽ tạo ra thư mục này bên trong container với lệnh npm ci)</p>
+</div>
+
+<p>Kết thúc.</p>
 
 
 
@@ -1203,22 +1101,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
                     
@@ -1227,72 +1109,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1600,7 +1418,7 @@
 			<a class="nav nav-prev" href="/vi/2-prerequiste/2.2-createdockerresource/" title="Chuẩn bị VPC và EC2"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/2-prerequiste/2.2-createdockerresource/2.1.2-createpublicsubnet/" title="Tạo Public subnet" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/2-prerequiste/2.3-createiamrole/" title="Tạo IAM Role" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1610,19 +1428,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1727798785"></script>
-    <script src="/js/perfect-scrollbar.min.js?1727798785"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1727798785"></script>
-    <script src="/js/jquery.sticky.js?1727798785"></script>
-    <script src="/js/featherlight.min.js?1727798785"></script>
-    <script src="/js/highlight.pack.js?1727798785"></script>
+    <script src="/js/clipboard.min.js?1727972585"></script>
+    <script src="/js/perfect-scrollbar.min.js?1727972585"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1727972585"></script>
+    <script src="/js/jquery.sticky.js?1727972585"></script>
+    <script src="/js/featherlight.min.js?1727972585"></script>
+    <script src="/js/highlight.pack.js?1727972585"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1727798785"></script>
-    <script src="/js/learn.js?1727798785"></script>
-    <script src="/js/hugo-learn.js?1727798785"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1727972585"></script>
+    <script src="/js/learn.js?1727972585"></script>
+    <script src="/js/hugo-learn.js?1727972585"></script>
 
-    <link href="/mermaid/mermaid.css?1727798785" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1727798785"></script>
+    <link href="/mermaid/mermaid.css?1727972585" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1727972585"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
