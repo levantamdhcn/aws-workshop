@@ -87,6 +87,18 @@
                 href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/"
                 />
   </url><url>
+    <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.1-createvpc/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.1-createvpc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.1-createvpc/"
+                />
+  </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.2-createserverimage/</loc>
     <xhtml:link
                 rel="alternate"
@@ -157,6 +169,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/4-s3log/4.2-creates3bucket/</loc>
@@ -255,6 +279,18 @@
                 href="//localhost:1313/vi/4-s3log/"
                 />
   </url><url>
+    <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/"
+                />
+  </url><url>
     <loc>//localhost:1313/vi/4-s3log/4.4-configsessionlogs/</loc>
     <xhtml:link
                 rel="alternate"
@@ -279,6 +315,18 @@
                 href="//localhost:1313/vi/5-portfwd/"
                 />
   </url><url>
+    <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.4-createec2linux/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.4-createec2linux/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.4-createec2linux/"
+                />
+  </url><url>
     <loc>//localhost:1313/vi/6-cleanup/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
@@ -290,6 +338,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="//localhost:1313/vi/6-cleanup/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/categories/</loc>
