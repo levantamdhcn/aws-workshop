@@ -3,7 +3,7 @@
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.134.2">
+    <meta name="generator" content="Hugo 0.134.3">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Create Public Subnet :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1728402564" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1728402564" rel="stylesheet">
-    <link href="/css/hybrid.css?1728402564" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1728402564" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1728402564" rel="stylesheet">
-    <link href="/css/auto-complete.css?1728402564" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1728402564" rel="stylesheet">
-    <link href="/css/theme.css?1728402564" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1728402564" rel="stylesheet">
+    <link href="/css/nucleus.css?1728492993" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1728492993" rel="stylesheet">
+    <link href="/css/hybrid.css?1728492993" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1728492993" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1728492993" rel="stylesheet">
+    <link href="/css/auto-complete.css?1728492993" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1728492993" rel="stylesheet">
+    <link href="/css/theme.css?1728492993" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1728492993" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1728402564" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1728492993" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1728402564"></script>
+    <script src="/js/jquery-3.3.1.min.js?1728492993"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1728402564"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1728402564"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1728492993"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1728492993"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1728402564"></script>
+<script type="text/javascript" src="/js/search.js?1728492993"></script>
 
     
   </div>
@@ -1171,7 +1171,7 @@
 <li>At the <strong>Create internet gateway</strong> page.</li>
 </ol>
 <ul>
-<li>In the <strong>Name tag</strong> field, enter <strong>Lab IGW</strong>.</li>
+<li>In the <strong>Name tag</strong> field, enter <strong>IGW</strong>.</li>
 <li>Click <strong>Create internet gateway</strong>.</li>
 </ul>
 <p><img alt="VPC" src="/images/2.prerequisite/008-createigw.png"></p>
@@ -1186,13 +1186,13 @@
 <li>At the <strong>Attach to VPC</strong> page.</li>
 </ol>
 <ul>
-<li>In the <strong>Available VPCs</strong> section, select <strong>Lab VPC</strong>.</li>
+<li>In the <strong>Available VPCs</strong> section, select <strong>ASG</strong>.</li>
 <li>Click <strong>Attach internet gateway</strong>.</li>
 <li>Check the successful attaching process as shown below.</li>
 </ul>
 <p><img alt="VPC" src="/images/2.prerequisite/010-createigw.png"></p>
 <ol start="10">
-<li>Next we will create a custom route table to assign to <strong>Lab Public Subnet</strong>.</li>
+<li>Next we will create a custom route table to assign to <strong>Public Subnet</strong>.</li>
 </ol>
 <ul>
 <li>Click <strong>Route Tables</strong>.</li>
@@ -1203,46 +1203,48 @@
 <li>At the <strong>Create route table</strong> page.</li>
 </ol>
 <ul>
-<li>In the <strong>Name</strong> field, enter <strong>Lab Publicrtb</strong>.</li>
-<li>In the <strong>VPC</strong> section, select <strong>Lab VPC</strong>.</li>
+<li>In the <strong>Name</strong> field, enter <strong>Public Route Table</strong>.</li>
+<li>In the <strong>VPC</strong> section, select <strong>VPC</strong>.</li>
 <li>Click <strong>Create route table</strong>.</li>
 </ul>
+<p><img alt="VPC" src="/images/2.prerequisite/012-creatertb.png"></p>
 <ol start="12">
 <li>After creating the route table successfully.</li>
 </ol>
 <ul>
 <li>Click <strong>Edit routes</strong>.</li>
 </ul>
-<p><img alt="VPC" src="/images/2.prerequisite/012-creatertb.png"></p>
+<p><img alt="VPC" src="/images/2.prerequisite/013-creatertb.png"></p>
 <ol start="13">
 <li>At the <strong>Edit routes</strong> page.</li>
 </ol>
 <ul>
 <li>Click <strong>Add route</strong>.</li>
 <li>In the <strong>Destination</strong> field, enter 0.0.0.0/0</li>
-<li>In the <strong>Target</strong> section, select <strong>Internet Gateway</strong> and then select <strong>Lab IGW</strong>.</li>
+<li>In the <strong>Target</strong> section, select <strong>Internet Gateway</strong> and then select <strong>IGW</strong>.</li>
 <li>Click <strong>Save changes</strong>.</li>
 </ul>
-<p><img alt="VPC" src="/images/2.prerequisite/013-creatertb.png"></p>
+<p><img alt="VPC" src="/images/2.prerequisite/014-creatertb.png">
+<img alt="VPC" src="/images/2.prerequisite/015-creatertb.png"></p>
 <ol start="14">
 <li>Click the <strong>Subnet associations</strong> tab.</li>
 </ol>
 <ul>
 <li>Click <strong>Edit subnet associations</strong> to proceed with the associate custom route table we just created in <strong>Lab Public Subnet</strong>.</li>
 </ul>
-<p><img alt="VPC" src="/images/2.prerequisite/014-creatertb.png"></p>
+<p><img alt="VPC" src="/images/2.prerequisite/016-creatertb.png"></p>
 <ol start="15">
 <li>At the <strong>Edit subnet associations</strong> page.</li>
 </ol>
 <ul>
-<li>Click on <strong>Lab Public Subnet</strong>.</li>
+<li>Click on <strong>Public Subnet</strong>.</li>
 <li>Click <strong>Save associations</strong>.</li>
 </ul>
-<p><img alt="VPC" src="/images/2.prerequisite/015-creatertb.png"></p>
+<p><img alt="VPC" src="/images/2.prerequisite/017-creatertb.png"></p>
 <ol start="16">
 <li>Check that the route table information has been associated with <strong>Lab Public Subnet</strong> and the internet route information has been pointed to the Internet Gateway as shown below.</li>
 </ol>
-<p><img alt="VPC" src="/images/2.prerequisite/016-creatertb.png"></p>
+<p><img alt="VPC" src="/images/2.prerequisite/018-creatertb.png"></p>
 
 
 
@@ -1777,19 +1779,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1728402564"></script>
-    <script src="/js/perfect-scrollbar.min.js?1728402564"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1728402564"></script>
-    <script src="/js/jquery.sticky.js?1728402564"></script>
-    <script src="/js/featherlight.min.js?1728402564"></script>
-    <script src="/js/highlight.pack.js?1728402564"></script>
+    <script src="/js/clipboard.min.js?1728492993"></script>
+    <script src="/js/perfect-scrollbar.min.js?1728492993"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1728492993"></script>
+    <script src="/js/jquery.sticky.js?1728492993"></script>
+    <script src="/js/featherlight.min.js?1728492993"></script>
+    <script src="/js/highlight.pack.js?1728492993"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1728402564"></script>
-    <script src="/js/learn.js?1728402564"></script>
-    <script src="/js/hugo-learn.js?1728402564"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1728492993"></script>
+    <script src="/js/learn.js?1728492993"></script>
+    <script src="/js/hugo-learn.js?1728492993"></script>
 
-    <link href="/mermaid/mermaid.css?1728402564" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1728402564"></script>
+    <link href="/mermaid/mermaid.css?1728492993" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1728492993"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

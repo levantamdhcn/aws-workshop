@@ -40,7 +40,7 @@ pre : " <b> 2.4.2 </b> "
 ![VPC](/images/2.prerequisite/007-createigw.png)
 
 7. At the **Create internet gateway** page.
-  + In the **Name tag** field, enter **Lab IGW**.
+  + In the **Name tag** field, enter **IGW**.
   + Click **Create internet gateway**.
   
 ![VPC](/images/2.prerequisite/008-createigw.png)
@@ -51,48 +51,51 @@ pre : " <b> 2.4.2 </b> "
 ![VPC](/images/2.prerequisite/009-createigw.png)
 
 9. At the **Attach to VPC** page.
-  + In the **Available VPCs** section, select **Lab VPC**.
+  + In the **Available VPCs** section, select **ASG**.
   + Click **Attach internet gateway**.
   + Check the successful attaching process as shown below.
 
 ![VPC](/images/2.prerequisite/010-createigw.png)
 
-10. Next we will create a custom route table to assign to **Lab Public Subnet**.
+10. Next we will create a custom route table to assign to **Public Subnet**.
   + Click **Route Tables**.
   + Click **Create route table**.
 
 ![VPC](/images/2.prerequisite/011-creatertb.png)
 
 11. At the **Create route table** page.
-  + In the **Name** field, enter **Lab Publicrtb**.
-  + In the **VPC** section, select **Lab VPC**.
+  + In the **Name** field, enter **Public Route Table**.
+  + In the **VPC** section, select **VPC**.
   + Click **Create route table**.
+
+![VPC](/images/2.prerequisite/012-creatertb.png)
 
 12. After creating the route table successfully.
   + Click **Edit routes**.
   
-![VPC](/images/2.prerequisite/012-creatertb.png)
+![VPC](/images/2.prerequisite/013-creatertb.png)
 
 13. At the **Edit routes** page.
   + Click **Add route**.
   + In the **Destination** field, enter 0.0.0.0/0
-  + In the **Target** section, select **Internet Gateway** and then select **Lab IGW**.
+  + In the **Target** section, select **Internet Gateway** and then select **IGW**.
   + Click **Save changes**.
 
-![VPC](/images/2.prerequisite/013-creatertb.png)
+![VPC](/images/2.prerequisite/014-creatertb.png)
+![VPC](/images/2.prerequisite/015-creatertb.png)
 
 14. Click the **Subnet associations** tab.
   + Click **Edit subnet associations** to proceed with the associate custom route table we just created in **Lab Public Subnet**.
 
 
-![VPC](/images/2.prerequisite/014-creatertb.png)
+![VPC](/images/2.prerequisite/016-creatertb.png)
 
 15. At the **Edit subnet associations** page.
-  + Click on **Lab Public Subnet**.
+  + Click on **Public Subnet**.
   + Click **Save associations**.
 
-![VPC](/images/2.prerequisite/015-creatertb.png)
+![VPC](/images/2.prerequisite/017-creatertb.png)
 
 16. Check that the route table information has been associated with **Lab Public Subnet** and the internet route information has been pointed to the Internet Gateway as shown below.
 
-![VPC](/images/2.prerequisite/016-creatertb.png)
+![VPC](/images/2.prerequisite/018-creatertb.png)
