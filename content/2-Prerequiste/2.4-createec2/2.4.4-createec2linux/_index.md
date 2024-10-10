@@ -10,7 +10,7 @@ pre : " <b> 2.4.4 </b> "
   + Click **Instances**.
   + Click **Launch instances**.
   
-![EC2](/images/2.prerequisite/027-createec2.png)
+![EC2](/images/2.prerequisite/022-createec2.png)
 
 2. On the **Step 1: Choose an Amazon Machine Image (AMI)** page.
   + Click **Select** to select AMI **Amazon Linux 2 AMI**.
