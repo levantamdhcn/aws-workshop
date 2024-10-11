@@ -15,4 +15,8 @@ To learn how to create EC2 instances and VPCs with public/private subnets, you c
   - [Works with Amazon VPC](https://000003.awsstudygroup.com/en/)
 
 ### Content
-  - [Prepare VPC and EC2](2.1-createec2/)
+  - [Create VPC](2.4.1-createvpc/)
+  - [Create Public Subnet](2.4.2-createpublicsubnet/)
+  - [Create Security Group](2.4.3-createsecgroup/)
+  - [Create EC2 Instance](2.4.4-createec2linux/)
+  - [Test Connection](2.4.4-createec2linux/)

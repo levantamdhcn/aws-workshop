@@ -130,7 +130,14 @@
 	"title": "Preparing VPC and EC2",
 	"tags": [],
 	"description": "",
-	"content": "\rYou need to create 1 Linux instance on the public subnet to perform this lab.\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC Content Prepare VPC and EC2 "
+	"content": "\rYou need to create 1 Linux instance on the public subnet to perform this lab.\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC Content Create VPC Create Public Subnet Create Security Group Create EC2 Instance Test Connection "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/",
+	"title": "Test Connection",
+	"tags": [],
+	"description": "",
+	"content": "\rIn this phase, we check if our instance works with VPC, Subnet and Security Group we attached.\nTo learn how to connect EC2 instances, you can refer to the lab:\nTest EC2 Connection EC2 Instance Connect Endpoint Guide We use .pem file created at Create EC2 Instance to establish a connection to the EC2 instance.\nA. Using Terminal without GUI Open Terminal (or PowerShell, Git Bash,\u0026hellip;) Insert cd /path-to-pem-file "
 },
 {
 	"uri": "//localhost:1313/3-accessibilitytoinstances/",
