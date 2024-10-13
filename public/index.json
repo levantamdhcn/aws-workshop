@@ -112,11 +112,18 @@
 	"content": "Create VPC Endpoint SSM We will create 3 interface endpoints required by the Session Manager:\nInterface endpoints: com.amazonaws.region.ssm com.amazonaws.region.ec2messages com.amazonaws.region.ssmmessages You can refer to more here\nContent: Create Endpoint ssm Create Endpoint ssmmessages Create Endpoint ec2messages "
 },
 {
+	"uri": "//localhost:1313/2-prerequiste/2.5-creates3bucket/",
+	"title": "Preparation ",
+	"tags": [],
+	"description": "",
+	"content": " Go to EC2 service management console Click Instances. Click Launch instances. "
+},
+{
 	"uri": "//localhost:1313/2-prerequiste/",
 	"title": "Preparation ",
 	"tags": [],
 	"description": "",
-	"content": "\rWe need to learn some basics of Docker, Nginx to perform this lab.\nNginx nginx (engine x) is an HTTP server, reverse proxy, content cache, load balancer, TCP/UDP proxy server. In this workshop, we use nginx as a reverse proxy.\nTo learn what is Nginx, how to Nginx works, Nginx basic concepts and how to configure a simple Nginx server:\nNginx for beginner Nginx with Docker Docker Docker is an open platform for developing, shipping, and running applications.\nLearn basic concepts of Docker:\nDocker for beginner Containerize Nodejs App Content Preparing Nginx Config Preparing Docker Resources Preparing VPC and EC2 Create IAM Role Create S3 Bucket Preparing spec files Create CodeBuild service Create CodeDeploy service Create CodePipeline service "
+	"content": "\rWe need to learn some basics of Docker, Nginx to perform this lab.\nNginx nginx (engine x) is an HTTP server, reverse proxy, content cache, load balancer, TCP/UDP proxy server. In this workshop, we use nginx as a reverse proxy.\nTo learn what is Nginx, how to Nginx works, Nginx basic concepts and how to configure a simple Nginx server:\nNginx for beginner Nginx with Docker Docker Docker is an open platform for developing, shipping, and running applications.\nLearn basic concepts of Docker:\nDocker for beginner Containerize Nodejs App Content Preparing Nginx Config Preparing Docker Resources Create IAM Role Preparing VPC and EC2 Create S3 Bucket Preparing spec files Create CodeBuild service Create CodeDeploy service Create CodePipeline service "
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.1-createnginx/",
@@ -137,7 +144,7 @@
 	"title": "Test Connection",
 	"tags": [],
 	"description": "",
-	"content": "\rIn this phase, we check if our instance works with VPC, Subnet and Security Group we attached.\nTo learn how to connect EC2 instances, you can refer to the lab:\nTest EC2 Connection EC2 Instance Connect Endpoint Guide We use .pem file created at Create EC2 Instance to establish a connection to the EC2 instance.\nA. Using Terminal without GUI Open Terminal (or PowerShell, Git Bash,\u0026hellip;) Insert cd /path-to-pem-file "
+	"content": "\rIn this phase, we check if our instance works with VPC, Subnet and Security Group we attached.\nTo learn how to connect EC2 instances, you can refer to the lab:\nTest EC2 Connection EC2 Instance Connect Endpoint Guide We use .pem file created at Create EC2 Instance to establish a connection to the EC2 instance.\nA. Using Terminal without GUI Open Terminal (or PowerShell, Git Bash,\u0026hellip;) Insert cd /path-to-pem-file Insert ssh -i /path-to-pem-file ubuntu@public-ip On first connection, OS ask for continue with new IP Address, type yes See the result. We are in. B. Using Bitvise SSH Client within GUI Bitvise SSH Client use private key to authenticate the connection so we need first generate private key version from pem file.\nGo to PuTTYgen Website to download the IDE Open Puttygen App to start generate private key.\nClick Load Choose All Files Select pem file of our EC2 Instance At Key passphrase and Confirm passphrase, Enter password for private key. Click Save private key Go to Download Bitvise SSH Client to download the IDE Click Download Bitvise SSH Client Open Bitvise SSH Client At Host, Enter EC2 Instance public IP 18.132.42.239 At Port, Enter SSH default port we allowed in Security Group 22 At Username, Enter ubuntu Click Client key manager to import generated private key. Click Import and select our generated private key After finish the import, return to the main screen an click Login.\nSuccessfully connect to our EC2 instance. Our EC2 work as expected. Let\u0026rsquo;s move to next section.\n"
 },
 {
 	"uri": "//localhost:1313/3-accessibilitytoinstances/",

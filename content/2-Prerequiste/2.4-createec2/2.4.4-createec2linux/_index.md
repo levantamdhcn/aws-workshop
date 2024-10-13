@@ -1,5 +1,5 @@
 ---
-title : "Create Public instance"
+title : "Create EC2 Instance"
 date : "`r Sys.Date()`"
 weight : 5
 chapter : false
@@ -40,9 +40,21 @@ pre : " <b> 2.4.4 </b> "
 
 ![EC2](/images/2.prerequisite/031-createec2.png)
 
+6. Scroll down to **Network settings** section, click **Edit**
+  + In the **Network** section, select **ASG**.
+  + In the **Subnet** section, select **Public Subnet**.
+  + In the **Auto-assign Public IP** section, select **Use subnet setting (Enable)**
+  + In the **Common security groups**, select **Public SG**
+
+![EC2](/images/2.prerequisite/031-createec2.png)
+
+7. Scroll down to **Advance details** section and expand that.
+  + At IAM Instance profile, choose **EC2S3ReadPermission** Policy that we create from [Create IAM Role](/2-Prerequiste/2.3-createiamrole/).
+![EC2](/images/2.prerequisite/032-createec2.png)
+
 8. Keep default settings for other section, scroll down to bottom.
   + Click **Launch**.
 
-10. Click **View Instances** to return to the list of EC2 instances.
+9. Click **View Instances** to return to the list of EC2 instances.
 
 Next, we will do the same to create an EC2 Instance Windows running in the Private subnet.

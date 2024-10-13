@@ -3,7 +3,7 @@ title : "Create Nginx Image"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false
-pre : " <b> 2.1.2 </b> "
+pre : " <b> 2.2.1 </b> "
 ---
 
 #### Create Nginx Image

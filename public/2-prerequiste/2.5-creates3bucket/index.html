@@ -3,30 +3,30 @@
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.134.2">
+    <meta name="generator" content="Hugo 0.134.3">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Preparing VPC and EC2 :: AWS System Manager</title>
+    <title>Create S3 Bucket :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1727797160" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1727797160" rel="stylesheet">
-    <link href="/css/hybrid.css?1727797160" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1727797160" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1727797160" rel="stylesheet">
-    <link href="/css/auto-complete.css?1727797160" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1727797160" rel="stylesheet">
-    <link href="/css/theme.css?1727797160" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1727797160" rel="stylesheet">
+    <link href="/css/nucleus.css?1728835253" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1728835253" rel="stylesheet">
+    <link href="/css/hybrid.css?1728835253" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1728835253" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1728835253" rel="stylesheet">
+    <link href="/css/auto-complete.css?1728835253" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1728835253" rel="stylesheet">
+    <link href="/css/theme.css?1728835253" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1728835253" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1727797160" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1728835253" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1727797160"></script>
+    <script src="/js/jquery-3.3.1.min.js?1728835253"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1727797160"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1727797160"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1728835253"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1728835253"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1727797160"></script>
+<script type="text/javascript" src="/js/search.js?1728835253"></script>
 
     
   </div>
@@ -139,13 +139,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createec2/" title="Preparing VPC and EC2" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-createdockerresource/" title="Preparing Docker Resources" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequiste/2.3-createec2/">
-           <b> 2.1 </b> Preparing VPC and EC2
+      <a href="/2-prerequiste/2.2-createdockerresource/">
+           <b> 2.2 </b> Preparing Docker Resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -170,13 +170,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createec2/2.1.1-createvpc/" title="Create VPC" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/" title="Create docker-compose.yml file" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequiste/2.3-createec2/2.1.1-createvpc/">
-           <b> 2.1.1 </b> Create VPC
+      <a href="/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/">
+           <b> 2.2.3 </b> Create docker-compose.yml file
           
             <i class="fas fa-check read-icon"></i>
           
@@ -198,13 +198,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createec2/2.1.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-createdockerresource/2.2.2-createserverimage/" title="Create Server&#39;s Dockerfile" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequiste/2.3-createec2/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Create Public Subnet
+      <a href="/2-prerequiste/2.2-createdockerresource/2.2.2-createserverimage/">
+           <b> 2.2.2 </b> Create Server&#39;s Dockerfile
           
             <i class="fas fa-check read-icon"></i>
           
@@ -226,97 +226,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.3-createec2/2.1.3-createprivatesubnet/" title="Create Private Subnet" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/" title="Create Nginx Image" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequiste/2.3-createec2/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Create Private Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.3-createec2/2.1.4-createsecgroup/" title="Create security groups" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.3-createec2/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Create security groups
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.3-createec2/2.1.5-createec2linux/" title="Create Public instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.3-createec2/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Create Public instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.3-createec2/2.1.6-createec2windows/" title="Create Private Instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.3-createec2/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Create Private Instance
+      <a href="/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/">
+           <b> 2.2.1 </b> Create Nginx Image
           
             <i class="fas fa-check read-icon"></i>
           
@@ -347,44 +263,13 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.4-createiamrole/" title="Preparing VPC and EC2" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.3-createiamrole/" title="Create IAM Role" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequiste/2.4-createiamrole/">
-           <b> 2.1 </b> Preparing VPC and EC2
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.4-createiamrole/2.1.1-createvpc/" title="Create VPC" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.4-createiamrole/2.1.1-createvpc/">
-           <b> 2.1.1 </b> Create VPC
+      <a href="/2-prerequiste/2.3-createiamrole/">
+           <b> 2.3 </b> Create IAM Role
           
             <i class="fas fa-check read-icon"></i>
           
@@ -406,1179 +291,18 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.4-createiamrole/2.1.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.4-createiamrole/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Create Public Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.4-createiamrole/2.1.3-createprivatesubnet/" title="Create Private Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.4-createiamrole/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Create Private Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.4-createiamrole/2.1.4-createsecgroup/" title="Create security groups" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.4-createiamrole/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Create security groups
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.4-createiamrole/2.1.5-createec2linux/" title="Create Public instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.4-createiamrole/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Create Public instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.4-createiamrole/2.1.6-createec2windows/" title="Create Private Instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.4-createiamrole/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Create Private Instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/" title="Preparing VPC and EC2" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/" title="Create S3 Bucket" class="dd-item 
         
         active
         
         ">
       <a href="/2-prerequiste/2.5-creates3bucket/">
-           <b> 2.1 </b> Preparing VPC and EC2
+           <b> 2.5 </b> Create S3 Bucket
           
             <i class="fas fa-check read-icon"></i>
           
       </a>
       
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/2.1.1-createvpc/" title="Create VPC" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.5-creates3bucket/2.1.1-createvpc/">
-           <b> 2.1.1 </b> Create VPC
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/2.1.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.5-creates3bucket/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Create Public Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/2.1.3-createprivatesubnet/" title="Create Private Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.5-creates3bucket/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Create Private Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/2.1.4-createsecgroup/" title="Create security groups" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.5-creates3bucket/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Create security groups
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/2.1.5-createec2linux/" title="Create Public instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.5-creates3bucket/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Create Public instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.5-creates3bucket/2.1.6-createec2windows/" title="Create Private Instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.5-creates3bucket/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Create Private Instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.6-createspecfiles/" title="Preparing VPC and EC2" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.6-createspecfiles/">
-           <b> 2.1 </b> Preparing VPC and EC2
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.6-createspecfiles/2.1.1-createvpc/" title="Create VPC" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.6-createspecfiles/2.1.1-createvpc/">
-           <b> 2.1.1 </b> Create VPC
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.6-createspecfiles/2.1.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.6-createspecfiles/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Create Public Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.6-createspecfiles/2.1.3-createprivatesubnet/" title="Create Private Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.6-createspecfiles/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Create Private Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.6-createspecfiles/2.1.4-createsecgroup/" title="Create security groups" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.6-createspecfiles/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Create security groups
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.6-createspecfiles/2.1.5-createec2linux/" title="Create Public instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.6-createspecfiles/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Create Public instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.6-createspecfiles/2.1.6-createec2windows/" title="Create Private Instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.6-createspecfiles/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Create Private Instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.7-createcodebuild/" title="Preparing VPC and EC2" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.7-createcodebuild/">
-           <b> 2.1 </b> Preparing VPC and EC2
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.7-createcodebuild/2.1.1-createvpc/" title="Create VPC" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.7-createcodebuild/2.1.1-createvpc/">
-           <b> 2.1.1 </b> Create VPC
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.7-createcodebuild/2.1.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.7-createcodebuild/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Create Public Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.7-createcodebuild/2.1.3-createprivatesubnet/" title="Create Private Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.7-createcodebuild/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Create Private Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.7-createcodebuild/2.1.4-createsecgroup/" title="Create security groups" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.7-createcodebuild/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Create security groups
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.7-createcodebuild/2.1.5-createec2linux/" title="Create Public instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.7-createcodebuild/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Create Public instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.7-createcodebuild/2.1.6-createec2windows/" title="Create Private Instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.7-createcodebuild/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Create Private Instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.8-createcodedeploy/" title="Preparing VPC and EC2" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.8-createcodedeploy/">
-           <b> 2.1 </b> Preparing VPC and EC2
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.8-createcodedeploy/2.1.1-createvpc/" title="Create VPC" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.8-createcodedeploy/2.1.1-createvpc/">
-           <b> 2.1.1 </b> Create VPC
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.8-createcodedeploy/2.1.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.8-createcodedeploy/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Create Public Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.8-createcodedeploy/2.1.3-createprivatesubnet/" title="Create Private Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.8-createcodedeploy/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Create Private Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.8-createcodedeploy/2.1.4-createsecgroup/" title="Create security groups" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.8-createcodedeploy/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Create security groups
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.8-createcodedeploy/2.1.5-createec2linux/" title="Create Public instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.8-createcodedeploy/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Create Public instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.8-createcodedeploy/2.1.6-createec2windows/" title="Create Private Instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.8-createcodedeploy/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Create Private Instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.9-createcodepipeline/" title="Preparing VPC and EC2" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.9-createcodepipeline/">
-           <b> 2.1 </b> Preparing VPC and EC2
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-      
-        <ul>
-          
-          
-            
-          
-          
-          
-        
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.9-createcodepipeline/2.1.1-createvpc/" title="Create VPC" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.9-createcodepipeline/2.1.1-createvpc/">
-           <b> 2.1.1 </b> Create VPC
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.9-createcodepipeline/2.1.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.9-createcodepipeline/2.1.2-createpublicsubnet/">
-           <b> 2.1.2 </b> Create Public Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.9-createcodepipeline/2.1.3-createprivatesubnet/" title="Create Private Subnet" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.9-createcodepipeline/2.1.3-createprivatesubnet/">
-           <b> 2.1.3 </b> Create Private Subnet
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.9-createcodepipeline/2.1.4-createsecgroup/" title="Create security groups" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.9-createcodepipeline/2.1.4-createsecgroup/">
-           <b> 2.1.4 </b> Create security groups
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.9-createcodepipeline/2.1.5-createec2linux/" title="Create Public instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.9-createcodepipeline/2.1.5-createec2linux/">
-           <b> 2.1.5 </b> Create Public instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/2-prerequiste/2.9-createcodepipeline/2.1.6-createec2windows/" title="Create Private Instance" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/2-prerequiste/2.9-createcodepipeline/2.1.6-createec2windows/">
-           <b> 2.1.6 </b> Create Private Instance
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-            
-          
-        
-        </ul>
               
     </li>
   
@@ -1607,6 +331,214 @@
           
       </a>
       
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.4-createec2/" title="Preparing VPC and EC2" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.4-createec2/">
+           <b> 2.4 </b> Preparing VPC and EC2
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.4-createec2/2.4.1-createvpc/" title="Create VPC" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.4-createec2/2.4.1-createvpc/">
+           <b> 2.4.1 </b> Create VPC
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/" title="Create Public Subnet" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/">
+           <b> 2.4.2 </b> Create Public Subnet
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.4-createec2/2.4.6-settingec2/" title="Setting up EC2 Instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.4-createec2/2.4.6-settingec2/">
+           <b> 2.4.6 </b> Setting up EC2 Instance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.4-createec2/2.4.5-testconnection/" title="Test Connection" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.4-createec2/2.4.5-testconnection/">
+           <b> 2.4.5 </b> Test Connection
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/" title="Create security groups" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/">
+           <b> 2.4.3 </b> Create security groups
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-prerequiste/2.4-createec2/2.4.4-createec2linux/" title="Create EC2 Instance" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-prerequiste/2.4-createec2/2.4.4-createec2linux/">
+           <b> 2.4.4 </b> Create EC2 Instance
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -2251,7 +1183,7 @@
             
           
           
-            <a href='/'>Build an CI/CD Pipeline for MERN App with Github</a> > <a href='/2-prerequiste/'>Preparation </a> > Preparing VPC and EC2
+            <a href='/'>Build an CI/CD Pipeline for MERN App with Github</a> > <a href='/2-prerequiste/'>Preparation </a> > Create S3 Bucket
           
         
           
@@ -2264,15 +1196,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#content">Content</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -2288,7 +1212,7 @@
           
             <h1>
               
-              Preparing VPC and EC2
+              Create S3 Bucket
             </h1>
           
 
@@ -2296,23 +1220,20 @@
 
 
 
-	<p>In this step, we will need to create a VPC with 2 public / private subnets. Then create 1 EC2 Instance Linux located in the public subnet, 1 EC2 Instance Windows located in the private subnet.</p>
-<p>The architecture overview after you complete this step will be as follows:</p>
-<p><img alt="VPC" src="/images/arc-01.png"></p>
-<p>To learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:</p>
+	<ol>
+<li>Go to <a href="https://eu-west-2.console.aws.amazon.com/s3/home">S3 service management console</a></li>
+</ol>
 <ul>
-<li><a href="https://000004.awsstudygroup.com/en/">About Amazon EC2</a></li>
-<li><a href="https://000003.awsstudygroup.com/en/">Works with Amazon VPC</a></li>
+<li>Click <strong>Buckets</strong>.</li>
+<li>Click <strong>Create Bucket</strong>.
+<img alt="S3" src="/images/2.prerequisite/042-createbucket.png"></li>
 </ul>
-<h3 id="content">Content</h3>
-<ul>
-<li><a href="/2-prerequiste/2.5-creates3bucket/2.1.1-createvpc/">Create VPC</a></li>
-<li><a href="/2-prerequiste/2.5-creates3bucket/2.1.2-createpublicsubnet/">Create Public Subnet</a></li>
-<li><a href="/2-prerequiste/2.5-creates3bucket/2.1.3-createprivatesubnet/">Create Private Subnet</a></li>
-<li><a href="/2-prerequiste/2.5-creates3bucket/2.1.4-createsecgroup/">Create security group</a></li>
-<li><a href="/2-prerequiste/2.5-creates3bucket/2.1.5-createec2linux/">Create public Linux server</a></li>
-<li><a href="/2-prerequiste/2.5-creates3bucket/2.1.6-createec2windows/">Create private Windows server</a></li>
-</ul>
+<ol start="2">
+<li>At <strong>Bucket Name</strong>, enter <strong>chat-app-bucket</strong>
+<img alt="S3" src="/images/2.prerequisite/043-createbucket.png"></li>
+<li>Leave other settings as default, scroll down and click <strong>Create Bucket</strong>
+<img alt="S3" src="/images/2.prerequisite/044-createbucket.png"></li>
+</ol>
 
 
 
@@ -2449,19 +1370,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
                     
@@ -2486,39 +1394,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -2536,105 +1411,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -2645,89 +1421,6 @@
                     
                     
 
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
             
         
@@ -2842,364 +1535,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
             
         
@@ -3480,10 +1815,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/2-prerequiste/2.4-createiamrole/2.1.6-createec2windows/" title="Create Private Instance"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/2-prerequiste/2.3-createiamrole/" title="Create IAM Role"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/2-prerequiste/2.5-creates3bucket/2.1.1-createvpc/" title="Create VPC" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/2-prerequiste/2.1-createnginx/" title="Preparing Nginx Config " style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -3493,19 +1828,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1727797160"></script>
-    <script src="/js/perfect-scrollbar.min.js?1727797160"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1727797160"></script>
-    <script src="/js/jquery.sticky.js?1727797160"></script>
-    <script src="/js/featherlight.min.js?1727797160"></script>
-    <script src="/js/highlight.pack.js?1727797160"></script>
+    <script src="/js/clipboard.min.js?1728835253"></script>
+    <script src="/js/perfect-scrollbar.min.js?1728835253"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1728835253"></script>
+    <script src="/js/jquery.sticky.js?1728835253"></script>
+    <script src="/js/featherlight.min.js?1728835253"></script>
+    <script src="/js/highlight.pack.js?1728835253"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1727797160"></script>
-    <script src="/js/learn.js?1727797160"></script>
-    <script src="/js/hugo-learn.js?1727797160"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1728835253"></script>
+    <script src="/js/learn.js?1728835253"></script>
+    <script src="/js/hugo-learn.js?1728835253"></script>
 
-    <link href="/mermaid/mermaid.css?1727797160" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1727797160"></script>
+    <link href="/mermaid/mermaid.css?1728835253" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1728835253"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
