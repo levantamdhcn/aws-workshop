@@ -15,16 +15,16 @@
                 href="//localhost:1313/vi/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/4-s3log/4.1-updateiamrole/</loc>
+    <loc>//localhost:1313/vi/4-createpipelinecomponents/4.1-updateiamrole/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-s3log/4.1-updateiamrole/"
+                href="//localhost:1313/4-createpipelinecomponents/4.1-updateiamrole/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.1-updateiamrole/"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.1-updateiamrole/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/</loc>
@@ -49,42 +49,6 @@
                 rel="alternate"
                 hreflang="vi"
                 href="//localhost:1313/vi/1-introduce/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.1-public-instance/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.1-public-instance/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.1-public-instance/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.1-createvpc/</loc>
@@ -123,18 +87,6 @@
                 href="//localhost:1313/vi/2-prerequiste/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/"
-                />
-  </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.3-createiamrole/</loc>
     <xhtml:link
                 rel="alternate"
@@ -145,18 +97,6 @@
                 rel="alternate"
                 hreflang="vi"
                 href="//localhost:1313/vi/2-prerequiste/2.3-createiamrole/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/</loc>
@@ -183,28 +123,16 @@
                 href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/4-s3log/4.2-creates3bucket/</loc>
+    <loc>//localhost:1313/vi/4-createpipelinecomponents/4.2-creates3bucket/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-s3log/4.2-creates3bucket/"
+                href="//localhost:1313/4-createpipelinecomponents/4.2-creates3bucket/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.2-creates3bucket/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.2-creates3bucket/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.1-createnginx/</loc>
@@ -219,64 +147,40 @@
                 href="//localhost:1313/vi/2-prerequiste/2.1-createnginx/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/</loc>
+    <loc>//localhost:1313/vi/3-buildandtestimage/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/"
+                href="//localhost:1313/3-buildandtestimage/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/"
+                href="//localhost:1313/vi/3-buildandtestimage/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/</loc>
+    <loc>//localhost:1313/vi/4-createpipelinecomponents/4.3-creategwes3/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/"
+                href="//localhost:1313/4-createpipelinecomponents/4.3-creategwes3/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.3-creategwes3/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-accessibilitytoinstances/</loc>
+    <loc>//localhost:1313/vi/4-createpipelinecomponents/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-accessibilitytoinstances/"
+                href="//localhost:1313/4-createpipelinecomponents/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-accessibilitytoinstances/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/4-s3log/4.3-creategwes3/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-s3log/4.3-creategwes3/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.3-creategwes3/"
-                />
-  </url><url>
-    <loc>//localhost:1313/vi/4-s3log/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-s3log/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/"
+                href="//localhost:1313/vi/4-createpipelinecomponents/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/</loc>
@@ -291,16 +195,16 @@
                 href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/4-s3log/4.4-configsessionlogs/</loc>
+    <loc>//localhost:1313/vi/4-createpipelinecomponents/4.4-configsessionlogs/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-s3log/4.4-configsessionlogs/"
+                href="//localhost:1313/4-createpipelinecomponents/4.4-configsessionlogs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-s3log/4.4-configsessionlogs/"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.4-configsessionlogs/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/5-portfwd/</loc>
@@ -340,6 +244,18 @@
                 href="//localhost:1313/vi/6-cleanup/"
                 />
   </url><url>
+    <loc>//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/"
+                />
+  </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.5-testconnection/</loc>
     <xhtml:link
                 rel="alternate"
@@ -350,6 +266,18 @@
                 rel="alternate"
                 hreflang="vi"
                 href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.5-testconnection/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.6-settingec2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.6-settingec2/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/</loc>

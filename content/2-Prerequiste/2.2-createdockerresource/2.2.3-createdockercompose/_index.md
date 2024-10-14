@@ -8,51 +8,111 @@ pre : " <b> 2.2.3 </b> "
 
 #### Create docker-compose.yml file
 
+Docker Compose is a tool for defining and running multi-container application in a single YAML file. This simplifies the complex architecture. Make it easier to manager and replicate your application environment. Docker Compose can create a configuration that easy to share among developers and team.
+
+{{% notice info %}}
+Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).
+{{% /notice %}}
+
+![Docker Compose](/images/2.prerequisite/046-createdockercompose.png)
+
 In root folder, create file named docker-compose.yml with following content:
 ```bash
-#vi Dockerfile
-FROM nginx:latest
+#vi docker-compose.yml
+version: '3.7'
 
-WORKDIR /usr/share/nginx/html
-
-COPY . .
-
-RUN rm /etc/nginx/conf.d/default.conf
-
-COPY ./nginx.conf /etc/nginx/conf.d
-
-ENTRYPOINT [ "nginx" , "-g" , "daemon off;" ]
+services:
+  nginx_app:
+      container_name: nginx_app
+      build:
+        context: ./nginx
+        dockerfile: Dockerfile
+      ports:
+        - 80:80
+      restart: always
+      depends_on:
+        - node_app
+        - mongo_db
+  node_app:
+    container_name: node_app
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: always
+    expose:
+      - 4000
+    ports:
+      - "4000:4000"
+    links:
+      - mongo_db
+    env_file: ./server/.env
+    depends_on:
+      - mongo_db
+  mongo_db:
+    container_name: mongo_db
+    image: mongo
+    volumes:
+      - mongo_volume:/data/db
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+volumes:
+  mongo_volume:
 ```
 
 Let's break down the configuration:
 
-1. Specifies the base image for the Docker image being built. It uses the latest version of the official Nginx image from Docker Hub.
+1. This instructs Docker Compose that we’re using version 3.7 of the tool. Version 3.7 is suitable for Docker Engine 19.03.0 and higher.
 
 ```
-FROM nginx:latest
+version: '3.7'
 ```
-2. Sets the working directory inside the container to /usr/share/nginx/html. Which is the default location where Nginx serves static files, any subsequent commands will be executed in this directory. If it doesn't exist, Docker will create it.
+2. Start define our services.
 ```
-WORKDIR /usr/share/nginx/html
+services:
 ```
-3. Copies all the remaining files from server's directory into the working directory (/usr/share/nginx/html) of the container
+3. A service architecture will contains
 ```
-COPY . .
-```
-
-4. This command removes the default Nginx configuration file.
-```
-RUN rm /etc/nginx/conf.d/default.conf
-```
-
-5. Copy our customized configuration file into container. Which we have created from [Preparing Nginx Config](/2.1-createnginx/)
-```
-COPY ./nginx.conf /etc/nginx/conf.d
+nginx_app:
+      container_name: nginx_app
+      build:
+        context: ./nginx
+        dockerfile: Dockerfile
+      ports:
+        - 80:80
+      restart: always
 ```
 
-6. Runs Nginx in the foreground (daemon off;), which is necessary for containers since they terminate when their main process exits. This keeps the Nginx server running.
+3.1. A service name
 ```
-ENTRYPOINT [ "nginx", "-g", "daemon off;" ]:
+  nginx_app:
 ```
 
-End.
+3.2. Name of the container after build.
+```
+    container_name: nginx_app
+```
+
+3.3. Instruction how to build the image
+```
+    build:
+```
+
+3.4. Specifies the build context as ./nginx, which means Docker will look for the Dockerfile and other resources in that directory
+```
+        context: ./nginx
+```
+
+3.5. Maps port 80 of the host to port 80 of the container, making the Nginx server accessible from the host.
+```
+        ports:
+            - 80:80
+```
+
+3.6. Configures the container to always restart unless explicitly stopped.
+```
+        restart: always
+```
+
+4. For more information of how to write a docker-compose file, you can refer to this [Document](https://docs.docker.com/reference/compose-file/)

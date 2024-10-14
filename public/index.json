@@ -7,18 +7,11 @@
 	"content": "Build an CI/CD Pipeline for MERN App with Github Overall This workshop will describe step by step how to build an CI/CD Pipeline using Github and some cloud native tools provided by AWS such as AWS CodeDeploy, AWS CodePipeline and AWS CodeBuild.\nContent Introduction Preparation Connect to EC2 instance Manage session logs Port Forwarding Clean up resources "
 },
 {
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.1-public-instance/",
-	"title": "Connect to Public Instance",
+	"uri": "//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/",
+	"title": "Create docker-compose.yml file",
 	"tags": [],
 	"description": "",
-	"content": "\nGo to EC2 service management console. Click on Public Linux Instance. Click Actions. Click Security. Click Modify IAM role. At the Modify IAM role page. Click to select SSM-Role. Click Save. You will need to wait about 10 minutes before performing the next step. This time our EC2 instance will automatically register with the Session Manager.\nGo to the AWS Systems Manager service management console Drag the left menu slider down. Click Session Manager. Click Start Session. Then select Public Linux Instance and click Start session to access the instance. Terminal will appear on the browser. Testing with the command sudo tcpdump -nn port 22 and sudo tcpdump we will see no SSH traffic but only HTTPS traffic. Above, we have created a connection to the public instance without opening SSH port 22, for better security, avoiding any attack to the SSH port.\nOne disadvantage of the above method is that we have to open the Security Group outbound at port 443 to the internet. Since it\u0026rsquo;s a public instance, it probably won\u0026rsquo;t be a problem, but if you want extra security, you can block port 443 to the internet and still use the Session Manager. We will go through this in the private instance section below.\nYou can click terminate to end the currently connected session before proceeding to the next step.\n"
-},
-{
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.1-endpointssm/",
-	"title": "Create Endpoint ssm",
-	"tags": [],
-	"description": "",
-	"content": "Create VPC Endpoint SSM Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter SSM. In the Service Category section, select AWS Services. In the Service Name section, In the Service category section, select: AWS services In the Service Name section enter: SSM then select Service Name: com.amazonaws.ap-southeast-1.ssm. In the Service Name column, click com.amazonaws.ap-southeast-1.ssm. In the VPC section, select Lab VPC. Select the first AZ, then select the Lab Private Subnet subnet. Scroll down. In the Security Group section, select the Security group SG VPC Endpoint that we created earlier. In the Policy section, select Full access. Scroll down. Click Create endpoint. We have created the VPC Interface Endpoint for SSM. "
+	"content": "Create docker-compose.yml file Docker Compose is a tool for defining and running multi-container application in a single YAML file. This simplifies the complex architecture. Make it easier to manager and replicate your application environment. Docker Compose can create a configuration that easy to share among developers and team.\nRemember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).\nIn root folder, create file named docker-compose.yml with following content:\n#vi docker-compose.yml version: \u0026#39;3.7\u0026#39; services: nginx_app: container_name: nginx_app build: context: ./nginx dockerfile: Dockerfile ports: - 80:80 restart: always depends_on: - node_app - mongo_db node_app: container_name: node_app build: context: ./server dockerfile: Dockerfile restart: always expose: - 4000 ports: - \u0026#34;4000:4000\u0026#34; links: - mongo_db env_file: ./server/.env depends_on: - mongo_db mongo_db: container_name: mongo_db image: mongo volumes: - mongo_volume:/data/db expose: - 27017 ports: - 27017:27017 volumes: mongo_volume: Let\u0026rsquo;s break down the configuration:\nThis instructs Docker Compose that we’re using version 3.7 of the tool. Version 3.7 is suitable for Docker Engine 19.03.0 and higher. version: \u0026#39;3.7\u0026#39; Start define our services. services: A service architecture will contains nginx_app:\rcontainer_name: nginx_app\rbuild:\rcontext: ./nginx\rdockerfile: Dockerfile\rports:\r- 80:80\rrestart: always 3.1. A service name\nnginx_app: 3.2. Name of the container after build.\ncontainer_name: nginx_app 3.3. Instruction how to build the image\nbuild: 3.4. Specifies the build context as ./nginx, which means Docker will look for the Dockerfile and other resources in that directory\ncontext: ./nginx 3.5. Maps port 80 of the host to port 80 of the container, making the Nginx server accessible from the host.\nports:\r- 80:80 3.6. Configures the container to always restart unless explicitly stopped.\nrestart: always For more information of how to write a docker-compose file, you can refer to this Document "
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.2-createserverimage/",
@@ -35,13 +28,6 @@
 	"content": "Create VPC Go to VPC service management console Click Your VPC. Click Create VPC. At the Create VPC page. In the Name tag field, enter Lab VPC. In the IPv4 CIDR field, enter: 10.10.0.0/16. Click Create VPC. "
 },
 {
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.1-enablevpcdns/",
-	"title": "Enable DNS hostnames",
-	"tags": [],
-	"description": "",
-	"content": "Enable DNS hostnames on VPC. To create VPC Endpoint we will need to enable DNS hostnames feature on VPC. Go to VPC service management console\nClick Your VPCs.\nSelect Lab VPC.\nClick Actions.\nClick Edit DNS hostnames.\nClick Endpoint, then click Create Endpoint.\nAt the Edit DNS hostnames page. Click to select Enable. Click Save changes. "
-},
-{
 	"uri": "//localhost:1313/1-introduce/",
 	"title": "Introduction",
 	"tags": [],
@@ -56,25 +42,11 @@
 	"content": "In this step, we will need to create 2 Dockerfile to build our images. Then create docker-compose.yml file to manage all our images.\nThe folder structure overview after you complete this step will be as follows:\nContent Create Server\u0026rsquo;s Dockerfile Create Nginx\u0026rsquo;s Dockerfile "
 },
 {
-	"uri": "//localhost:1313/4-s3log/4.1-updateiamrole/",
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.1-updateiamrole/",
 	"title": "Update IAM Role",
 	"tags": [],
 	"description": "",
 	"content": "For our EC2 instances to be able to send session logs to the S3 bucket, we will need to update the IAM Role assigned to the EC2 instance by adding a policy that allows access to S3.\nUpdate IAM Role Go to IAM service management console Click Roles. In the search box, enter SSM. Click on the SSM-Role role. Click Attach policies. In the Search box enter S3. Click the policy AmazonS3FullAccess. Click Attach policy. In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy AmazonS3FullAccess for convenience.\nNext, we will proceed to create an S3 bucket to store session logs.\n"
-},
-{
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/",
-	"title": "Connect to Private instance",
-	"tags": [],
-	"description": "",
-	"content": "For Windows instance located in private subnet, there is no public IP, no internet gateway so it cannot go out internet.\nWith this type of instance, the traditional way is to use Bastion host technique which is expensive and laborious, but here we will use Session Manager with this type.\nBasically, the private instance still has to open the TCP 443 port to System Manager, but we don\u0026rsquo;t want to allow connection go out to the internet, but only in its VPC, to enhance our security posture.\nTo do that, we have to include the System Manager endpoint in the VPC, that is, using the VPC interface endpoint:\nVPC interface endpoint is attached to the subnet, so this method can be done not only with private subnet but also with public subnet, meaning that with public subnet, you can completely prohibit TCP 443 go out to the internet.\nContent: Enable DNS hostnames Create VPC Endpoint Connect Private Instance "
-},
-{
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.2-endpointssmmessages/",
-	"title": "Create Endpoint ssmmessages",
-	"tags": [],
-	"description": "",
-	"content": "Create VPC Endpoint SSMMESSAGES Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter SSMMESSAGES. In the Service Category section, select AWS Services. In the Service Name section, In the Service category select: AWS services In the Service Name field enter: ssmmessages then select Service Name: com.amazonaws.ap-southeast-1.ssmmessages. In the Service Name column, click com.amazonaws.ap-southeast-1.ssmmessages. In the VPC section, select Lab VPC. Select the first AZ, then select the Lab Private Subnet subnet. Scroll down. In the Security Group section, select the Security group SG VPC Endpoint that we created earlier. In the Policy section, select Full access Scroll down. Click Create endpoint. We have created the VPC Interface Endpoint SSMMESSAGES. "
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.3-createiamrole/",
@@ -98,25 +70,18 @@
 	"content": "Create Public Subnet Click Subnets. Click Create subnet. At the Create subnet page. In the VPC ID section, click ASG. In the Subnet name field, enter Public Subnet. In the Availability Zone section, select the first Availability zone. In the field IPv4 CIRD block enter 10.10.1.0/24. Scroll to the bottom of the page, click Create subnet.\nClick Public Subnet.\nClick Actions. Click Edit subnet settings. Click Enable auto-assign public IPv4 address. Click Save. Click Internet Gateways. Click Create internet gateway. At the Create internet gateway page. In the Name tag field, enter IGW. Click Create internet gateway. After successful creation, click Actions. Click Attach to VPC. At the Attach to VPC page. In the Available VPCs section, select ASG. Click Attach internet gateway. Check the successful attaching process as shown below. Next we will create a custom route table to assign to Public Subnet. Click Route Tables. Click Create route table. At the Create route table page. In the Name field, enter Public Route Table. In the VPC section, select VPC. Click Create route table. After creating the route table successfully. Click Edit routes. At the Edit routes page. Click Add route. In the Destination field, enter 0.0.0.0/0 In the Target section, select Internet Gateway and then select IGW. Click Save changes. Click the Subnet associations tab. Click Edit subnet associations to proceed with the associate custom route table we just created in Lab Public Subnet. At the Edit subnet associations page. Click on Public Subnet. Click Save associations. Check that the route table information has been associated with Lab Public Subnet and the internet route information has been pointed to the Internet Gateway as shown below. "
 },
 {
-	"uri": "//localhost:1313/4-s3log/4.2-creates3bucket/",
+	"uri": "//localhost:1313/2-prerequiste/2.5-creates3bucket/",
+	"title": "Create S3 Bucket",
+	"tags": [],
+	"description": "",
+	"content": "We need a bucket to store our build artifact from CodeBuild.\nGo to S3 service management console Click Buckets. Click Create Bucket. At Bucket Name, enter chat-app-bucket Leave other settings as default, scroll down and click Create Bucket Return the list and see that our bucket is created. We have a bucket now. Let\u0026rsquo;s move to next section!\n"
+},
+{
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.2-creates3bucket/",
 	"title": "Create S3 Bucket",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will create an S3 bucket to store session logs sent from EC2 instances.\nCreate S3 Bucket Access S3 service management console Click Create bucket. At the Create bucket page. In the Bucket name field, enter the bucket name lab-yourname-bucket-0001 In the Region section, select Region you are doing the current lab. The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.\nScroll down and click Create bucket. When we created the S3 bucket we did Block all public access so our EC2 instances won\u0026rsquo;t be able to connect to S3 via the internet. In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC\u0026rsquo;s internal network.\n"
-},
-{
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/",
-	"title": "Create VPC Endpoint",
-	"tags": [],
-	"description": "",
-	"content": "Create VPC Endpoint SSM We will create 3 interface endpoints required by the Session Manager:\nInterface endpoints: com.amazonaws.region.ssm com.amazonaws.region.ec2messages com.amazonaws.region.ssmmessages You can refer to more here\nContent: Create Endpoint ssm Create Endpoint ssmmessages Create Endpoint ec2messages "
-},
-{
-	"uri": "//localhost:1313/2-prerequiste/2.5-creates3bucket/",
-	"title": "Preparation ",
-	"tags": [],
-	"description": "",
-	"content": " Go to EC2 service management console Click Instances. Click Launch instances. "
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/",
@@ -140,6 +105,13 @@
 	"content": "\rYou need to create 1 Linux instance on the public subnet to perform this lab.\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC Content Create VPC Create Public Subnet Create Security Group Create EC2 Instance Test Connection "
 },
 {
+	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/",
+	"title": "Setting up EC2 Instance",
+	"tags": [],
+	"description": "",
+	"content": " First, connect to our EC2 instance. You can refer to this section Connect to EC2 Install Docker You can refer to official instruction from Docker document. Install Docker Compose You can follow step 1 from this instruction from Digital Ocean. Setup CodeDeploy agent. Follow instruction from AWS CodeDeploy Document "
+},
+{
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/",
 	"title": "Test Connection",
 	"tags": [],
@@ -147,28 +119,14 @@
 	"content": "\rIn this phase, we check if our instance works with VPC, Subnet and Security Group we attached.\nTo learn how to connect EC2 instances, you can refer to the lab:\nTest EC2 Connection EC2 Instance Connect Endpoint Guide We use .pem file created at Create EC2 Instance to establish a connection to the EC2 instance.\nA. Using Terminal without GUI Open Terminal (or PowerShell, Git Bash,\u0026hellip;) Insert cd /path-to-pem-file Insert ssh -i /path-to-pem-file ubuntu@public-ip On first connection, OS ask for continue with new IP Address, type yes See the result. We are in. B. Using Bitvise SSH Client within GUI Bitvise SSH Client use private key to authenticate the connection so we need first generate private key version from pem file.\nGo to PuTTYgen Website to download the IDE Open Puttygen App to start generate private key.\nClick Load Choose All Files Select pem file of our EC2 Instance At Key passphrase and Confirm passphrase, Enter password for private key. Click Save private key Go to Download Bitvise SSH Client to download the IDE Click Download Bitvise SSH Client Open Bitvise SSH Client At Host, Enter EC2 Instance public IP 18.132.42.239 At Port, Enter SSH default port we allowed in Security Group 22 At Username, Enter ubuntu Click Client key manager to import generated private key. Click Import and select our generated private key After finish the import, return to the main screen an click Login.\nSuccessfully connect to our EC2 instance. Our EC2 work as expected. Let\u0026rsquo;s move to next section.\n"
 },
 {
-	"uri": "//localhost:1313/3-accessibilitytoinstances/",
-	"title": "Connect to EC2 servers",
+	"uri": "//localhost:1313/3-buildandtestimage/",
+	"title": "Build and test images at local",
 	"tags": [],
 	"description": "",
-	"content": "In this step, we will connect to our EC2 servers, located in both the public and private subnets.\nContent 3.1. Connect to EC2 Public Server 3.2. Cconnect to EC2 Private Server\n"
+	"content": "In this step, we will test out Docker resources created in Prepare Docker resources\nA. Build Open terminal inside root project, type docker compose up. Docker Compose will start build each services Open another terminal, type docker image ls, check for 3 images we have just created Open browser, at address bar, enter localhost:4000, we can see and error Cannot GET /. Our backend is successfully running on port 4000. Open browser, at address bar, enter localhost, we can see default page of nginx because we did not copy any built files into nginx context yet. All of our container works. We can move to the next section.\n"
 },
 {
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.3-connectec2/",
-	"title": "Connect to instance",
-	"tags": [],
-	"description": "",
-	"content": "Assign IAM role and restart EC2 instance. Go to EC2 service management console Click Private Windows Instance. Click Actions. Click Security. Click Modify IAM Role. At the Modify IAM Role page. In the IAM role section, select SSM-Role. Click Save. Click Private Windows Instance. Click Instance state. Click Reboot instance to restart, then click Reboot to confirm. Please wait 5 minutes before doing the next step.\nConnect to the private EC2 instance. Go to System Manager - Session Manager service management console Click Start session. Click Private Windows Instance. Click Start session. Type ipconfig command to check the IP address information of Private Windows Instance as shown below. "
-},
-{
-	"uri": "//localhost:1313/3-accessibilitytoinstances/3.2-private-instance/3.2.2-createvpcendpoint/3.2.2.3-endpointec2messages/",
-	"title": "Create Endpoint ec2messages",
-	"tags": [],
-	"description": "",
-	"content": "Create VPC Endpoint EC2MESSAGES Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter SSMMESSAGES. In the Service Category section, select AWS Services. In the Service Name section, In the Service category select: AWS services In the field Service Name enter: ec2 then select Service Name: com.amazonaws.ap-southeast-1.ec2messages. In the Service Name column, click com.amazonaws.ap-southeast-1.ec2messages. In the VPC section, select Lab VPC. Select the first AZ, then select the Lab Private Subnet subnet. Scroll down. In the Security Group section, select the Security group SG VPC Endpoint that we created earlier. In the Policy section, select Full access Scroll down. Click Create endpoint. We have created the VPC Interface Endpoint EC2MESSAGES.\nMake sure the 3 required endpoints have been created as shown below.\n"
-},
-{
-	"uri": "//localhost:1313/4-s3log/4.3-creategwes3/",
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.3-creategwes3/",
 	"title": "Create S3 Gateway endpoint",
 	"tags": [],
 	"description": "",
@@ -182,14 +140,14 @@
 	"content": "Create security groups In this step, we will proceed to create the security groups used for our instances.\nCreate security group for Linux instance located in public subnet Go to VPC service management console Click Security Group. Click Create security group. In the Security group name field, enter Public SG. In the Description section, enter Allow SSH and Ping to Server. In the VPC section, click the X to reselect the ASG you created for this lab. In the Inbound rules field, click Add rule, we need to set 2 rules for our instance. Type SSH - Source My IP - Description Allow SSH and Ping to Server. Allow my IP access server with SSH protocol. Type HTTP - Source Anywhere-IPv4 - Description Allow access to Server. Allow everyone can access our website with HTTP protocol. Keep Outbound rule, drag the mouse to the bottom. Click Create security group. So we are done creating the necessary security groups for EC2 instances.\n"
 },
 {
-	"uri": "//localhost:1313/4-s3log/",
+	"uri": "//localhost:1313/4-createpipelinecomponents/",
 	"title": "Manage session logs",
 	"tags": [],
 	"description": "",
 	"content": "With Session Manager, we can view the history of connections to instances through Session history. However, we have not seen the details of the commands used in a session.\nIn this section, we will proceed to create an S3 bucket and configure the session logs feature to see the details of the commands used in the session.\nContent: Update IAM Role Create S3 Bucket Create S3 Gateway endpoint Configure Session logs "
 },
 {
-	"uri": "//localhost:1313/4-s3log/4.4-configsessionlogs/",
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.4-configsessionlogs/",
 	"title": "Monitor session logs",
 	"tags": [],
 	"description": "",
@@ -197,10 +155,10 @@
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.4-createec2linux/",
-	"title": "Create Public instance",
+	"title": "Create EC2 Instance",
 	"tags": [],
 	"description": "",
-	"content": " Go to EC2 service management console Click Instances. Click Launch instances. On the Step 1: Choose an Amazon Machine Image (AMI) section. Click Quick Start to select Ubuntu. At Amazon Machine Image, select Ubuntu Server 24.04 LTS (free tier eligible). Scroll down to Instance Type section. Click on Instance type t2.micro. Click Create new key pair at Key pair (login) section. At the Create key pair popup. In the Key pair name field, enter chat-app. In the Key pair type field, select RSA. In the Private key file format field, select .pem. Click Create key pair. Scroll down to Network settings section, click Edit In the Network section, select ASG. In the Subnet section, select Public Subnet. In the Auto-assign Public IP section, select Use subnet setting (Enable) In the Common security groups, select Public SG Keep default settings for other section, scroll down to bottom. Click Launch. Click View Instances to return to the list of EC2 instances. Next, we will do the same to create an EC2 Instance Windows running in the Private subnet.\n"
+	"content": " Go to EC2 service management console Click Instances. Click Launch instances. On the Step 1: Choose an Amazon Machine Image (AMI) section. Click Quick Start to select Ubuntu. At Amazon Machine Image, select Ubuntu Server 24.04 LTS (free tier eligible). Scroll down to Instance Type section. Click on Instance type t2.micro. Click Create new key pair at Key pair (login) section. At the Create key pair popup. In the Key pair name field, enter chat-app. In the Key pair type field, select RSA. In the Private key file format field, select .pem. Click Create key pair. Scroll down to Network settings section, click Edit In the Network section, select ASG. In the Subnet section, select Public Subnet. In the Auto-assign Public IP section, select Use subnet setting (Enable) In the Common security groups, select Public SG Scroll down to Network settings section, click Edit In the Network section, select ASG. In the Subnet section, select Public Subnet. In the Auto-assign Public IP section, select Use subnet setting (Enable) In the Common security groups, select Public SG Scroll down to Advance details section and expand that. At IAM Instance profile, choose EC2S3ReadPermission Policy that we create from Create IAM Role. Keep default settings for other section, scroll down to bottom. Click Launch. Click View Instances to return to the list of EC2 instances. Next, we will do the same to create an EC2 Instance Windows running in the Private subnet.\n"
 },
 {
 	"uri": "//localhost:1313/5-portfwd/",
