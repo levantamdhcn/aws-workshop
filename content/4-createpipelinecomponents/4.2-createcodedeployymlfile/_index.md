@@ -5,8 +5,6 @@ weight : 2
 chapter : false
 pre : " <b> 4.2 </b> "
 ---
-
-
 In this step, we will create an S3 bucket to store session logs sent from EC2 instances.
 
 #### Create **S3 Bucket**

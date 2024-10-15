@@ -1,23 +1,21 @@
 ---
-title : "Manage session logs"
+title : "Create Pipeline Elements"
 date : "`r Sys.Date()`"
 weight : 4
 chapter : false
 pre : " <b> 4. </b> "
 ---
 
-
-With Session Manager, we can view the history of connections to instances through **Session history**. However, we have not seen the details of the commands used in a session.
-
-![S3](/images/4.s3/001-s3.png)
-
-In this section, we will proceed to create an S3 bucket and configure the session logs feature to see the details of the commands used in the session.
+The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services.
+In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.
 
 ![port-fwd](/images/arc-log.png) 
 
 ### Content:
 
-   - [Update IAM Role](./4.1-updateiamrole/)
-   - [Create **S3 Bucket**](./4.2-creates3bucket/)
-   - [Create S3 Gateway endpoint](./4.3-creategwes3)
-   - [Configure **Session logs**](./4.4-configsessionlogs/)
+   - [Create Scripts Files](/4-CreatePipelineComponents/4.1-createscriptfiles/)
+   - [Create AppSpec file reference](/4-CreatePipelineComponents/4.2-createcodedeployymlfile/)
+   - [Create Build specification reference](/4-CreatePipelineComponents/4.3-createbuildspecfile)
+   - [Create CodeBuild](/4-CreatePipelineComponents/4.4-createcodebuild/)
+   - [Create CodeDeploy](/4-CreatePipelineComponents/4.5-createcodedeploy/)
+   - [Create CodePipeline](/4-CreatePipelineComponents/4.6-createcodepipeline/)

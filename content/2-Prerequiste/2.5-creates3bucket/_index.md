@@ -1,7 +1,7 @@
 ---
 title : "Create S3 Bucket"
 date : "`r Sys.Date()`"
-weight : 2
+weight : 5
 chapter : false
 pre : " <b> 2.5 </b> "
 ---

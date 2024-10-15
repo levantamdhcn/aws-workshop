@@ -1,5 +1,5 @@
 ---
-title : "Build and test images at local"
+title : "Build and test"
 date : "`r Sys.Date()`"
 weight : 3
 chapter : false

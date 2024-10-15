@@ -1,7 +1,7 @@
 ---
 title : "Preparing VPC and EC2"
 date : "`r Sys.Date()`"
-weight : 2
+weight : 4
 chapter : false
 pre : " <b> 2.4 </b> "
 ---

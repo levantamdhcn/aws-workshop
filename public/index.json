@@ -42,13 +42,6 @@
 	"content": "In this step, we will need to create 2 Dockerfile to build our images. Then create docker-compose.yml file to manage all our images.\nThe folder structure overview after you complete this step will be as follows:\nContent Create Server\u0026rsquo;s Dockerfile Create Nginx\u0026rsquo;s Dockerfile "
 },
 {
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.1-updateiamrole/",
-	"title": "Update IAM Role",
-	"tags": [],
-	"description": "",
-	"content": "For our EC2 instances to be able to send session logs to the S3 bucket, we will need to update the IAM Role assigned to the EC2 instance by adding a policy that allows access to S3.\nUpdate IAM Role Go to IAM service management console Click Roles. In the search box, enter SSM. Click on the SSM-Role role. Click Attach policies. In the Search box enter S3. Click the policy AmazonS3FullAccess. Click Attach policy. In the production environment, we will grant stricter permissions to the specified S3 bucket. In the framework of this lab, we use the policy AmazonS3FullAccess for convenience.\nNext, we will proceed to create an S3 bucket to store session logs.\n"
-},
-{
 	"uri": "//localhost:1313/2-prerequiste/2.3-createiamrole/",
 	"title": "Create IAM Role",
 	"tags": [],
@@ -75,13 +68,6 @@
 	"tags": [],
 	"description": "",
 	"content": "We need a bucket to store our build artifact from CodeBuild.\nGo to S3 service management console Click Buckets. Click Create Bucket. At Bucket Name, enter chat-app-bucket Leave other settings as default, scroll down and click Create Bucket Return the list and see that our bucket is created. We have a bucket now. Let\u0026rsquo;s move to next section!\n"
-},
-{
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.2-creates3bucket/",
-	"title": "Create S3 Bucket",
-	"tags": [],
-	"description": "",
-	"content": "In this step, we will create an S3 bucket to store session logs sent from EC2 instances.\nCreate S3 Bucket Access S3 service management console Click Create bucket. At the Create bucket page. In the Bucket name field, enter the bucket name lab-yourname-bucket-0001 In the Region section, select Region you are doing the current lab. The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.\nScroll down and click Create bucket. When we created the S3 bucket we did Block all public access so our EC2 instances won\u0026rsquo;t be able to connect to S3 via the internet. In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC\u0026rsquo;s internal network.\n"
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/",
@@ -126,11 +112,11 @@
 	"content": "In this step, we will test out Docker resources created in Prepare Docker resources\nA. Build Open terminal inside root project, type docker compose up. Docker Compose will start build each services Open another terminal, type docker image ls, check for 3 images we have just created Open browser, at address bar, enter localhost:4000, we can see and error Cannot GET /. Our backend is successfully running on port 4000. Open browser, at address bar, enter localhost, we can see default page of nginx because we did not copy any built files into nginx context yet. All of our container works. We can move to the next section.\n"
 },
 {
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.3-creategwes3/",
-	"title": "Create S3 Gateway endpoint",
+	"uri": "//localhost:1313/4-createpipelinecomponents/",
+	"title": "Create Pipeline Components",
 	"tags": [],
 	"description": "",
-	"content": " Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter S3GW. In the Service Category section, click AWS services. In the search box enter S3, then select com.amazonaws.[region].s3 In the Services section, select com.amazonaws.[region].s3 with the Type of Gateway. In the VPC section, select Lab VPC. In the Route tables section, select both route tables. Scroll down, click Create endpoint. The next step is to configure Session Manager to store session logs to the S3 bucket we created.\n"
+	"content": "The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services. In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.\nContent: Update IAM Role Create S3 Bucket Create S3 Gateway endpoint Configure Session logs "
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/",
@@ -138,20 +124,6 @@
 	"tags": [],
 	"description": "",
 	"content": "Create security groups In this step, we will proceed to create the security groups used for our instances.\nCreate security group for Linux instance located in public subnet Go to VPC service management console Click Security Group. Click Create security group. In the Security group name field, enter Public SG. In the Description section, enter Allow SSH and Ping to Server. In the VPC section, click the X to reselect the ASG you created for this lab. In the Inbound rules field, click Add rule, we need to set 2 rules for our instance. Type SSH - Source My IP - Description Allow SSH and Ping to Server. Allow my IP access server with SSH protocol. Type HTTP - Source Anywhere-IPv4 - Description Allow access to Server. Allow everyone can access our website with HTTP protocol. Keep Outbound rule, drag the mouse to the bottom. Click Create security group. So we are done creating the necessary security groups for EC2 instances.\n"
-},
-{
-	"uri": "//localhost:1313/4-createpipelinecomponents/",
-	"title": "Manage session logs",
-	"tags": [],
-	"description": "",
-	"content": "With Session Manager, we can view the history of connections to instances through Session history. However, we have not seen the details of the commands used in a session.\nIn this section, we will proceed to create an S3 bucket and configure the session logs feature to see the details of the commands used in the session.\nContent: Update IAM Role Create S3 Bucket Create S3 Gateway endpoint Configure Session logs "
-},
-{
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.4-configsessionlogs/",
-	"title": "Monitor session logs",
-	"tags": [],
-	"description": "",
-	"content": "Monitor session logs Access System Manager - Session Manager service management console Click the Preferences tab. Click Edit. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.4-createec2linux/",

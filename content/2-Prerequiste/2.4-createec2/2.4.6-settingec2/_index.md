@@ -1,7 +1,7 @@
 ---
 title : "Setting up EC2 Instance"
 date : "`r Sys.Date()`"
-weight : 2
+weight : 6
 chapter : false
 pre : " <b> 2.4.6 </b> "
 ---
