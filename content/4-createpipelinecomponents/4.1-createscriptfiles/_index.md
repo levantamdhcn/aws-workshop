@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 4.1 </b> "
 ---
 
-In [Create AppSpec Reference File](/4-CreatePipelineComponents/4.2-createcodedeployymlfile/)  we create a file provide instruction for CodeDeploy to deploy our application. We need a set of command to start/stop our containers, in this step, we will file scripts file contain these commands.
+In [Create AppSpec Reference File](/4-CreatePipelineComponents/4.2-createcodedeployymlfile/)  we create a file provide instructions for CodeDeploy to deploy our application. We need a set of command to start/stop our containers, in this step, we will file scripts file contain these commands.
 
 {{% notice info %}}
   You may need to learn some basic concept of shell script [here](https://docs.fileformat.com/programming/sh/) 
@@ -62,11 +62,11 @@ echo $?
   sudo cp -r build/* nginx
 ```
 
-3.
+3. Check if docker service is running with docker info command. If not, start the service.
 ```
   if ! docker info > /dev/null 2>&1; then
     service docker start
   fi
 ```
 
-Next, we will proceed to create an S3 bucket to store session logs.
+Next, we will proceed to create an appspec.yml file.

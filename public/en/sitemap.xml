@@ -27,6 +27,18 @@
                 href="//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/"
                 />
   </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.1-createscriptfiles/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.1-createscriptfiles/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.1-createscriptfiles/"
+                />
+  </url><url>
     <loc>//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.2-createserverimage/</loc>
     <xhtml:link
                 rel="alternate"
@@ -63,40 +75,16 @@
                 href="//localhost:1313/1-introduce/"
                 />
   </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.2-createdockerresource/</loc>
+    <loc>//localhost:1313/2-prerequiste/2.1-createnginx/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/"
+                href="//localhost:1313/vi/2-prerequiste/2.1-createnginx/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.2-createdockerresource/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/4.1-updateiamrole/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/4.1-updateiamrole/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/4.1-updateiamrole/"
-                />
-  </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.3-createiamrole/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.3-createiamrole/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.3-createiamrole/"
+                href="//localhost:1313/2-prerequiste/2.1-createnginx/"
                 />
   </url><url>
     <loc>//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/</loc>
@@ -123,28 +111,16 @@
                 href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/"
                 />
   </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.5-creates3bucket/</loc>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.5-creates3bucket/"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.2-createcodedeployymlfile/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.5-creates3bucket/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/4.2-creates3bucket/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/4.2-creates3bucket/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/4.2-creates3bucket/"
+                href="//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/"
                 />
   </url><url>
     <loc>//localhost:1313/2-prerequiste/</loc>
@@ -159,52 +135,16 @@
                 href="//localhost:1313/2-prerequiste/"
                 />
   </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.1-createnginx/</loc>
+    <loc>//localhost:1313/2-prerequiste/2.2-createdockerresource/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.1-createnginx/"
+                href="//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.1-createnginx/"
-                />
-  </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.4-createec2/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.4-createec2/"
-                />
-  </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.6-settingec2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/"
-                />
-  </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.5-testconnection/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/"
+                href="//localhost:1313/2-prerequiste/2.2-createdockerresource/"
                 />
   </url><url>
     <loc>//localhost:1313/3-buildandtestimage/</loc>
@@ -219,16 +159,28 @@
                 href="//localhost:1313/3-buildandtestimage/"
                 />
   </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/4.3-creategwes3/</loc>
+    <loc>//localhost:1313/2-prerequiste/2.3-createiamrole/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/4.3-creategwes3/"
+                href="//localhost:1313/vi/2-prerequiste/2.3-createiamrole/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/4.3-creategwes3/"
+                href="//localhost:1313/2-prerequiste/2.3-createiamrole/"
+                />
+  </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.3-createbuildspecfile/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/"
                 />
   </url><url>
     <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/</loc>
@@ -243,30 +195,6 @@
                 href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/"
                 />
   </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/4.4-configsessionlogs/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/4.4-configsessionlogs/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/4.4-configsessionlogs/"
-                />
-  </url><url>
     <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.4-createec2linux/</loc>
     <xhtml:link
                 rel="alternate"
@@ -279,16 +207,88 @@
                 href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.4-createec2linux/"
                 />
   </url><url>
-    <loc>//localhost:1313/5-portfwd/</loc>
+    <loc>//localhost:1313/4-createpipelinecomponents/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/5-portfwd/"
+                href="//localhost:1313/vi/4-createpipelinecomponents/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/5-portfwd/"
+                href="//localhost:1313/4-createpipelinecomponents/"
+                />
+  </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.4-createcodebuild/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-prerequiste/2.4-createec2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-prerequiste/2.5-creates3bucket/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.5-creates3bucket/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.5-creates3bucket/"
+                />
+  </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.5-createcodedeploy/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.5-createcodedeploy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.5-createcodedeploy/"
+                />
+  </url><url>
+    <loc>//localhost:1313/5-runpipeline/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/5-runpipeline/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/5-runpipeline/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.5-testconnection/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/"
                 />
   </url><url>
     <loc>//localhost:1313/6-cleanup/</loc>
@@ -302,6 +302,30 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/6-cleanup/"
+                />
+  </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.6-createcodepipeline/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.6-createcodepipeline/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.6-createcodepipeline/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.6-settingec2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/"
                 />
   </url><url>
     <loc>//localhost:1313/categories/</loc>

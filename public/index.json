@@ -14,6 +14,13 @@
 	"content": "Create docker-compose.yml file Docker Compose is a tool for defining and running multi-container application in a single YAML file. This simplifies the complex architecture. Make it easier to manager and replicate your application environment. Docker Compose can create a configuration that easy to share among developers and team.\nRemember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).\nIn root folder, create file named docker-compose.yml with following content:\n#vi docker-compose.yml version: \u0026#39;3.7\u0026#39; services: nginx_app: container_name: nginx_app build: context: ./nginx dockerfile: Dockerfile ports: - 80:80 restart: always depends_on: - node_app - mongo_db node_app: container_name: node_app build: context: ./server dockerfile: Dockerfile restart: always expose: - 4000 ports: - \u0026#34;4000:4000\u0026#34; links: - mongo_db env_file: ./server/.env depends_on: - mongo_db mongo_db: container_name: mongo_db image: mongo volumes: - mongo_volume:/data/db expose: - 27017 ports: - 27017:27017 volumes: mongo_volume: Let\u0026rsquo;s break down the configuration:\nThis instructs Docker Compose that we’re using version 3.7 of the tool. Version 3.7 is suitable for Docker Engine 19.03.0 and higher. version: \u0026#39;3.7\u0026#39; Start define our services. services: A service architecture will contains nginx_app:\rcontainer_name: nginx_app\rbuild:\rcontext: ./nginx\rdockerfile: Dockerfile\rports:\r- 80:80\rrestart: always 3.1. A service name\nnginx_app: 3.2. Name of the container after build.\ncontainer_name: nginx_app 3.3. Instruction how to build the image\nbuild: 3.4. Specifies the build context as ./nginx, which means Docker will look for the Dockerfile and other resources in that directory\ncontext: ./nginx 3.5. Maps port 80 of the host to port 80 of the container, making the Nginx server accessible from the host.\nports:\r- 80:80 3.6. Configures the container to always restart unless explicitly stopped.\nrestart: always For more information of how to write a docker-compose file, you can refer to this Document "
 },
 {
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.1-createscriptfiles/",
+	"title": "Create Script Files",
+	"tags": [],
+	"description": "",
+	"content": "In Create AppSpec Reference File we create a file provide instructions for CodeDeploy to deploy our application. We need a set of command to start/stop our containers, in this step, we will file scripts file contain these commands.\nYou may need to learn some basic concept of shell script here\nFirst, create a folder named scripts inside root directory of our project. Inside that, create each file below with corresponding content.\nstart.sh file This file will be used to start the containers.\n#start.sh #!/bin/sh cd /home/tamlv/chat-app docker-compose up -d Navigate to root directory of project cd /home/tamlv/chat-app This command does the work of the docker-compose build and docker-compose run commands. It builds the images if they are not located locally and starts the containers. If images are already built, it will fork the container directly docker-compose up -d stop.sh file #stop.sh #!/bin/sh cd /home/tamlv/chat-app sudo cp -r build/* nginx if ! docker info \u0026gt; /dev/null 2\u0026gt;\u0026amp;1; then service docker start fi docker-compose down echo $? Navigate to root directory of project cd /home/tamlv/chat-app Copy all frontend\u0026rsquo;s built files into nginx context to be served. sudo cp -r build/* nginx Check if docker service is running with docker info command. If not, start the service. if ! docker info \u0026gt; /dev/null 2\u0026gt;\u0026amp;1; then\rservice docker start\rfi Next, we will proceed to create an appspec.yml file.\n"
+},
+{
 	"uri": "//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.2-createserverimage/",
 	"title": "Create Server&#39;s Dockerfile",
 	"tags": [],
@@ -35,18 +42,11 @@
 	"content": "CI (Continuous Integration): CI is a method to automate the build and test sections. CI wait for any changes in repository and then trigger build and test. It means integrate new code changes continuously. CI ensure that new codes are repeatable built and tested without any extra effort after commit new codes. By merging changes frequently and trigger automatic building and testing process, we can minimize the possibility of code conflict, even with multiple developers working in the same repo.\nCD (Continuous Delivery): CD is a practice that work in conjunction with CI to provide an automatically way to deploy the artifact from CI to our staging or testing environment without any human intervention.\nCI/CD combines steps from CI \u0026amp; CD to build a optimized development process. With CI/CD configuration, we got these positive effects:\nAllows developers to commit smaller changes more often, instead of waiting for a release. Automated, continuous building ensures that codebase remain stable and any issue will be detected as soon as possible. It\u0026rsquo;s easier and faster when any issue happen. Developer will be notice that a build is failed. Logs, build flow are also provided for debugging step. With above advantages, we should consider CI/CD for our application to save time and effort.\n"
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.2-createdockerresource/",
-	"title": "Preparing Docker Resources",
+	"uri": "//localhost:1313/2-prerequiste/2.1-createnginx/",
+	"title": "Preparing Nginx Config ",
 	"tags": [],
 	"description": "",
-	"content": "In this step, we will need to create 2 Dockerfile to build our images. Then create docker-compose.yml file to manage all our images.\nThe folder structure overview after you complete this step will be as follows:\nContent Create Server\u0026rsquo;s Dockerfile Create Nginx\u0026rsquo;s Dockerfile "
-},
-{
-	"uri": "//localhost:1313/2-prerequiste/2.3-createiamrole/",
-	"title": "Create IAM Role",
-	"tags": [],
-	"description": "",
-	"content": "Create IAM Role For EC2 In this step, we will proceed to create IAM Role. In this IAM Role, the policy AmazonS3ReadOnlyAccess will be assigned, this is the policy that allows the EC2 server to read artifact from S3 Bucket to Deploy.\nGo to IAM service administration interface In the left navigation bar, click Roles. Click Create role. Click AWS service and click EC2. Click Next: Permissions. In the Search box, enter S3 and press Enter to search for this policy. Click the policy AmazonS3ReadOnlyAccess. Click Next: Tags. Click Next: Review. Name the Role EC2S3ReadPermission in Role Name Click Create Role . Create IAM Role For AWS CodeDeploy Back to Roles section. Click Create role. Click AWS service and click CodeDeploy. Click Next: Permissions. Name the Role ChatAppCodeDeploy in Role Name Click Create Role . Next, we will create VPC and EC2 to hold our application.\n"
+	"content": "Our project folder structure: We will create new file named nginx.conf inside nginx folder from root directory of project.\nserver { listen 80; root /usr/share/nginx/html; index index.html; location / { try_files $uri /index.html =404; } location /api { proxy_pass http://localhost:4000; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header Host $host; proxy_redirect off; } } Let\u0026rsquo;s break down the configuration:\nDefines a virtual server that Nginx will handle. Each server can listen on different ports or hostnames. server {} Specifics that server should listen for incomming connections at port 80, which is a default port for HTTP traffic. It means when we type http://serverip, it equal to http://serverip:80. listen 80; Specifics a root folder let Nginx know where to find files to serve the incomming connection. root /usr/share/nginx/html; Defines default file which will be served when client request. index index.html; This begins a location block for handling requests to the root URL (/). It defines how requests matching this location will be processed. location / {} Try to serve $uri (incomming request URL), if file is not exist, serve index.html in root folder instead. Neither files exist, return 404 page. try_files $uri /index.html =404; This begins a location block for handling requests to the root URL (/api). We use /api as prefix for all of our APIs. Using this location block will help us to server both BE and FE requests on the same EC2 instance by redirect all requests begin with /api to BE App port. location /api The proxy_pass directive forwards requests matching this location to another server. In this case, we forward API requests to our backend service which running on port 4000. proxy_pass http://localhost:4000; Configure HTTP headers attribute proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\rproxy_set_header Host $host;\rproxy_redirect off; End.\n"
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/",
@@ -63,11 +63,11 @@
 	"content": "Create Public Subnet Click Subnets. Click Create subnet. At the Create subnet page. In the VPC ID section, click ASG. In the Subnet name field, enter Public Subnet. In the Availability Zone section, select the first Availability zone. In the field IPv4 CIRD block enter 10.10.1.0/24. Scroll to the bottom of the page, click Create subnet.\nClick Public Subnet.\nClick Actions. Click Edit subnet settings. Click Enable auto-assign public IPv4 address. Click Save. Click Internet Gateways. Click Create internet gateway. At the Create internet gateway page. In the Name tag field, enter IGW. Click Create internet gateway. After successful creation, click Actions. Click Attach to VPC. At the Attach to VPC page. In the Available VPCs section, select ASG. Click Attach internet gateway. Check the successful attaching process as shown below. Next we will create a custom route table to assign to Public Subnet. Click Route Tables. Click Create route table. At the Create route table page. In the Name field, enter Public Route Table. In the VPC section, select VPC. Click Create route table. After creating the route table successfully. Click Edit routes. At the Edit routes page. Click Add route. In the Destination field, enter 0.0.0.0/0 In the Target section, select Internet Gateway and then select IGW. Click Save changes. Click the Subnet associations tab. Click Edit subnet associations to proceed with the associate custom route table we just created in Lab Public Subnet. At the Edit subnet associations page. Click on Public Subnet. Click Save associations. Check that the route table information has been associated with Lab Public Subnet and the internet route information has been pointed to the Internet Gateway as shown below. "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.5-creates3bucket/",
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/",
 	"title": "Create S3 Bucket",
 	"tags": [],
 	"description": "",
-	"content": "We need a bucket to store our build artifact from CodeBuild.\nGo to S3 service management console Click Buckets. Click Create Bucket. At Bucket Name, enter chat-app-bucket Leave other settings as default, scroll down and click Create Bucket Return the list and see that our bucket is created. We have a bucket now. Let\u0026rsquo;s move to next section!\n"
+	"content": "In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process.\nRemember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).\nCreate appspec.yml file Create appspec.yml inside root directory of project with following content. #vi appspec.yml version: 0.0 os: linux files: - source: / destination: /home/ubuntu/chat-app permissions: - object: scripts/ mode: 777 type: - directory hooks: AfterInstall: - location: scripts/stop.sh timeout: 300 runas: root ApplicationStart: - location: scripts/start.sh timeout: 300 runas: ubuntu At the Create bucket page. In the Bucket name field, enter the bucket name lab-yourname-bucket-0001 In the Region section, select Region you are doing the current lab. The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.\nScroll down and click Create bucket. When we created the S3 bucket we did Block all public access so our EC2 instances won\u0026rsquo;t be able to connect to S3 via the internet. In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC\u0026rsquo;s internal network.\n"
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/",
@@ -77,46 +77,32 @@
 	"content": "\rWe need to learn some basics of Docker, Nginx to perform this lab.\nNginx nginx (engine x) is an HTTP server, reverse proxy, content cache, load balancer, TCP/UDP proxy server. In this workshop, we use nginx as a reverse proxy.\nTo learn what is Nginx, how to Nginx works, Nginx basic concepts and how to configure a simple Nginx server:\nNginx for beginner Nginx with Docker Docker Docker is an open platform for developing, shipping, and running applications.\nLearn basic concepts of Docker:\nDocker for beginner Containerize Nodejs App Content Preparing Nginx Config Preparing Docker Resources Create IAM Role Preparing VPC and EC2 Create S3 Bucket Preparing spec files Create CodeBuild service Create CodeDeploy service Create CodePipeline service "
 },
 {
-	"uri": "//localhost:1313/2-prerequiste/2.1-createnginx/",
-	"title": "Preparing Nginx Config ",
+	"uri": "//localhost:1313/2-prerequiste/2.2-createdockerresource/",
+	"title": "Preparing Docker Resources",
 	"tags": [],
 	"description": "",
-	"content": "Our project folder structure: We will create new file named nginx.conf inside nginx folder from root directory of project.\nserver { listen 80; root /usr/share/nginx/html; index index.html; location / { try_files $uri /index.html =404; } location /api { proxy_pass http://localhost:4000; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header Host $host; proxy_redirect off; } } Let\u0026rsquo;s break down the configuration:\nDefines a virtual server that Nginx will handle. Each server can listen on different ports or hostnames. server {} Specifics that server should listen for incomming connections at port 80, which is a default port for HTTP traffic. It means when we type http://serverip, it equal to http://serverip:80. listen 80; Specifics a root folder let Nginx know where to find files to serve the incomming connection. root /usr/share/nginx/html; Defines default file which will be served when client request. index index.html; This begins a location block for handling requests to the root URL (/). It defines how requests matching this location will be processed. location / {} Try to serve $uri (incomming request URL), if file is not exist, serve index.html in root folder instead. Neither files exist, return 404 page. try_files $uri /index.html =404; This begins a location block for handling requests to the root URL (/api). We use /api as prefix for all of our APIs. Using this location block will help us to server both BE and FE requests on the same EC2 instance by redirect all requests begin with /api to BE App port. location /api The proxy_pass directive forwards requests matching this location to another server. In this case, we forward API requests to our backend service which running on port 4000. proxy_pass http://localhost:4000; Configure HTTP headers attribute proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\rproxy_set_header Host $host;\rproxy_redirect off; End.\n"
-},
-{
-	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/",
-	"title": "Preparing VPC and EC2",
-	"tags": [],
-	"description": "",
-	"content": "\rYou need to create 1 Linux instance on the public subnet to perform this lab.\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC Content Create VPC Create Public Subnet Create Security Group Create EC2 Instance Test Connection "
-},
-{
-	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/",
-	"title": "Setting up EC2 Instance",
-	"tags": [],
-	"description": "",
-	"content": " First, connect to our EC2 instance. You can refer to this section Connect to EC2 Install Docker You can refer to official instruction from Docker document. Install Docker Compose You can follow step 1 from this instruction from Digital Ocean. Setup CodeDeploy agent. Follow instruction from AWS CodeDeploy Document "
-},
-{
-	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/",
-	"title": "Test Connection",
-	"tags": [],
-	"description": "",
-	"content": "\rIn this phase, we check if our instance works with VPC, Subnet and Security Group we attached.\nTo learn how to connect EC2 instances, you can refer to the lab:\nTest EC2 Connection EC2 Instance Connect Endpoint Guide We use .pem file created at Create EC2 Instance to establish a connection to the EC2 instance.\nA. Using Terminal without GUI Open Terminal (or PowerShell, Git Bash,\u0026hellip;) Insert cd /path-to-pem-file Insert ssh -i /path-to-pem-file ubuntu@public-ip On first connection, OS ask for continue with new IP Address, type yes See the result. We are in. B. Using Bitvise SSH Client within GUI Bitvise SSH Client use private key to authenticate the connection so we need first generate private key version from pem file.\nGo to PuTTYgen Website to download the IDE Open Puttygen App to start generate private key.\nClick Load Choose All Files Select pem file of our EC2 Instance At Key passphrase and Confirm passphrase, Enter password for private key. Click Save private key Go to Download Bitvise SSH Client to download the IDE Click Download Bitvise SSH Client Open Bitvise SSH Client At Host, Enter EC2 Instance public IP 18.132.42.239 At Port, Enter SSH default port we allowed in Security Group 22 At Username, Enter ubuntu Click Client key manager to import generated private key. Click Import and select our generated private key After finish the import, return to the main screen an click Login.\nSuccessfully connect to our EC2 instance. Our EC2 work as expected. Let\u0026rsquo;s move to next section.\n"
+	"content": "In this step, we will need to create 2 Dockerfile to build our images. Then create docker-compose.yml file to manage all our images.\nThe folder structure overview after you complete this step will be as follows:\nContent Create Server\u0026rsquo;s Dockerfile Create Nginx\u0026rsquo;s Dockerfile "
 },
 {
 	"uri": "//localhost:1313/3-buildandtestimage/",
-	"title": "Build and test images at local",
+	"title": "Build and test",
 	"tags": [],
 	"description": "",
 	"content": "In this step, we will test out Docker resources created in Prepare Docker resources\nA. Build Open terminal inside root project, type docker compose up. Docker Compose will start build each services Open another terminal, type docker image ls, check for 3 images we have just created Open browser, at address bar, enter localhost:4000, we can see and error Cannot GET /. Our backend is successfully running on port 4000. Open browser, at address bar, enter localhost, we can see default page of nginx because we did not copy any built files into nginx context yet. All of our container works. We can move to the next section.\n"
 },
 {
-	"uri": "//localhost:1313/4-createpipelinecomponents/",
-	"title": "Create Pipeline Components",
+	"uri": "//localhost:1313/2-prerequiste/2.3-createiamrole/",
+	"title": "Create IAM Role",
 	"tags": [],
 	"description": "",
-	"content": "The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services. In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.\nContent: Update IAM Role Create S3 Bucket Create S3 Gateway endpoint Configure Session logs "
+	"content": "Create IAM Role For EC2 In this step, we will proceed to create IAM Role. In this IAM Role, the policy AmazonS3ReadOnlyAccess will be assigned, this is the policy that allows the EC2 server to read artifact from S3 Bucket to Deploy.\nGo to IAM service administration interface In the left navigation bar, click Roles. Click Create role. Click AWS service and click EC2. Click Next: Permissions. In the Search box, enter S3 and press Enter to search for this policy. Click the policy AmazonS3ReadOnlyAccess. Click Next: Tags. Click Next: Review. Name the Role EC2S3ReadPermission in Role Name Click Create Role . Create IAM Role For AWS CodeDeploy Back to Roles section. Click Create role. Click AWS service and click CodeDeploy. Click Next: Permissions. Name the Role ChatAppCodeDeploy in Role Name Click Create Role . Next, we will create VPC and EC2 to hold our application.\n"
+},
+{
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/",
+	"title": "Create S3 Gateway endpoint",
+	"tags": [],
+	"description": "",
+	"content": " Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter S3GW. In the Service Category section, click AWS services. In the search box enter S3, then select com.amazonaws.[region].s3 In the Services section, select com.amazonaws.[region].s3 with the Type of Gateway. In the VPC section, select Lab VPC. In the Route tables section, select both route tables. Scroll down, click Create endpoint. The next step is to configure Session Manager to store session logs to the S3 bucket we created.\n"
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/",
@@ -133,11 +119,53 @@
 	"content": " Go to EC2 service management console Click Instances. Click Launch instances. On the Step 1: Choose an Amazon Machine Image (AMI) section. Click Quick Start to select Ubuntu. At Amazon Machine Image, select Ubuntu Server 24.04 LTS (free tier eligible). Scroll down to Instance Type section. Click on Instance type t2.micro. Click Create new key pair at Key pair (login) section. At the Create key pair popup. In the Key pair name field, enter chat-app. In the Key pair type field, select RSA. In the Private key file format field, select .pem. Click Create key pair. Scroll down to Network settings section, click Edit In the Network section, select ASG. In the Subnet section, select Public Subnet. In the Auto-assign Public IP section, select Use subnet setting (Enable) In the Common security groups, select Public SG Scroll down to Network settings section, click Edit In the Network section, select ASG. In the Subnet section, select Public Subnet. In the Auto-assign Public IP section, select Use subnet setting (Enable) In the Common security groups, select Public SG Scroll down to Advance details section and expand that. At IAM Instance profile, choose EC2S3ReadPermission Policy that we create from Create IAM Role. Keep default settings for other section, scroll down to bottom. Click Launch. Click View Instances to return to the list of EC2 instances. Next, we will do the same to create an EC2 Instance Windows running in the Private subnet.\n"
 },
 {
-	"uri": "//localhost:1313/5-portfwd/",
+	"uri": "//localhost:1313/4-createpipelinecomponents/",
+	"title": "Create Pipeline Elements",
+	"tags": [],
+	"description": "",
+	"content": "The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services. In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.\nContent: Create Scripts Files Create AppSpec file reference Create Build specification reference Create CodeBuild Create CodeDeploy Create CodePipeline "
+},
+{
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/",
+	"title": "Monitor session logs",
+	"tags": [],
+	"description": "",
+	"content": "Monitor session logs Access System Manager - Session Manager service management console Click the Preferences tab. Click Edit. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/",
+	"title": "Preparing VPC and EC2",
+	"tags": [],
+	"description": "",
+	"content": "\rYou need to create 1 Linux instance on the public subnet to perform this lab.\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC Content Create VPC Create Public Subnet Create Security Group Create EC2 Instance Test Connection "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.5-creates3bucket/",
+	"title": "Create S3 Bucket",
+	"tags": [],
+	"description": "",
+	"content": "We need a bucket to store our build artifact from CodeBuild.\nGo to S3 service management console Click Buckets. Click Create Bucket. At Bucket Name, enter chat-app-bucket Leave other settings as default, scroll down and click Create Bucket Return the list and see that our bucket is created. We have a bucket now. Let\u0026rsquo;s move to next section!\n"
+},
+{
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.5-createcodedeploy/",
+	"title": "Monitor session logs",
+	"tags": [],
+	"description": "",
+	"content": "Monitor session logs Access System Manager - Session Manager service management console Click the Preferences tab. Click Edit. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
+},
+{
+	"uri": "//localhost:1313/5-runpipeline/",
 	"title": "Port Forwarding",
 	"tags": [],
 	"description": "",
 	"content": "\rPort Forwarding is a useful way to redirect network traffic from one IP address - Port to another IP address - Port. With Port Forwarding we can access an EC2 instance located in the private subnet from our workstation.\nWe will configure Port Forwarding for the RDP connection between our machine and Private Windows Instance located in the private subnet we created for this exercise.\nCreate IAM user with permission to connect SSM Go to IAM service management console Click Users , then click Add users. At the Add user page. In the User name field, enter Portfwd. Click on Access key - Programmatic access. Click Next: Permissions. Click Attach existing policies directly.\nIn the search box, enter ssm. Click on AmazonSSMFullAccess. Click Next: Tags, click Next: Reviews. Click Create user. Save Access key ID and Secret access key information to perform AWS CLI configuration.\nInstall and Configure AWS CLI and Session Manager Plugin To perform this hands-on, make sure your workstation has AWS CLI and Session Manager Plugin installed -manager-working-with-install-plugin.html)\nMore hands-on tutorials on installing and configuring the AWS CLI can be found here.\nWith Windows, when extracting the Session Manager Plugin installation folder, run the install.bat file with Administrator permission to perform the installation.\nImplement Portforwarding Run the command below in Command Prompt on your machine to configure Port Forwarding. aws ssm start-session --target (your ID windows instance) --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region (your region) Windows Private Instance Instance ID information can be found when you view the EC2 Windows Private Instance server details.\nExample command: C:\\Windows\\system32\u0026gt;aws ssm start-session --target i-06343d7377486760c --document-name AWS-StartPortForwardingSession --parameters portNumber=\u0026#34;3389\u0026#34;,localPortNumber=\u0026#34;9999\u0026#34; --region ap-southeast-1 If your command gives an error like below: SessionManagerPlugin is not found. Please refer to SessionManager Documentation here: http://docs.aws.amazon.com/console/systems-manager/session-manager-plugin-not-found\nProve that you have not successfully installed the Session Manager Plugin. You may need to relaunch Command Prompt after installing Session Manager Plugin.\nConnect to the Private Windows Instance you created using the Remote Desktop tool on your workstation. In the Computer section: enter localhost:9999. Return to the administration interface of the System Manager - Session Manager service. Click tab Session history. We will see session logs with Document name AWS-StartPortForwardingSession. Congratulations on completing the lab on how to use Session Manager to connect and store session logs in S3 bucket. Remember to perform resource cleanup to avoid unintended costs.\n"
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.5-testconnection/",
+	"title": "Test Connection",
+	"tags": [],
+	"description": "",
+	"content": "\rIn this phase, we check if our instance works with VPC, Subnet and Security Group we attached.\nTo learn how to connect EC2 instances, you can refer to the lab:\nTest EC2 Connection EC2 Instance Connect Endpoint Guide We use .pem file created at Create EC2 Instance to establish a connection to the EC2 instance.\nA. Using Terminal without GUI Open Terminal (or PowerShell, Git Bash,\u0026hellip;) Insert cd /path-to-pem-file Insert ssh -i /path-to-pem-file ubuntu@public-ip On first connection, OS ask for continue with new IP Address, type yes See the result. We are in. B. Using Bitvise SSH Client within GUI Bitvise SSH Client use private key to authenticate the connection so we need first generate private key version from pem file.\nGo to PuTTYgen Website to download the IDE Open Puttygen App to start generate private key.\nClick Load Choose All Files Select pem file of our EC2 Instance At Key passphrase and Confirm passphrase, Enter password for private key. Click Save private key Go to Download Bitvise SSH Client to download the IDE Click Download Bitvise SSH Client Open Bitvise SSH Client At Host, Enter EC2 Instance public IP 18.132.42.239 At Port, Enter SSH default port we allowed in Security Group 22 At Username, Enter ubuntu Click Client key manager to import generated private key. Click Import and select our generated private key After finish the import, return to the main screen an click Login.\nSuccessfully connect to our EC2 instance. Our EC2 work as expected. Let\u0026rsquo;s move to next section.\n"
 },
 {
 	"uri": "//localhost:1313/6-cleanup/",
@@ -145,6 +173,20 @@
 	"tags": [],
 	"description": "",
 	"content": "We will take the following steps to delete the resources we created in this exercise.\nDelete EC2 instance Go to EC2 service management console\nClick Instances. Select both Public Linux Instance and Private Windows Instance instances. Click Instance state. Click Terminate instance, then click Terminate to confirm. Go to IAM service management console\nClick Roles. In the search box, enter SSM. Click to select SSM-Role. Click Delete, then enter the role name SSM-Role and click Delete to delete the role. Click Users. Click on user Portfwd. Click Delete, then enter the user name Portfwd and click Delete to delete the user. Delete S3 bucket Access System Manager - Session Manager service management console.\nClick the Preferences tab. Click Edit. Scroll down. In the section S3 logging. Uncheck Enable to disable logging. Scroll down. Click Save. Go to S3 service management console\nClick on the S3 bucket we created for this lab. (Example: lab-fcj-bucket-0001 ) Click Empty. Enter permanently delete, then click Empty to proceed to delete the object in the bucket. Click Exit. After deleting all objects in the bucket, click Delete\nEnter the name of the S3 bucket, then click Delete bucket to proceed with deleting the S3 bucket. Delete VPC Endpoints Go to VPC service management console Click Endpoints. Select the 4 endpoints we created for the lab including SSM, SSMMESSAGES, EC2MESSAGES, S3GW. Click Actions. Click Delete VPC endpoints. In the confirm box, enter delete.\nClick Delete to proceed with deleting endpoints. Click the refresh icon, check that all endpoints have been deleted before proceeding to the next step.\nDelete VPC Go to VPC service management console\nClick Your VPCs. Click on Lab VPC. Click Actions. Click Delete VPC. In the confirm box, enter delete to confirm, click Delete to delete Lab VPC and related resources.\n"
+},
+{
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.6-createcodepipeline/",
+	"title": "Monitor session logs",
+	"tags": [],
+	"description": "",
+	"content": "Monitor session logs Access System Manager - Session Manager service management console Click the Preferences tab. Click Edit. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
+},
+{
+	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.6-settingec2/",
+	"title": "Setting up EC2 Instance",
+	"tags": [],
+	"description": "",
+	"content": " First, connect to our EC2 instance. You can refer to this section Connect to EC2 Install Docker You can refer to official instruction from Docker document. Install Docker Compose You can follow step 1 from this instruction from Digital Ocean. Setup CodeDeploy agent. Follow instruction from AWS CodeDeploy Document "
 },
 {
 	"uri": "//localhost:1313/categories/",

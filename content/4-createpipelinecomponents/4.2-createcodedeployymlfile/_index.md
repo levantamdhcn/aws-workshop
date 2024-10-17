@@ -5,12 +5,38 @@ weight : 2
 chapter : false
 pre : " <b> 4.2 </b> "
 ---
-In this step, we will create an S3 bucket to store session logs sent from EC2 instances.
+In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process.
 
-#### Create **S3 Bucket**
+{{% notice info %}}
+Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).
+{{% /notice %}}
 
-1. Access [S3 service management console](https://s3.console.aws.amazon.com/s3/home)
-  + Click **Create bucket**.
+#### Create **appspec.yml** file
+
+1. Create appspec.yml inside root directory of project with following content.
+```bash
+#vi appspec.yml
+
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/chat-app
+permissions:
+  - object: scripts/
+    mode: 777
+    type:
+      - directory
+hooks:
+  AfterInstall:
+    - location: scripts/stop.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 300 
+      runas: ubuntu
+```
 
 ![S3](/images/4.s3/005-s3.png)
 
