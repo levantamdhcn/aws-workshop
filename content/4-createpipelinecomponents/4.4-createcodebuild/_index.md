@@ -1,5 +1,5 @@
 ---
-title : "Monitor session logs"
+title : "Create AWS CodeBuild"
 date : "`r Sys.Date()`"
 weight : 4
 chapter : false
@@ -8,10 +8,8 @@ pre : " <b> 4.4 </b> "
 
 #### Monitor session logs
 
-1. Access [System Manager - Session Manager service management console](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click the **Preferences** tab.
-  + Click **Edit**.
-  
+1. Access [CodeBuild management console](https://eu-west-2.console.aws.amazon.com/codesuite/codebuild)
+  + Click the **Create project** tab.  
 ![S3](/images/4.s3/010-s3.png)
 
 2. Scroll down, at **S3 logging**, click **Enable**.

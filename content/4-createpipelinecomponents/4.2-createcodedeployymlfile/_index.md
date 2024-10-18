@@ -1,5 +1,5 @@
 ---
-title : "Create S3 Bucket"
+title : "Create appspec.yml file"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false
@@ -9,11 +9,16 @@ In this step, we will create a appspec.yml file which used by AWS CodeDeploy to 
 
 {{% notice info %}}
 Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).
+
+Some documents we can refer:
+- [CodeDeploy AppSpec file reference](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html)
+- [AppSpec File structure](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure.html)
+- [AppSpec 'hooks' section](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html)
 {{% /notice %}}
 
 #### Create **appspec.yml** file
 
-1. Create appspec.yml inside root directory of project with following content.
+First, create an appspec.yml file with the following contents inside the project's root directory.
 ```bash
 #vi appspec.yml
 
@@ -38,23 +43,15 @@ hooks:
       runas: ubuntu
 ```
 
-![S3](/images/4.s3/005-s3.png)
+1. With this file, we define informations for Deploy process about operating system, permissions for sources and scripts to be used during stages like AfterInstall, ApplicationStart.
 
-2. At the **Create bucket** page.
-  + In the **Bucket name** field, enter the bucket name **lab-yourname-bucket-0001**
-  + In the **Region** section, select **Region** you are doing the current lab.
+2. In the permissions section, we set the mode to 777, which grants read, write, and execute permissions to everyone for the scripts folder and all the files inside it.
 
-![S3](/images/4.s3/006-s3.png)
+3. This section specifies the version of the AppSpec file. Do not change this value. It is required. Currently, the only allowed value is 0.0. It is reserved by CodeDeploy for future use.
+```
+version: 0.0
+```
 
- {{%notice tip%}}
-The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.
-{{%/notice%}}
+4. We need to run stop.sh during the AfterInstall stage, even though this stage occurs before ApplicationStart. In stop.sh, we copy the built files into the destination folder, which will be used by the Nginx container. This container will start during the ApplicationStart stage.
 
-3. Scroll down and click **Create bucket**.
-
-![S3](/images/4.s3/007-s3.png)
-
- {{%notice tip%}}
-When we created the S3 bucket we did **Block all public access** so our EC2 instances won't be able to connect to S3 via the internet.
-In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC's internal network.
-{{%/notice%}}
+Next, we will proceed to create Buil Spec Reference file.
