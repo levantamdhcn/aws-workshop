@@ -49,6 +49,20 @@
 	"content": "Our project folder structure: We will create new file named nginx.conf inside nginx folder from root directory of project.\nserver { listen 80; root /usr/share/nginx/html; index index.html; location / { try_files $uri /index.html =404; } location /api { proxy_pass http://localhost:4000; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header Host $host; proxy_redirect off; } } Let\u0026rsquo;s break down the configuration:\nDefines a virtual server that Nginx will handle. Each server can listen on different ports or hostnames. server {} Specifics that server should listen for incomming connections at port 80, which is a default port for HTTP traffic. It means when we type http://serverip, it equal to http://serverip:80. listen 80; Specifics a root folder let Nginx know where to find files to serve the incomming connection. root /usr/share/nginx/html; Defines default file which will be served when client request. index index.html; This begins a location block for handling requests to the root URL (/). It defines how requests matching this location will be processed. location / {} Try to serve $uri (incomming request URL), if file is not exist, serve index.html in root folder instead. Neither files exist, return 404 page. try_files $uri /index.html =404; This begins a location block for handling requests to the root URL (/api). We use /api as prefix for all of our APIs. Using this location block will help us to server both BE and FE requests on the same EC2 instance by redirect all requests begin with /api to BE App port. location /api The proxy_pass directive forwards requests matching this location to another server. In this case, we forward API requests to our backend service which running on port 4000. proxy_pass http://localhost:4000; Configure HTTP headers attribute proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\rproxy_set_header Host $host;\rproxy_redirect off; End.\n"
 },
 {
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/",
+	"title": "Create appspec.yml file",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process. appspec.yaml is not always required for AWS CodeDeploy. It\u0026rsquo;s only necessary for \u0026ldquo;Application\u0026rdquo; deployment type.\nRemember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).\nSome documents we can refer:\nCodeDeploy AppSpec file reference AppSpec File structure AppSpec \u0026lsquo;hooks\u0026rsquo; section Create appspec.yml file First, create an appspec.yml file with the following contents inside the project\u0026rsquo;s root directory.\n#vi appspec.yml version: 0.0 os: linux files: - source: / destination: /home/ubuntu/chat-app permissions: - object: scripts/ mode: 777 type: - directory hooks: AfterInstall: - location: scripts/stop.sh timeout: 300 runas: root ApplicationStart: - location: scripts/start.sh timeout: 300 runas: ubuntu With this file, we define informations for Deploy process about operating system, permissions for sources and scripts to be used during stages like AfterInstall, ApplicationStart.\nIn the permissions section, we set the mode to 777, which grants read, write, and execute permissions to everyone for the scripts folder and all the files inside it.\nThis section specifies the version of the AppSpec file. Do not change this value. It is required. Currently, the only allowed value is 0.0. It is reserved by CodeDeploy for future use.\nversion: 0.0 We need to run stop.sh during the AfterInstall stage, even though this stage occurs before ApplicationStart. In stop.sh, we copy the built files into the destination folder, which will be used by the Nginx container. This container will start during the ApplicationStart stage. Next, we will proceed to create Buil Spec Reference file.\n"
+},
+{
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/",
+	"title": "Create buildspec.yml file",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we will create a buildspec.yml file which used by AWS CodeBuild. A buildspec is a collection of build commands and related settings, in YAML format, that CodeBuild uses to run a build.\nRemember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).\nSome documents we can refer:\nBuild specification reference for CodeBuild How CodeBuild works Create buildspec.yml file First, create an buildspec.yml file with the following contents inside the project\u0026rsquo;s root directory.\n#vi buildspec.yml version: 0.2 phases: install: commands: - echo \u0026#34;the installation phase begins\u0026#34; pre_build: commands: - echo \u0026#34;the prebuild phase begins\u0026#34; - cd client - npm install build: commands: - echo \u0026#34;the build phase begins\u0026#34; - npm run build post_build: commands: - echo \u0026#34;the post build phase. navigating back to root path\u0026#34; - cp -R build/ ../ artifacts: files: - build/**/* - appspec.yml - server/**/* - nginx/* - scripts/* - docker-compose.yml - Dockerfile In first section, we define information for Build process about phases, which command to run in each phase (install, pre_build, build, post_build).\nartifacts/files represents the locations that contain the build output artifacts in the build environment. Contains a sequence of scalars, with each scalar representing a separate location where CodeBuild can find build output artifacts.\nNext, we will proceed to create CodeBuild service.\n"
+},
+{
 	"uri": "//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/",
 	"title": "Create Nginx Image",
 	"tags": [],
@@ -61,13 +75,6 @@
 	"tags": [],
 	"description": "",
 	"content": "Create Public Subnet Click Subnets. Click Create subnet. At the Create subnet page. In the VPC ID section, click ASG. In the Subnet name field, enter Public Subnet. In the Availability Zone section, select the first Availability zone. In the field IPv4 CIRD block enter 10.10.1.0/24. Scroll to the bottom of the page, click Create subnet.\nClick Public Subnet.\nClick Actions. Click Edit subnet settings. Click Enable auto-assign public IPv4 address. Click Save. Click Internet Gateways. Click Create internet gateway. At the Create internet gateway page. In the Name tag field, enter IGW. Click Create internet gateway. After successful creation, click Actions. Click Attach to VPC. At the Attach to VPC page. In the Available VPCs section, select ASG. Click Attach internet gateway. Check the successful attaching process as shown below. Next we will create a custom route table to assign to Public Subnet. Click Route Tables. Click Create route table. At the Create route table page. In the Name field, enter Public Route Table. In the VPC section, select VPC. Click Create route table. After creating the route table successfully. Click Edit routes. At the Edit routes page. Click Add route. In the Destination field, enter 0.0.0.0/0 In the Target section, select Internet Gateway and then select IGW. Click Save changes. Click the Subnet associations tab. Click Edit subnet associations to proceed with the associate custom route table we just created in Lab Public Subnet. At the Edit subnet associations page. Click on Public Subnet. Click Save associations. Check that the route table information has been associated with Lab Public Subnet and the internet route information has been pointed to the Internet Gateway as shown below. "
-},
-{
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/",
-	"title": "Create S3 Bucket",
-	"tags": [],
-	"description": "",
-	"content": "In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process.\nRemember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).\nCreate appspec.yml file Create appspec.yml inside root directory of project with following content. #vi appspec.yml version: 0.0 os: linux files: - source: / destination: /home/ubuntu/chat-app permissions: - object: scripts/ mode: 777 type: - directory hooks: AfterInstall: - location: scripts/stop.sh timeout: 300 runas: root ApplicationStart: - location: scripts/start.sh timeout: 300 runas: ubuntu At the Create bucket page. In the Bucket name field, enter the bucket name lab-yourname-bucket-0001 In the Region section, select Region you are doing the current lab. The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.\nScroll down and click Create bucket. When we created the S3 bucket we did Block all public access so our EC2 instances won\u0026rsquo;t be able to connect to S3 via the internet. In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC\u0026rsquo;s internal network.\n"
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/",
@@ -98,18 +105,18 @@
 	"content": "Create IAM Role For EC2 In this step, we will proceed to create IAM Role. In this IAM Role, the policy AmazonS3ReadOnlyAccess will be assigned, this is the policy that allows the EC2 server to read artifact from S3 Bucket to Deploy.\nGo to IAM service administration interface In the left navigation bar, click Roles. Click Create role. Click AWS service and click EC2. Click Next: Permissions. In the Search box, enter S3 and press Enter to search for this policy. Click the policy AmazonS3ReadOnlyAccess. Click Next: Tags. Click Next: Review. Name the Role EC2S3ReadPermission in Role Name Click Create Role . Create IAM Role For AWS CodeDeploy Back to Roles section. Click Create role. Click AWS service and click CodeDeploy. Click Next: Permissions. Name the Role ChatAppCodeDeploy in Role Name Click Create Role . Next, we will create VPC and EC2 to hold our application.\n"
 },
 {
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/",
-	"title": "Create S3 Gateway endpoint",
-	"tags": [],
-	"description": "",
-	"content": " Go to VPC service management console Click Endpoints. Click Create endpoint. At the Create endpoint page. In the Name tag field, enter S3GW. In the Service Category section, click AWS services. In the search box enter S3, then select com.amazonaws.[region].s3 In the Services section, select com.amazonaws.[region].s3 with the Type of Gateway. In the VPC section, select Lab VPC. In the Route tables section, select both route tables. Scroll down, click Create endpoint. The next step is to configure Session Manager to store session logs to the S3 bucket we created.\n"
-},
-{
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/",
 	"title": "Create security groups",
 	"tags": [],
 	"description": "",
 	"content": "Create security groups In this step, we will proceed to create the security groups used for our instances.\nCreate security group for Linux instance located in public subnet Go to VPC service management console Click Security Group. Click Create security group. In the Security group name field, enter Public SG. In the Description section, enter Allow SSH and Ping to Server. In the VPC section, click the X to reselect the ASG you created for this lab. In the Inbound rules field, click Add rule, we need to set 2 rules for our instance. Type SSH - Source My IP - Description Allow SSH and Ping to Server. Allow my IP access server with SSH protocol. Type HTTP - Source Anywhere-IPv4 - Description Allow access to Server. Allow everyone can access our website with HTTP protocol. Keep Outbound rule, drag the mouse to the bottom. Click Create security group. So we are done creating the necessary security groups for EC2 instances.\n"
+},
+{
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/",
+	"title": "Create AWS CodeBuild",
+	"tags": [],
+	"description": "",
+	"content": "Prepare CodeBuild project Access CodeBuild management console Click the Create project tab. At Project name, Enter chat-app-build Scroll down to Source -\u0026gt; Source 1 - Primary section:\nAt Source provider, select Github. At Credential, select Custom source credential. At Credential type, select GitHub App. Click create a new GitHub connection. At Create connection popup At Connection name, enter chat-app-connection Click Connect to Github. Click Install a new app Click Sign In to Github After sign in, scroll down to Repository access:\nSelect Only select repositories. Select chat-app. Click Save. Return to Create connection popup Click Connect Return to Sour 1 - Primary section At Connection, select connection we have just created. At Repository, select Repository in my Github account and choose chat-app repository. At Primary source webhook events Check Rebuild every time a code change is pushed to this repository to enable. Select Single build Scroll down to Environment At Service Role, select Existing service role. At Role ARN, select ChatAppBuildRole. At Build Spec -\u0026gt; Build specifications, select Use a buildspec file. At Buildspec name - optional, enter buildspec.yml - this is name of file we created from Create buildspect.yml file Scroll down to Artifacts -\u0026gt; Artifact 1 - Primary At Type, select Amazon S3. At Bucket name, select tamlv-chat-app-bucket. At Name, enter chatAppBuildArtifact At Artifacts packaging, select None Scroll down to Logs Check on CloudWatch logs - optional to enable logging. At Group name - optional, enter aws/codebuild/chat-app-build. Click Create build project. Check Build process in CodeBuild Go to Build projects management Click on the name of the project we created for the lab. Click on Start build Waiting for build success. "
 },
 {
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/2.4.4-createec2linux/",
@@ -126,13 +133,6 @@
 	"content": "The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services. In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.\nContent: Create Scripts Files Create AppSpec file reference Create Build specification reference Create CodeBuild Create CodeDeploy Create CodePipeline "
 },
 {
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/",
-	"title": "Monitor session logs",
-	"tags": [],
-	"description": "",
-	"content": "Monitor session logs Access System Manager - Session Manager service management console Click the Preferences tab. Click Edit. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
-},
-{
 	"uri": "//localhost:1313/2-prerequiste/2.4-createec2/",
 	"title": "Preparing VPC and EC2",
 	"tags": [],
@@ -140,18 +140,18 @@
 	"content": "\rYou need to create 1 Linux instance on the public subnet to perform this lab.\nTo learn how to create EC2 instances and VPCs with public/private subnets, you can refer to the lab:\nAbout Amazon EC2 Works with Amazon VPC Content Create VPC Create Public Subnet Create Security Group Create EC2 Instance Test Connection "
 },
 {
+	"uri": "//localhost:1313/4-createpipelinecomponents/4.5-createcodedeploy/",
+	"title": "Create AWS CodeDeploy",
+	"tags": [],
+	"description": "",
+	"content": "Prepare CodeDeploy Application Access CodeDeploy - AWS Developer Tools management console Click Create application. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
+},
+{
 	"uri": "//localhost:1313/2-prerequiste/2.5-creates3bucket/",
 	"title": "Create S3 Bucket",
 	"tags": [],
 	"description": "",
 	"content": "We need a bucket to store our build artifact from CodeBuild.\nGo to S3 service management console Click Buckets. Click Create Bucket. At Bucket Name, enter chat-app-bucket Leave other settings as default, scroll down and click Create Bucket Return the list and see that our bucket is created. We have a bucket now. Let\u0026rsquo;s move to next section!\n"
-},
-{
-	"uri": "//localhost:1313/4-createpipelinecomponents/4.5-createcodedeploy/",
-	"title": "Monitor session logs",
-	"tags": [],
-	"description": "",
-	"content": "Monitor session logs Access System Manager - Session Manager service management console Click the Preferences tab. Click Edit. Scroll down, at S3 logging, click Enable. Uncheck Allow only encrypted S3 buckets. Click Choose a bucket name from the list. Select the S3 bucket you created. Scroll down, click Save to save the configuration.\nAccess System Manager - Session Manager service management console\nClick Start session. Click Private Windows Instance. Click Start session. Type the command ipconfig. Type the command hostname. Click Terminate to exit the session, click Terminate again to confirm. Check Session logs in S3 Go to S3 service management console Click on the name of the S3 bucket we created for the lab. Click on the object name sessions log On the objects detail page, click Open. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs. "
 },
 {
 	"uri": "//localhost:1313/5-runpipeline/",

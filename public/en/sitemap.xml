@@ -87,6 +87,30 @@
                 href="//localhost:1313/2-prerequiste/2.1-createnginx/"
                 />
   </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.2-createcodedeployymlfile/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/"
+                />
+  </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.3-createbuildspecfile/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/"
+                />
+  </url><url>
     <loc>//localhost:1313/2-prerequiste/2.2-createdockerresource/2.2.1-createnginximage/</loc>
     <xhtml:link
                 rel="alternate"
@@ -109,18 +133,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/4.2-createcodedeployymlfile/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/4.2-createcodedeployymlfile/"
                 />
   </url><url>
     <loc>//localhost:1313/2-prerequiste/</loc>
@@ -171,18 +183,6 @@
                 href="//localhost:1313/2-prerequiste/2.3-createiamrole/"
                 />
   </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/4.3-createbuildspecfile/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/4.3-createbuildspecfile/"
-                />
-  </url><url>
     <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/</loc>
     <xhtml:link
                 rel="alternate"
@@ -193,6 +193,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/"
+                />
+  </url><url>
+    <loc>//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-createpipelinecomponents/4.4-createcodebuild/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/"
                 />
   </url><url>
     <loc>//localhost:1313/2-prerequiste/2.4-createec2/2.4.4-createec2linux/</loc>
@@ -217,18 +229,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/4-createpipelinecomponents/"
-                />
-  </url><url>
-    <loc>//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/4-createpipelinecomponents/4.4-createcodebuild/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/4-createpipelinecomponents/4.4-createcodebuild/"
                 />
   </url><url>
     <loc>//localhost:1313/2-prerequiste/2.4-createec2/</loc>

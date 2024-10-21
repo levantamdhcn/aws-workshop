@@ -1,18 +1,17 @@
 ---
-title : "Monitor session logs"
+title : "Create AWS CodeDeploy"
 date : "`r Sys.Date()`"
 weight : 5
 chapter : false
 pre : " <b> 4.5 </b> "
 ---
 
-#### Monitor session logs
+#### Prepare CodeDeploy Application
 
-1. Access [System Manager - Session Manager service management console](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click the **Preferences** tab.
-  + Click **Edit**.
+1. Access [CodeDeploy - AWS Developer Tools management console](https://eu-west-2.console.aws.amazon.com/codesuite/codedeploy/start)
+  + Click **Create application**.
   
-![S3](/images/4.s3/010-s3.png)
+![CodeDeploy](/images/4.pipeline/017-codedeploy.png)
 
 2. Scroll down, at **S3 logging**, click **Enable**.
   + Uncheck **Allow only encrypted S3 buckets**.
