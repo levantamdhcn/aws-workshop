@@ -1,53 +1,70 @@
 ---
-title : "Monitor session logs"
+title : "Create AWS CodePipeline"
 date : "`r Sys.Date()`"
 weight : 6
 chapter : false
 pre : " <b> 4.6 </b> "
 ---
 
-#### Monitor session logs
+#### Create AWS CodePipeline
 
-1. Access [System Manager - Session Manager service management console](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click the **Preferences** tab.
-  + Click **Edit**.
+1. Access [S3 Management Console](https://eu-west-2.console.aws.amazon.com/s3/home?region=eu-west-2)
+  + Click **Buckets** in the left navigation.
+  + Select **tamlv-chat-app-bucket**.
+  + Check on **chat-app-build**, and click **Copy S3 URI**. We need this key to put on CodePipeline setup.
+
+2. Access [CodePipeline - Pipelines management console](https://eu-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines)
+  + Click **Create Pipeline**.
   
-![S3](/images/4.s3/010-s3.png)
+![CodePipeline](/images/4.pipeline/026-codepipeline.png)
 
-2. Scroll down, at **S3 logging**, click **Enable**.
-  + Uncheck **Allow only encrypted S3 buckets**.
-  + Click **Choose a bucket name from the list**.
-  + Select the S3 bucket you created.
+3. Scroll down, at **Pipeline settings**.
+  + Enter **ChatAppCodePipeline** at **Pipeline name**.
+  + At **Execution mode**, select **Queued (Pipeline type V2 required)**.
+  + At **Service role**, select **New service role**. We gonna let AWS created new Role for our CodePipeline with name **ChatAppCodePipelineRole**.
+  + Check on **Allow AWS CodePipeline to create a service role so it can be used with this new pipeline**.
   
-![S3](/images/4.s3/011-s3.png)
+![CodePipeline](/images/4.pipeline/027-codepipeline.png)
 
-3. Scroll down, click **Save** to save the configuration.
+4. Scroll down to **Primary source webhook events**.
+  + Check on **Rebuild every time a code changes is pushed to this repository**. This option make sure that our pipeline will run every time new code pushed.
 
-4. Access [System Manager - Session Manager service management console](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click **Start session**.
-  + Click **Private Windows Instance**.
-  + Click **Start session**.
+![CodePipeline](/images/4.pipeline/028-codepipeline.png)
 
-5. Type the command **ipconfig**.
-  + Type the command **hostname**.
-  + Click **Terminate** to exit the session, click **Terminate** again to confirm.
+5. Click **Next**, we move to **Add source stage**.
+  + At **Source provider**, select Amazon S3.
+  + At **Bucket**, select **tamlv-chat-app-bucket**, where CodeBuild store the artifact.
+  + At **S3 object key**, paste S3 URI we copied from step 1. Keep **ChatAppBuildArtifact/chat-app-build.zip**
+  + At **Change detection options**, select **AWS CodePipeline**.
+  + Click **Next**.
+![CodePipeline](/images/4.pipeline/029-codepipeline.png)
 
-![S3](/images/4.s3/012-s3.png)
+6. We move to **Build** section.
+  + At **Build provider**, choose **Other build providers**.
+  + Select **AWS CodeBuild**.
+  + Select **chat-app-build** at **Project name** section.
+  + Scroll down, click **Next**.
 
+![CodePipeline](/images/4.pipeline/030-codepipeline.png)
 
-#### Check **Session logs** in **S3**
+7. We move to **Deploy** section.
+  + At **Deploy provider**, choose **AWS CodeDeploy**.
+  + At **Input artifacts**, select **SourceArtifact**.
+  + At **Application name**, select **ChatAppCodeDeploy**.
+  + At **Deployment group**, select **ChatAppDeploymentGroup**.
+  + Click **Next**.
 
-1. Go to [S3 service management console](https://s3.console.aws.amazon.com/s3/home)
-  + Click on the name of the S3 bucket we created for the lab.
+![CodePipeline](/images/4.pipeline/031-codepipeline.png)
 
-2. Click on the object name sessions log
+8. At **Review** section, re-check all information and click **Create pipeline**.
 
-![S3](/images/4.s3/013-s3.png)
+#### Check **Our Pipeline**.
+1. Push new commit to Github Repository.
 
-3. On the objects detail page, click **Open**.
+2. See that pipeline go through each stage.
 
-![S3](/images/4.s3/014-s3.png)
+![CodePipeline](/images/4.pipeline/032-codepipeline.png)
 
-4. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs.
+3. All the stage success.
 
-![S3](/images/4.s3/015-s3.png)
+![CodePipeline](/images/4.pipeline/033-codepipeline.png)

@@ -36,6 +36,30 @@ In this step, we will proceed to create IAM Role. In this IAM Role, the policy *
 
 ![namerole](/images/2.prerequisite/042-iamrole.png)
 
+### Create IAM Role For AWS CodeBuild
+1. Back to **Roles** section.
+2. Click **Create role**.
+![createpolicy](/images/2.prerequisite/045-iamrole.png)
+
+3. At **Select trusted entity**
+  + Select **AWS Service**.
+  + At **Service or use case**, select **CodeBuild**.
+  + Click **Next**
+![createpolicy](/images/2.prerequisite/046-iamrole.png)
+
+4. At **Add permissions**
+  + At search bar, enter **S3F**.
+  + Check on **Amazon S3 Full Access**, our CodeBuild service will store artifact at S3 so we need grant full access..
+  + Click **Next**
+![createpolicy](/images/2.prerequisite/047-iamrole.png)
+
+5. At **Name, review, and create**
+  + At **Role name**, enter **ChatAppBuildRole**.
+  + Check on **Amazon S3 Full Access**, our CodeBuild service will store artifact at S3 so we need grant full access..
+  + Scroll down to bottom, click **Create role**.
+
+![createpolicy](/images/2.prerequisite/048-iamrole.png)
+
 ### Create IAM Role For AWS CodeDeploy
 1. Back to **Roles** section.
 2. Click **Create role**.

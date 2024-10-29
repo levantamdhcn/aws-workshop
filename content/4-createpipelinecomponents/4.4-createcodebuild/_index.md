@@ -43,7 +43,7 @@ pre : " <b> 4.4 </b> "
   + Click **Connect**
 ![CodeBuild](/images/4.pipeline/009-codebuild.png)
 
-9. Return to **Sour 1 - Primary** section
+9. Return to **Source 1 - Primary** section
   + At **Connection**, select connection we have just created.
   + At **Repository**, select **Repository in my Github account** and choose **chat-app** repository.
 ![CodeBuild](/images/4.pipeline/010-codebuild.png)
@@ -65,7 +65,7 @@ pre : " <b> 4.4 </b> "
   + At **Type**, select **Amazon S3**.
   + At **Bucket name**, select **tamlv-chat-app-bucket**.
   + At **Name**, enter **chatAppBuildArtifact**
-  + At **Artifacts packaging**, select **None**
+  + At **Artifacts packaging**, select **Zip**
 
 ![CodeBuild](/images/4.pipeline/013-codebuild.png)
 

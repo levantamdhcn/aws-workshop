@@ -243,18 +243,6 @@
                 href="//localhost:1313/2-prerequiste/2.4-createec2/"
                 />
   </url><url>
-    <loc>//localhost:1313/2-prerequiste/2.5-creates3bucket/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/2-prerequiste/2.5-creates3bucket/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/2-prerequiste/2.5-creates3bucket/"
-                />
-  </url><url>
     <loc>//localhost:1313/4-createpipelinecomponents/4.5-createcodedeploy/</loc>
     <xhtml:link
                 rel="alternate"
@@ -265,6 +253,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="//localhost:1313/4-createpipelinecomponents/4.5-createcodedeploy/"
+                />
+  </url><url>
+    <loc>//localhost:1313/2-prerequiste/2.5-creates3bucket/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-prerequiste/2.5-creates3bucket/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-prerequiste/2.5-creates3bucket/"
                 />
   </url><url>
     <loc>//localhost:1313/5-runpipeline/</loc>

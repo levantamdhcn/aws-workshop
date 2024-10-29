@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Monitor session logs :: AWS System Manager</title>
+    <title>Create AWS CodePipeline :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1729518614" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1729518614" rel="stylesheet">
-    <link href="/css/hybrid.css?1729518614" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1729518614" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1729518614" rel="stylesheet">
-    <link href="/css/auto-complete.css?1729518614" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1729518614" rel="stylesheet">
-    <link href="/css/theme.css?1729518614" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1729518614" rel="stylesheet">
+    <link href="/css/nucleus.css?1730214157" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1730214157" rel="stylesheet">
+    <link href="/css/hybrid.css?1730214157" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1730214157" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1730214157" rel="stylesheet">
+    <link href="/css/auto-complete.css?1730214157" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1730214157" rel="stylesheet">
+    <link href="/css/theme.css?1730214157" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1730214157" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1729518614" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1730214157" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1729518614"></script>
+    <script src="/js/jquery-3.3.1.min.js?1730214157"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1729518614"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1729518614"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1730214157"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1730214157"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1729518614"></script>
+<script type="text/javascript" src="/js/search.js?1730214157"></script>
 
     
   </div>
@@ -731,13 +731,13 @@
  
   
     
-    <li data-nav-id="/4-createpipelinecomponents/4.5-createcodedeploy/" title="Monitor session logs" class="dd-item 
+    <li data-nav-id="/4-createpipelinecomponents/4.5-createcodedeploy/" title="Create AWS CodeDeploy" class="dd-item 
         
         
         
         ">
       <a href="/4-createpipelinecomponents/4.5-createcodedeploy/">
-           <b> 4.5 </b> Monitor session logs
+           <b> 4.5 </b> Create AWS CodeDeploy
           
             <i class="fas fa-check read-icon"></i>
           
@@ -759,13 +759,13 @@
  
   
     
-    <li data-nav-id="/4-createpipelinecomponents/4.6-createcodepipeline/" title="Monitor session logs" class="dd-item 
+    <li data-nav-id="/4-createpipelinecomponents/4.6-createcodepipeline/" title="Create AWS CodePipeline" class="dd-item 
         
         active
         
         ">
       <a href="/4-createpipelinecomponents/4.6-createcodepipeline/">
-           <b> 4.6 </b> Monitor session logs
+           <b> 4.6 </b> Create AWS CodePipeline
           
             <i class="fas fa-check read-icon"></i>
           
@@ -794,38 +794,12 @@
  
   
     
-    <li data-nav-id="/5-runpipeline/" title="Port Forwarding" class="dd-item 
+    <li data-nav-id="/5-cleanup/" title="Clean up resources" class="dd-item 
         
         
         
         ">
-      <a href="/5-runpipeline/">
-           <b> 5. </b> Port Forwarding
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/6-cleanup/" title="Clean up resources" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/6-cleanup/">
+      <a href="/5-cleanup/">
           <b>6. </b>Clean up resources
           
             <i class="fas fa-check read-icon"></i>
@@ -979,7 +953,7 @@
             
           
           
-            <a href='/'>Build an CI/CD Pipeline for MERN App with Github</a> > <a href='/4-createpipelinecomponents/'>Create Pipeline Elements</a> > Monitor session logs
+            <a href='/'>Build an CI/CD Pipeline for MERN App with Github</a> > <a href='/4-createpipelinecomponents/'>Create Pipeline Elements</a> > Create AWS CodePipeline
           
         
           
@@ -1016,7 +990,7 @@
           
             <h1>
               
-              Monitor session logs
+              Create AWS CodePipeline
             </h1>
           
 
@@ -1024,64 +998,88 @@
 
 
 
-	<h4 id="monitor-session-logs">Monitor session logs</h4>
+	<h4 id="create-aws-codepipeline">Create AWS CodePipeline</h4>
 <ol>
-<li>Access <a href="https://console.aws.amazon.com/systems-manager/session-manager">System Manager - Session Manager service management console</a></li>
+<li>Access <a href="https://eu-west-2.console.aws.amazon.com/s3/home?region=eu-west-2">S3 Management Console</a></li>
 </ol>
 <ul>
-<li>Click the <strong>Preferences</strong> tab.</li>
-<li>Click <strong>Edit</strong>.</li>
-</ul>
-<p><img alt="S3" src="/images/4.s3/010-s3.png"></p>
-<ol start="2">
-<li>Scroll down, at <strong>S3 logging</strong>, click <strong>Enable</strong>.</li>
-</ol>
-<ul>
-<li>Uncheck <strong>Allow only encrypted S3 buckets</strong>.</li>
-<li>Click <strong>Choose a bucket name from the list</strong>.</li>
-<li>Select the S3 bucket you created.</li>
-</ul>
-<p><img alt="S3" src="/images/4.s3/011-s3.png"></p>
-<ol start="3">
-<li>
-<p>Scroll down, click <strong>Save</strong> to save the configuration.</p>
-</li>
-<li>
-<p>Access <a href="https://console.aws.amazon.com/systems-manager/session-manager">System Manager - Session Manager service management console</a></p>
-</li>
-</ol>
-<ul>
-<li>Click <strong>Start session</strong>.</li>
-<li>Click <strong>Private Windows Instance</strong>.</li>
-<li>Click <strong>Start session</strong>.</li>
-</ul>
-<ol start="5">
-<li>Type the command <strong>ipconfig</strong>.</li>
-</ol>
-<ul>
-<li>Type the command <strong>hostname</strong>.</li>
-<li>Click <strong>Terminate</strong> to exit the session, click <strong>Terminate</strong> again to confirm.</li>
-</ul>
-<p><img alt="S3" src="/images/4.s3/012-s3.png"></p>
-<h4 id="check-session-logs-in-s3">Check <strong>Session logs</strong> in <strong>S3</strong></h4>
-<ol>
-<li>Go to <a href="https://s3.console.aws.amazon.com/s3/home">S3 service management console</a></li>
-</ol>
-<ul>
-<li>Click on the name of the S3 bucket we created for the lab.</li>
+<li>Click <strong>Buckets</strong> in the left navigation.</li>
+<li>Select <strong>tamlv-chat-app-bucket</strong>.</li>
+<li>Check on <strong>chat-app-build</strong>, and click <strong>Copy S3 URI</strong>. We need this key to put on CodePipeline setup.</li>
 </ul>
 <ol start="2">
-<li>Click on the object name sessions log</li>
+<li>Access <a href="https://eu-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines">CodePipeline - Pipelines management console</a></li>
 </ol>
-<p><img alt="S3" src="/images/4.s3/013-s3.png"></p>
+<ul>
+<li>Click <strong>Create Pipeline</strong>.</li>
+</ul>
+<p><img alt="CodePipeline" src="/images/4.pipeline/026-codepipeline.png"></p>
 <ol start="3">
-<li>On the objects detail page, click <strong>Open</strong>.</li>
+<li>Scroll down, at <strong>Pipeline settings</strong>.</li>
 </ol>
-<p><img alt="S3" src="/images/4.s3/014-s3.png"></p>
+<ul>
+<li>Enter <strong>ChatAppCodePipeline</strong> at <strong>Pipeline name</strong>.</li>
+<li>At <strong>Execution mode</strong>, select <strong>Queued (Pipeline type V2 required)</strong>.</li>
+<li>At <strong>Service role</strong>, select <strong>New service role</strong>. We gonna let AWS created new Role for our CodePipeline with name <strong>ChatAppCodePipelineRole</strong>.</li>
+<li>Check on <strong>Allow AWS CodePipeline to create a service role so it can be used with this new pipeline</strong>.</li>
+</ul>
+<p><img alt="CodePipeline" src="/images/4.pipeline/027-codepipeline.png"></p>
 <ol start="4">
-<li>Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs.</li>
+<li>Scroll down to <strong>Primary source webhook events</strong>.</li>
 </ol>
-<p><img alt="S3" src="/images/4.s3/015-s3.png"></p>
+<ul>
+<li>Check on <strong>Rebuild every time a code changes is pushed to this repository</strong>. This option make sure that our pipeline will run every time new code pushed.</li>
+</ul>
+<p><img alt="CodePipeline" src="/images/4.pipeline/028-codepipeline.png"></p>
+<ol start="5">
+<li>Click <strong>Next</strong>, we move to <strong>Add source stage</strong>.</li>
+</ol>
+<ul>
+<li>At <strong>Source provider</strong>, select Amazon S3.</li>
+<li>At <strong>Bucket</strong>, select <strong>tamlv-chat-app-bucket</strong>, where CodeBuild store the artifact.</li>
+<li>At <strong>S3 object key</strong>, paste S3 URI we copied from step 1. Keep <strong>ChatAppBuildArtifact/chat-app-build.zip</strong></li>
+<li>At <strong>Change detection options</strong>, select <strong>AWS CodePipeline</strong>.</li>
+<li>Click <strong>Next</strong>.
+<img alt="CodePipeline" src="/images/4.pipeline/029-codepipeline.png"></li>
+</ul>
+<ol start="6">
+<li>We move to <strong>Build</strong> section.</li>
+</ol>
+<ul>
+<li>At <strong>Build provider</strong>, choose <strong>Other build providers</strong>.</li>
+<li>Select <strong>AWS CodeBuild</strong>.</li>
+<li>Select <strong>chat-app-build</strong> at <strong>Project name</strong> section.</li>
+<li>Scroll down, click <strong>Next</strong>.</li>
+</ul>
+<p><img alt="CodePipeline" src="/images/4.pipeline/030-codepipeline.png"></p>
+<ol start="7">
+<li>We move to <strong>Deploy</strong> section.</li>
+</ol>
+<ul>
+<li>At <strong>Deploy provider</strong>, choose <strong>AWS CodeDeploy</strong>.</li>
+<li>At <strong>Input artifacts</strong>, select <strong>SourceArtifact</strong>.</li>
+<li>At <strong>Application name</strong>, select <strong>ChatAppCodeDeploy</strong>.</li>
+<li>At <strong>Deployment group</strong>, select <strong>ChatAppDeploymentGroup</strong>.</li>
+<li>Click <strong>Next</strong>.</li>
+</ul>
+<p><img alt="CodePipeline" src="/images/4.pipeline/031-codepipeline.png"></p>
+<ol start="8">
+<li>At <strong>Review</strong> section, re-check all information and click <strong>Create pipeline</strong>.</li>
+</ol>
+<h4 id="check-our-pipeline">Check <strong>Our Pipeline</strong>.</h4>
+<ol>
+<li>
+<p>Push new commit to Github Repository.</p>
+</li>
+<li>
+<p>See that pipeline go through each stage.</p>
+</li>
+</ol>
+<p><img alt="CodePipeline" src="/images/4.pipeline/032-codepipeline.png"></p>
+<ol start="3">
+<li>All the stage success.</li>
+</ol>
+<p><img alt="CodePipeline" src="/images/4.pipeline/033-codepipeline.png"></p>
 
 
 
@@ -1536,22 +1534,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
         
@@ -1561,10 +1543,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/4-createpipelinecomponents/4.5-createcodedeploy/" title="Monitor session logs"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/4-createpipelinecomponents/4.5-createcodedeploy/" title="Create AWS CodeDeploy"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/5-runpipeline/" title="Port Forwarding" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/5-cleanup/" title="Clean up resources" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1574,19 +1556,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1729518614"></script>
-    <script src="/js/perfect-scrollbar.min.js?1729518614"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1729518614"></script>
-    <script src="/js/jquery.sticky.js?1729518614"></script>
-    <script src="/js/featherlight.min.js?1729518614"></script>
-    <script src="/js/highlight.pack.js?1729518614"></script>
+    <script src="/js/clipboard.min.js?1730214157"></script>
+    <script src="/js/perfect-scrollbar.min.js?1730214157"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1730214157"></script>
+    <script src="/js/jquery.sticky.js?1730214157"></script>
+    <script src="/js/featherlight.min.js?1730214157"></script>
+    <script src="/js/highlight.pack.js?1730214157"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1729518614"></script>
-    <script src="/js/learn.js?1729518614"></script>
-    <script src="/js/hugo-learn.js?1729518614"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1730214157"></script>
+    <script src="/js/learn.js?1730214157"></script>
+    <script src="/js/hugo-learn.js?1730214157"></script>
 
-    <link href="/mermaid/mermaid.css?1729518614" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1729518614"></script>
+    <link href="/mermaid/mermaid.css?1730214157" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1730214157"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
