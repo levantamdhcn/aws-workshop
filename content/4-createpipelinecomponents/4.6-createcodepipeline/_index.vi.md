@@ -1,54 +1,70 @@
 ---
-title : "Theo dõi session logs"
-date :  "`r Sys.Date()`" 
-weight : 4 
+title : "Tạo AWS CodePipeline"
+date : "`r Sys.Date()`"
+weight : 6
 chapter : false
-pre : " <b> 4.4 </b> "
+pre : " <b> 4.6 </b> "
 ---
 
-#### Theo dõi session logs
+#### Tạo AWS CodePipeline
 
-1. Truy cập [giao diện quản trị dịch vụ System Manager - Session Manager](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click tab **Preferences**.
-  + Click **Edit**.
+1. Truy cập vào [S3 Management Console](https://eu-west-2.console.aws.amazon.com/s3/home?region=eu-west-2)
+  + Click vào **Buckets** ở menu điều hướng bên tay trái.
+  + Chọn bucket **tamlv-chat-app-bucket**.
+  + Chọn vào **chat-app-build**, và click vào **Copy S3 URI**. Ta cần URI này khi cấu hình CodePipeline.
+
+2. Truy cập [CodePipeline - Pipelines management console](https://eu-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines)
+  + Click vào **Create Pipeline**.
   
-![S3](/images/4.s3/010-s3.png)
+![CodePipeline](/images/4.pipeline/026-codepipeline.png)
 
-2. Kéo chuột xuống phía dưới, tại mục **S3 logging**, click chọn **Enable**.
-  + Bỏ chọn **Allow only encrypted S3 buckets**.
-  + Click chọn **Choose a bucket name from the list**.
-  + Chọn S3 bucket bạn đã tạo.
+3. Kéo xuống phía dưới phần **Pipeline settings**.
+  + Ta nhập **ChatAppCodePipeline** ở mục **Pipeline name**.
+  + Ở phần **Execution mode** ta chọn **Queued (Pipeline type V2 required)**.
+  + Ở phần **Service role** ta chọn **New service role**. Ta sẽ để AWS tạo 1 Role mới cho CodePipeline với tên **ChatAppCodePipelineRole**.
+  + Chọn vào **Allow AWS CodePipeline to create a service role so it can be used with this new pipeline**.
   
-![S3](/images/4.s3/011-s3.png)
+![CodePipeline](/images/4.pipeline/027-codepipeline.png)
 
-3. Kéo chuột xuống phía dưới, click **Save** để lưu cấu hình.
+4. Kéo xuống phía dưới phần **Primary source webhook events**.
+  + Chọn vào **Rebuild every time a code changes is pushed to this repository**. Lựa chọn này đảm bảo rằng pipeline của chúng ta sẽ được trigger mỗi khi ta push code mới lên repository.
 
-4. Truy cập [giao diện quản trị dịch vụ System Manager - Session Manager](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click **Start session**.
-  + Click chọn  **Private Windows Instance**.
-  + Click **Start session**.
+![CodePipeline](/images/4.pipeline/028-codepipeline.png)
 
-5. Gõ lệnh **ipconfig**.
-  + Gõ lệnh **hostname**.
-  + Click **Terminate** để thoát session, click **Terminate** 1 lần nữa để xác nhận.
+5. Click **Next**, ta chuyển tới phần **Add source stage**.
+  + Ở mục **Source provider**, ta chọn Amazon S3.
+  + Ở mục **Bucket**, ta chọn **tamlv-chat-app-bucket**, đây là bucket lưu artifact.
+  + Ở mục **S3 object key**, dán S3 URI mà ta đã sao chép từ bước 1. Chỉ giữ lại **ChatAppBuildArtifact/chat-app-build.zip**
+  + Ở mục **Change detection options**, ta chọn **AWS CodePipeline**.
+  + Click vào **Next**.
+![CodePipeline](/images/4.pipeline/029-codepipeline.png)
 
-![S3](/images/4.s3/012-s3.png)
+6. Chuyển tới phần **Build**.
+  + Ở mục **Build provider**, chọn **Other build providers**.
+  + Chọn **AWS CodeBuild**.
+  + Chọn **chat-app-build** ở phần **Project name**.
+  + Kéo xuống dưới, click vào **Next**.
 
+![CodePipeline](/images/4.pipeline/030-codepipeline.png)
 
-#### Kiểm tra **Session logs** trong **S3**
+7. Ta chuyển tới phần **Deploy**.
+  + Ở mục **Deploy provider**, ta chọn **AWS CodeDeploy**.
+  + Ở mục **Input artifacts**, ta chọn **SourceArtifact**.
+  + Ở mục **Application name**, ta chọn **ChatAppCodeDeploy**.
+  + Ở mục **Deployment group**, ta chọn **ChatAppDeploymentGroup**.
+  + Click vào **Next**.
 
-1. Truy cập vào [giao diện quản trị dịch vụ S3](https://s3.console.aws.amazon.com/s3/home)
-  + Click vào tên S3 bucket chúng ta đã tạo cho bài lab.
+![CodePipeline](/images/4.pipeline/031-codepipeline.png)
 
-2. Click vào tên file sessions log
+8. Tại trang **Review**, ta kiểm tra lại tất cả thông tin một lượt rồi sau đó click vào **Create pipeline**.
 
-![S3](/images/4.s3/013-s3.png)
+#### Kiểm tra **Pipeline**.
+1. Chúng ta đẩy một commit tới đến Github Repository.
 
-3. Tại trang chi tiết objects , click **Open**.
+2. Kiểm tra từng stage của pipeline.
 
-![S3](/images/4.s3/014-s3.png)
+![CodePipeline](/images/4.pipeline/032-codepipeline.png)
 
-4. File logs sẽ được mở ở 1 tab mới trên trình duyệt.Bạn có thể xem các câu lệnh đã được lưu trữ lại trong  session logs.
+3. Tất cả các stage đã thành công.
 
-![S3](/images/4.s3/015-s3.png)
-
+![CodePipeline](/images/4.pipeline/033-codepipeline.png)

@@ -76,11 +76,11 @@ We will take the following steps to delete the resources we created in this exer
 2. In the detail page, click **Delete Application**.
 ![Clean](/images/5.clean/011-clean.png)
 
-2. In the confirm box, enter **delete**.
+3. In the confirm box, enter **delete**.
    + Click **Delete** to proceed with deleting CodeDeploy Application.
 ![Clean](/images/5.clean/012-clean.png)
 
-2. Return to Applications list page, make sure the **ChatAppCodeDeploy** is deleted before move to next section.
+4. Return to Applications list page, make sure the **ChatAppCodeDeploy** is deleted before move to next section.
 ![Clean](/images/5.clean/013-clean.png)
 
 #### Delete CodeBuild
@@ -92,11 +92,11 @@ We will take the following steps to delete the resources we created in this exer
 2. In the detail page, click **Delete Application**.
 ![Clean](/images/5.clean/011-clean.png)
 
-2. In the confirm box, enter **delete**.
+3. In the confirm box, enter **delete**.
    + Click **Delete** to proceed with deleting CodeBuild Project.
 ![Clean](/images/5.clean/015-clean.png)
 
-2. Return to Projects list page, make sure the **chat-app-build** is deleted before move to next section.
+4. Return to Projects list page, make sure the **chat-app-build** is deleted before move to next section.
 ![Clean](/images/5.clean/016-clean.png)
 
 #### Delete Github Connections

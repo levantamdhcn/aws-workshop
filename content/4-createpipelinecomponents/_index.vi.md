@@ -1,23 +1,24 @@
 ---
-title : "Quản lý session logs"
-date :  "`r Sys.Date()`" 
-weight : 4 
+title : "Tạo các thành phần của Pipeline"
+date : "`r Sys.Date()`"
+weight : 4
 chapter : false
 pre : " <b> 4. </b> "
 ---
 
+The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services.
+In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.
 
-Với Session Manager chúng ta có thể xem được lịch sử các kết nối tới các instance thông qua **Session history**. Tuy nhiên chúng ta chưa xem được chi tiết các câu lệnh được sử dụng.
-
-![S3](/images/4.s3/001-s3.png)
-
-Trong phần này chúng ta sẽ tiến hành tạo S3 bucket và thực hiện cấu hình lưu trữ các session logs để xem được chi tiết các câu lệnh được sử dụng trong session.
+Pipeline CI/CD được xây dựng để tự động hóa các quá trình build và deploy. Với các dịch vụ cloud-native, chúng ta sử dụng các dịch vụ CodeBuild, CodeDeploy, CodePipeline.
+Trong phần này, chúng ta sẽ tiến hành tạo CodeBuild, CodeDeploy, CodePipeline và cấu hình pipeline của chúng ta.
 
 ![port-fwd](/images/arc-log.png) 
 
-### Nội dung:
+### Content:
 
-  - [Cập nhật IAM Role](./4.1-updateiamrole/)
-  - [Tạo **S3 Bucket**](./4.2-creates3bucket/)
-  - [Tạo S3 Gateway endpoint](./4.3-creategwes3)
-  - [Cấu hình **Session logs**](./4.4-configsessionlogs/)
+   - [Tạo Scripts Files](/4-CreatePipelineComponents/4.1-createscriptfiles/)
+   - [Tạo AppSpec file reference](/4-CreatePipelineComponents/4.2-createcodedeployymlfile/)
+   - [Tạo Build specification reference](/4-CreatePipelineComponents/4.3-createbuildspecfile)
+   - [Tạo CodeBuild](/4-CreatePipelineComponents/4.4-createcodebuild/)
+   - [Tạo CodeDeploy](/4-CreatePipelineComponents/4.5-createcodedeploy/)
+   - [Tạo CodePipeline](/4-CreatePipelineComponents/4.6-createcodepipeline/)
