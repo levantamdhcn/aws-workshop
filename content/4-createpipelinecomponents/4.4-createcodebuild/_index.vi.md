@@ -1,54 +1,51 @@
 ---
-title : "Theo dõi session logs"
-date :  "`r Sys.Date()`" 
-weight : 4 
+title : "Tạo AWS CodeBuild"
+date : "`r Sys.Date()`"
+weight : 4
 chapter : false
 pre : " <b> 4.4 </b> "
 ---
 
-#### Theo dõi session logs
+#### Tạo AWS CodeBuild
 
-1. Truy cập [giao diện quản trị dịch vụ System Manager - Session Manager](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click tab **Preferences**.
-  + Click **Edit**.
+1. Truy cập [CodeBuild management console](https://eu-west-2.console.aws.amazon.com/codesuite/codebuild)
+  + Click vào tab **Create project**.  
+![CodeBuild](/images/4.s3/010-s3.png)
+
+2. Scroll down, at **S3 logging**, click **Enable**.
+  + Uncheck **Allow only encrypted S3 buckets**.
+  + Click **Choose a bucket name from the list**.
+  + Select the S3 bucket you created.
   
-![S3](/images/4.s3/010-s3.png)
+![CodeBuild](/images/4.s3/011-s3.png)
 
-2. Kéo chuột xuống phía dưới, tại mục **S3 logging**, click chọn **Enable**.
-  + Bỏ chọn **Allow only encrypted S3 buckets**.
-  + Click chọn **Choose a bucket name from the list**.
-  + Chọn S3 bucket bạn đã tạo.
-  
-![S3](/images/4.s3/011-s3.png)
+3. Scroll down, click **Save** to save the configuration.
 
-3. Kéo chuột xuống phía dưới, click **Save** để lưu cấu hình.
-
-4. Truy cập [giao diện quản trị dịch vụ System Manager - Session Manager](https://console.aws.amazon.com/systems-manager/session-manager)
+4. Access [System Manager - Session Manager service management console](https://console.aws.amazon.com/systems-manager/session-manager)
   + Click **Start session**.
-  + Click chọn  **Private Windows Instance**.
+  + Click **Private Windows Instance**.
   + Click **Start session**.
 
-5. Gõ lệnh **ipconfig**.
-  + Gõ lệnh **hostname**.
-  + Click **Terminate** để thoát session, click **Terminate** 1 lần nữa để xác nhận.
+5. Type the command **ipconfig**.
+  + Type the command **hostname**.
+  + Click **Terminate** to exit the session, click **Terminate** again to confirm.
 
-![S3](/images/4.s3/012-s3.png)
+![CodeBuild](/images/4.s3/012-s3.png)
 
 
-#### Kiểm tra **Session logs** trong **S3**
+#### Check **Session logs** in **S3**
 
-1. Truy cập vào [giao diện quản trị dịch vụ S3](https://s3.console.aws.amazon.com/s3/home)
-  + Click vào tên S3 bucket chúng ta đã tạo cho bài lab.
+1. Go to [S3 service management console](https://s3.console.aws.amazon.com/s3/home)
+  + Click on the name of the S3 bucket we created for the lab.
 
-2. Click vào tên file sessions log
+2. Click on the object name sessions log
 
-![S3](/images/4.s3/013-s3.png)
+![CodeBuild](/images/4.s3/013-s3.png)
 
-3. Tại trang chi tiết objects , click **Open**.
+3. On the objects detail page, click **Open**.
 
-![S3](/images/4.s3/014-s3.png)
+![CodeBuild](/images/4.s3/014-s3.png)
 
-4. File logs sẽ được mở ở 1 tab mới trên trình duyệt.Bạn có thể xem các câu lệnh đã được lưu trữ lại trong  session logs.
+4. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs.
 
-![S3](/images/4.s3/015-s3.png)
-
+![CodeBuild](/images/4.s3/015-s3.png)

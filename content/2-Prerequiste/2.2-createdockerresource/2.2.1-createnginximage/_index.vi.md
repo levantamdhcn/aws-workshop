@@ -31,28 +31,28 @@ Cùng tìm hiểu ý nghĩa từng dòng lệnh:
 ```
 FROM nginx:latest
 ```
-2. Sets the working directory inside the container to /usr/share/nginx/html. Which is the default location where Nginx serves static files, any subsequent commands will be executed in this directory. If it doesn't exist, Docker will create it.
+2. Đặt thư mục làm việc bên trong container thành /usr/share/nginx/html. Đây là vị trí mặc định nơi Nginx phục vụ các tệp tĩnh, bất kỳ lệnh nào tiếp theo sẽ được thực thi trong thư mục này. Nếu thư mục này không tồn tại, Docker sẽ tạo nó.
 ```
 WORKDIR /usr/share/nginx/html
 ```
-3. Copies all the remaining files from server's directory into the working directory (/usr/share/nginx/html) of the container
+3. Sao chép tất cả các files còn lại trong thư mục server vào thư mục làm việc vừa cài đặt ở bước 2 (/usr/share/nginx/html)
 ```
 COPY . .
 ```
 
-4. This command removes the default Nginx configuration file.
+4. Xóa file cài đặt mặc định của Nginx.
 ```
 RUN rm /etc/nginx/conf.d/default.conf
 ```
 
-5. Copy our customized configuration file into container. Which we have created from [Preparing Nginx Config](/2.1-createnginx/)
+5. Sao chép file cài đặt của chúng ta vào trong container.
 ```
 COPY ./nginx.conf /etc/nginx/conf.d
 ```
 
-6. Runs Nginx in the foreground (daemon off;), which is necessary for containers since they terminate when their main process exits. This keeps the Nginx server running.
+6. Chạy Nginx ở chế độ nền (daemon off;), điều này cần thiết cho các container vì chúng sẽ kết thúc khi tiến trình chính của chúng bị dừng. Chế độ nền giữ cho máy chủ Nginx luôn được chạy.
 ```
 ENTRYPOINT [ "nginx", "-g", "daemon off;" ]:
 ```
 
-End.
+Kết thúc.

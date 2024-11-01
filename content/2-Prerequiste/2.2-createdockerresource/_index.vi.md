@@ -1,26 +1,21 @@
 ---
-title : "Chuẩn bị VPC và EC2"
-date :  "`r Sys.Date()`" 
-weight : 1 
+title : "Chuẩn bị tài cho Docker"
+date : "`r Sys.Date()`"
+weight : 2
 chapter : false
 pre : " <b> 2.2 </b> "
 ---
+Ở bước này, chúng ta sẽ tạo 2 Dockerfile để dựng images cho các thành phần tạo nên Chat App. Sau đó chúng ta tạo 1 file docker-compose.yml để quản lý tất cả các images đó.
 
-Trong bước này, chúng ta sẽ cần tạo một VPC có 2 subnet public / private. Sau đó tạo 1 EC2 Instance Linux nằm trong public subnet,  1 EC2 Instance Windows nằm trong private subnet.
+{{% notice info %}}
+Dockerfile là 1 file văn bản được dùng để định nghĩa tất cả các dòng lệnh mà người dùng sẽ thực thi để tạo nên 1 image. Có thể gọi đây là 1 sách hướng dẫn để Docker dựng image.
+Một vài tài liệu liên quan bạn có thể tìm hiểu thêm: [Documents](https://docs.docker.com/reference/dockerfile/#:~:text=A%20Dockerfile%20is%20a%20text,line%20to%20assemble%20an%20image).
+{{% /notice %}}
 
-Tổng quan kiến trúc sau khi các bạn hoàn tất bước này sẽ như sau:
+Dưới đây là tổng quan về cấu trúc thư mục của chúng ta sau khi hoàn thành toàn bộ bước 2:
 
-![VPC](/images/arc-01.png)
+![Docker](/images/2.prerequisite/002-docker.png)
 
-Để tìm hiểu cách tạo các EC2 instance và VPC với public/private subnet các bạn có thể tham khảo bài lab :
-  - [Giới thiệu về Amazon EC2](https://000004.awsstudygroup.com/vi/)
-  - [Làm việc với Amazon VPC](https://000003.awsstudygroup.com/vi/) 
-
-
-### Nội dung
-  - [Tạo VPC](2.1.1-createvpc/)
-  - [Tạo Public subnet](2.1.2-createpublicsubnet/)
-  - [Tạo Private subnet](2.1.3-createprivatesubnet/)
-  - [Tạo security group](2.1.4-createsecgroup/)
-  - [Tạo máy chủ Linux public](2.1.5-createec2linux/)
-  - [Tạo máy chủ Windows private](2.1.6-createec2windows/)
+### Content
+  - [Tạo Dockerfile cho Server](2.1.1-createserverimage/)
+  - [Tạo Dockerfile cho máy chủ Nginx](2.1.2-createnginximage)

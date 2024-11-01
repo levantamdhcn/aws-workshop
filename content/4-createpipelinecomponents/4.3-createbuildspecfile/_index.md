@@ -9,11 +9,11 @@ In this step, we will create a buildspec.yml file which used by AWS CodeBuild. A
 
 {{% notice info %}}
 Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).
+{{% /notice %}}
 
 Some documents we can refer:
 - [Build specification reference for CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
 - [How CodeBuild works](https://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html#concepts-how-it-works)
-{{% /notice %}}
 
 ![Build Spec](/images/4.s3/001-builspec.png)
 

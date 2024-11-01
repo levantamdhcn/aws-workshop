@@ -1,36 +1,57 @@
 ---
-title : "Tạo S3 Bucket"
-date :  "`r Sys.Date()`" 
-weight : 2 
+title : "Tạo appspec.yml file"
+date : "`r Sys.Date()`"
+weight : 2
 chapter : false
 pre : " <b> 4.2 </b> "
 ---
+Ở bước này, chúng ta sẽ tạo file appspecyml được đọc bởi AWS CodeDeploy để quản lý tiến trình deployment.
 
+{{% notice info %}}
+Cần chú ý đây là file YAML, vì vậy ta cần tuân thủ chặt chẽ định dạng về cách lùi đầu dòng cũng như tên của từng section.
+{{% /notice %}}
 
-Trong bước này, chúng ta sẽ tạo 1 S3 bucket để lưu trữ các session logs được gửi từ các EC2 instance.
+Một vài tài liệu liên quan đến AppSpec Reference file:
+- [CodeDeploy AppSpec file reference](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html)
+- [AppSpec File structure](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure.html)
+- [AppSpec 'hooks' section](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html)
 
-#### Tạo **S3 Bucket**
+#### Tạo file **appspec.yml**
 
-1. Truy cập [giao diện quản trị dịch vụ S3](https://s3.console.aws.amazon.com/s3/home)
-  + Click **Create bucket**.
+Đầu tiên, chúng ta tạo 1 file ở thư mục gốc của dự án đặt tên appspec.yml với nội dung sau:
+```bash
+#vi appspec.yml
 
-![S3](/images/4.s3/005-s3.png)
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/chat-app
+permissions:
+  - object: scripts/
+    mode: 777
+    type:
+      - directory
+hooks:
+  AfterInstall:
+    - location: scripts/stop.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 300 
+      runas: ubuntu
+```
 
-2. Tại trang **Create bucket**.
-  + Tại mục **Bucket name** điền tên bucket **lab-yourname-bucket-0001**
-  + Tại mục **Region** chọn **Region** bạn đang làm lab hiện tại. 
+1. Với file này, ta định nghĩa các thông tin cần thiết cho quá trình Deploy như hệ điều hành, các quyền truy cập tài nguyên và các scripts sẽ được sử dụng trong từng giai đoạn như AfterInstall, ApplicationStart.
 
-![S3](/images/4.s3/006-s3.png)
+2. Trong mục permissions, ta chỉnh mode về 777, cho phép đọc, ghi và thực thi cho tất cả các người dùng cho thư mục scripts và tất cả các file bên trong.
 
- {{%notice tip%}}
-Tên S3 bucket phải đảm bảo không trùng với toàn bộ S3 bucket khác trong hệ thống. Bạn có thể thay thế tên mình và điền số ngẫu nhiên khi tạo tên S3 bucket.
-{{%/notice%}}
+3. Trong mục này, ta chỉ định phiên bản của file AppSpec. Đây là phần bắt buộc và không nên thay đổi.
+```
+version: 0.0
+```
 
-3. Kéo chuột xuống phía dưới và click **Create bucket**.
+4. Ta cần chạy file stop.sh ở bước AfterInstall để sao chép các file build của frontend để Nginx có thể sử dụng trước khi chúng ta build container.
 
-![S3](/images/4.s3/007-s3.png)
-
- {{%notice tip%}}
-Khi tạo S3 bucket chúng ta đã thực hiện **Block all public access** nên các EC2 instance của chúng ta sẽ không thể kết nối tới S3 thông qua mạng internet.
-Trong bước tiếp theo chúng ta sẽ cấu hình tính năng S3 Gateway Endpoint để cho phép các EC2 instance có thể kết nối tới S3 bucket thông qua mạng nội bộ của VPC.
-{{%/notice%}}
+Tiếp theo, chúng ta sẽ tạo Build Spec Reference file.

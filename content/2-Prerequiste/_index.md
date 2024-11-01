@@ -18,7 +18,7 @@ To learn what is Nginx, how to Nginx works, Nginx basic concepts and how to conf
   - [Nginx with Docker](https://www.docker.com/blog/how-to-use-the-official-nginx-docker-image/)
 
 #### Docker
-Docker is an open platform for developing, shipping, and running applications.
+Docker is an open platform for developing, shipping, and running applications with container.
 
 Learn basic concepts of Docker:
   - [Docker for beginner](https://docs.docker.com/get-started/)

@@ -9,12 +9,12 @@ In this step, we will create a appspec.yml file which used by AWS CodeDeploy to 
 
 {{% notice info %}}
 Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).
+{{% /notice %}}
 
 Some documents we can refer:
 - [CodeDeploy AppSpec file reference](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html)
 - [AppSpec File structure](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure.html)
 - [AppSpec 'hooks' section](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html)
-{{% /notice %}}
 
 #### Create **appspec.yml** file
 
@@ -54,4 +54,4 @@ version: 0.0
 
 4. We need to run stop.sh during the AfterInstall stage, even though this stage occurs before ApplicationStart. In stop.sh, we copy the built files into the destination folder, which will be used by the Nginx container. This container will start during the ApplicationStart stage.
 
-Next, we will proceed to create Buil Spec Reference file.
+Next, we will proceed to create Build Spec Reference file.

@@ -1,34 +1,70 @@
 ---
-title : "Cập nhật IAM Role"
-date :  "`r Sys.Date()`" 
-weight : 1 
+title : "Tạo Script Files"
+date : "`r Sys.Date()`"
+weight : 1
 chapter : false
 pre : " <b> 4.1 </b> "
 ---
+Tại bước [Tạo AppSpec Reference File](/4-CreatePipelineComponents/4.2-createcodedeployymlfile/) ta tạo 1 file chứa các hướng dẫn giúp CodeDeploy triển khai ứng dụng của chúng ta. Chúng ta cần định nghĩa những câu lệnh để khởi động / dừng các containers, trong bước này, ta sẽ tạo file scripts để định nghĩa các lệnh đó.
 
-Để các EC2 instance của chúng ta có thể gửi session log tới S3 bucket , chúng ta sẽ cần cập nhật IAM Role đã gán vào EC2 instance bằng cách thêm vào policy cho phép quyền truy cập vào S3.
+{{% notice info %}}
+  Bạn có thể xem các định nghĩa cơ bản của shell script [tại đây](https://docs.fileformat.com/programming/sh/) 
+{{% /notice %}}
 
-#### Cập nhật IAM Role
+Đầu tiên, tạo 1 folder đặt tên scripts ở trong thư mục gốc của dự án. Bên trong, ta tạo thêm 2 file start.sh và stop.sh với nội dung tương ứng:
 
-1. Truy cập vào [giao diện quản trị dịch vụ IAM](https://console.aws.amazon.com/iamv2/home?#/home)
-  + Click **Roles**.
-  + Tại ô tìm kiếm , điền **SSM**.
-  + Click vào role **SSM-Role**.
+#### start.sh file
+File này được dùng để khởi động các containers.
 
-![S3](/images/4.s3/002-s3.png)
+```bash
+#start.sh
+#!/bin/sh
+cd /home/tamlv/chat-app
 
-2. Click **Attach policies**.
- 
-![S3](/images/4.s3/003-s3.png)
+docker-compose up -d
+```
 
-3. Tại ô Search điền **S3**.
-  + Click chọn policy **AmazonS3FullAccess**.
-  + Click **Attach policy**.
- 
-![S3](/images/4.s3/004-s3.png)
- 
-{{%notice tip%}}
-Trong thực tế chúng ta sẽ cấp quyền chặt chẽ hơn tới S3 bucket chỉ định. Trong khuôn khổ bài lab này chúng ta sử dụng policy **AmazonS3FullAccess** cho tiện dụng.
-{{%/notice%}}
+1. Thay đổi thư mục làm việc sang thư mục gốc của dự án.
+```
+  cd /home/tamlv/chat-app
+```
 
-Tiếp theo chúng ta sẽ tiến hành tạo S3 bucket để lưu trữ session logs.
+2. Lệnh này thực hiện công việc của các lệnh docker-compose build và docker-compose run. Nó build các images nếu chúng không có sẵn và khởi động các container. Nếu các images đã được build, nó sẽ khởi động container mà không cần build lại.
+```
+  docker-compose up -d
+```
+
+#### stop.sh file
+```bash
+#stop.sh
+
+#!/bin/sh
+
+cd /home/tamlv/chat-app
+sudo cp -r build/* nginx
+
+if ! docker info > /dev/null 2>&1; then
+    service docker start
+fi
+
+docker-compose down
+echo $?
+```
+1. Navigate to root directory of project
+```
+  cd /home/tamlv/chat-app
+```
+
+2. Sao chép tất cả file build của frontend vào trong nginx context.
+```
+  sudo cp -r build/* nginx
+```
+
+3. Kiểm tra xem docker service đã được khởi chạy hay chưa, nếu chưa, khởi chạy service.
+```
+  if ! docker info > /dev/null 2>&1; then
+    service docker start
+  fi
+```
+
+Tiếp theo chúng ta chuyển sang bước tạo appspec.yml file.

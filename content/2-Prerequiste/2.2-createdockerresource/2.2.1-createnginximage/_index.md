@@ -7,7 +7,6 @@ pre : " <b> 2.2.1 </b> "
 ---
 
 #### Create Nginx Image
-
 In root folder, create file named Dockerfile with following content:
 ```bash
 #vi Dockerfile

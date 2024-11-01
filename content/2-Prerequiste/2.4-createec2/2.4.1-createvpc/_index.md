@@ -14,7 +14,7 @@ pre : " <b> 2.4.1 </b> "
 ![VPC](/images/2.prerequisite/001-createvpc.png)
 
 2. At the **Create VPC** page.
-   + In the **Name tag** field, enter **Lab VPC**.
+   + In the **Name tag** field, enter **ASG**.
    + In the **IPv4 CIDR** field, enter: **10.10.0.0/16**.
    + Click **Create VPC**.
 

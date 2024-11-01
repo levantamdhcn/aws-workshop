@@ -32,7 +32,7 @@ We use .pem file created at [Create EC2 Instance](/2-Prerequiste/2.4-createec2/2
 Bitvise SSH Client use private key to authenticate the connection so we need first generate private key version from pem file.
 {{% /notice %}}
 
-1. Go to [PuTTYgen Website](https://www.puttygen.com/) to download the IDE
+1. Go to [PuTTYgen Website](https://www.puttygen.com/) to download the software.
 ![Test Connect](/images/2.prerequisite/034-testconnect.png)
 
 2. Open Puttygen App to start generate private key.
@@ -47,7 +47,7 @@ Bitvise SSH Client use private key to authenticate the connection so we need fir
 + Click **Save private key**
 ![Test Connect](/images/2.prerequisite/037-testconnect.png)
 
-5. Go to [Download Bitvise SSH Client](https://bitvise.com/ssh-client-download) to download the IDE
+5. Go to [Download Bitvise SSH Client](https://bitvise.com/ssh-client-download) to download the software.
 + Click **Download Bitvise SSH Client**
 ![Test Connect](/images/2.prerequisite/038-testconnect.png)
 

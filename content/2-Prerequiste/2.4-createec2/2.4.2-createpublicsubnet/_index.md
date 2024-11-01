@@ -85,7 +85,7 @@ pre : " <b> 2.4.2 </b> "
 ![VPC](/images/2.prerequisite/015-creatertb.png)
 
 14. Click the **Subnet associations** tab.
-  + Click **Edit subnet associations** to proceed with the associate custom route table we just created in **Lab Public Subnet**.
+  + Click **Edit subnet associations** to proceed with the associate custom route table we just created in **Public Subnet**.
 
 
 ![VPC](/images/2.prerequisite/016-creatertb.png)
@@ -96,6 +96,6 @@ pre : " <b> 2.4.2 </b> "
 
 ![VPC](/images/2.prerequisite/017-creatertb.png)
 
-16. Check that the route table information has been associated with **Lab Public Subnet** and the internet route information has been pointed to the Internet Gateway as shown below.
+16. Check that the route table information has been associated with **Public Subnet** and the internet route information has been pointed to the Internet Gateway as shown below.
 
 ![VPC](/images/2.prerequisite/018-creatertb.png)

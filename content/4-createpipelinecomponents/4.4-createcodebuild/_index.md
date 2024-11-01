@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 4.4 </b> "
 ---
 
-#### Monitor session logs
+#### Create AWS CodeBuild
 
 1. Access [CodeBuild management console](https://eu-west-2.console.aws.amazon.com/codesuite/codebuild)
   + Click the **Create project** tab.  
