@@ -9,7 +9,7 @@ chapter : false
 ### Tổng quan
 Workshop này sẽ mô tả chi tiết các bước xây dụng một CI/CD Pipeline sử dụng Github Actions và một số công cụ được cung cấp bởi AWS như AWS CodeDeploy, AWS CodePipeline và AWS CodeBuild.
 
-![ConnectPrivate](images/arc-log.png) 
+![ConnectPrivate](/images/arc-log.png) 
 
 ### Nội dung
 

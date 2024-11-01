@@ -15,7 +15,7 @@ Một vài tài liệu chúng ta có thể tìm hiểu thêm về file buildspec
 - [Build specification reference for CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
 - [How CodeBuild works](https://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html#concepts-how-it-works)
 
-![Build Spec](images/4.s3/001-builspec.png)
+![Build Spec](/images/4.s3/001-builspec.png)
 
 #### Tạo **buildspec.yml** file
 

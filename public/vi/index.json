@@ -7,20 +7,6 @@
 	"content": "Xây dựng CI/CD Pipeline cho trang web sử dụng MERN Stacks với Github Actions Tổng quan Workshop này sẽ mô tả chi tiết các bước xây dụng một CI/CD Pipeline sử dụng Github Actions và một số công cụ được cung cấp bởi AWS như AWS CodeDeploy, AWS CodePipeline và AWS CodeBuild.\nNội dung Giới thiệu Các bước chuẩn bị Tạo kết nối đến máy chủ EC2 Quản lý session logs Port Forwarding Dọn dẹp tài nguyên "
 },
 {
-	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.1-createscriptfiles/",
-	"title": "Cập nhật IAM Role",
-	"tags": [],
-	"description": "",
-	"content": "Để các EC2 instance của chúng ta có thể gửi session log tới S3 bucket , chúng ta sẽ cần cập nhật IAM Role đã gán vào EC2 instance bằng cách thêm vào policy cho phép quyền truy cập vào S3.\nCập nhật IAM Role Truy cập vào giao diện quản trị dịch vụ IAM Click Roles. Tại ô tìm kiếm , điền SSM. Click vào role SSM-Role. Click Attach policies. Tại ô Search điền S3. Click chọn policy AmazonS3FullAccess. Click Attach policy. Trong thực tế chúng ta sẽ cấp quyền chặt chẽ hơn tới S3 bucket chỉ định. Trong khuôn khổ bài lab này chúng ta sử dụng policy AmazonS3FullAccess cho tiện dụng.\nTiếp theo chúng ta sẽ tiến hành tạo S3 bucket để lưu trữ session logs.\n"
-},
-{
-	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/",
-	"title": "Chuẩn bị VPC và EC2",
-	"tags": [],
-	"description": "",
-	"content": "Trong bước này, chúng ta sẽ cần tạo một VPC có 2 subnet public / private. Sau đó tạo 1 EC2 Instance Linux nằm trong public subnet, 1 EC2 Instance Windows nằm trong private subnet.\nTổng quan kiến trúc sau khi các bạn hoàn tất bước này sẽ như sau:\nĐể tìm hiểu cách tạo các EC2 instance và VPC với public/private subnet các bạn có thể tham khảo bài lab :\nGiới thiệu về Amazon EC2 Làm việc với Amazon VPC Nội dung Tạo VPC Tạo Public subnet Tạo Private subnet Tạo security group Tạo máy chủ Linux public Tạo máy chủ Windows private "
-},
-{
 	"uri": "//localhost:1313/vi/1-introduce/",
 	"title": "Giới thiệu",
 	"tags": [],
@@ -28,11 +14,25 @@
 	"content": "CI (Continuous Integration): CI là phương thức được sử dụng để tự động quá quy trình build và test của ứng dụng. CD kiểm tra liên tục các thay đổi trong repository và khởi động quá trình build, test. Điều này có nghĩa là mã nguồn của chúng ta liên tục được tích hợp. Quy trình CI đảm bảo rằng mã nguồn mới được liên tục build và test mà không cần thêm các bước sau khi commit. Với việc thường xuyên cập nhật và tích hợp mã nguồn mới, chúng ta giảm thiểu tối đa rủi ro về xung đột mã nguồn giữa các thành viên trong cùng một dự án.\nCD (Continuous Delivery): CD là một hoạt động kết hợp cùng với CD tạo thành 1 quy trình tự động triển khai mã nguồn tới môi trường staging hoặc testing mà không cần sự can thiệp của con người.\nCI/CD kết hợp các bước của CI \u0026amp; CD để tạo nên một quy trình triển khai phần mềm được tối ưu hóa. Với việc cài đặt CI/CD, ứng dụng sẽ có được những ưu điểm sau:\nCho phép lập trình viên commit các thay đổi nhỏ thường xuyên hơn thay vì phải gom thành 1 đợt release đủ lớn. Việc tự động, liên tục build mã nguồn đảm bảo rằng codebase luôn ổn định và xác định sớm mọi vấn đề tiềm ẩn. Khi có một vấn đề nào đó được phát hiện trong quá trình CI/CD, logs và build flow được cung cấp một cách chi tiết, đẩy đủ, trực quan để giúp việc sửa lỗi dễ dàng và nhanh gọn hơn. Với những ưu điểm trên, chúng ta hoàn toàn nên cân nhắc về việc triển khai CI/CD cho ứng dụng để tiết kiệm thời gian và công sức phát triển.\n"
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.1-createvpc/",
-	"title": "Tạo VPC ",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/",
+	"title": "Tạo docker-compose.yml file",
 	"tags": [],
 	"description": "",
-	"content": "Tạo VPC Lab VPC Truy cập giao diện quản trị dịch vụ VPC Click Your VPC. Click Create VPC. Tại trang Create VPC. Tại mục Name tag điền Lab VPC. Tại mục IPv4 CIDR điền : 10.10.0.0/16. Click Create VPC. "
+	"content": "Tạo docker-compose.yml file Docker Compose là 1 công cụ được dùng để định nghĩa và chạy nhiều container trong cùng 1 file YAML. Bằng cách này, ta có thể viết lại những cấu trúc phức tạp một cách dễ nhìn, dễ hiểu. Việc quản lý và tái tạo lại môi trường cho ứng dụng của ta trở nên dễ dàng hơn rất nhiều. Ngoài ra, việc sử dụng Docker Compose cũng hỗ trợ rất nhiều trong việc chia sẻ kiến trúc ứng dụng cũng như triển khai ứng dụng giữa các lập trình viên và giữa các team trở nên chính xác và dễ dàng hơn.\nCần chú ý đây là file YAML, vì vậy ta cần tuân thủ chặt chẽ định dạng về cách lùi đầu dòng cũng như tên của từng section.\nTại thư mục gốc của dự án, tạo 1 file mới đặt tên docker-compose.yml với nội dung sau:\n#vi docker-compose.yml version: \u0026#39;3.7\u0026#39; services: nginx_app: container_name: nginx_app build: context: ./nginx dockerfile: Dockerfile ports: - 80:80 restart: always depends_on: - node_app - mongo_db node_app: container_name: node_app build: context: ./server dockerfile: Dockerfile restart: always expose: - 4000 ports: - \u0026#34;4000:4000\u0026#34; links: - mongo_db env_file: ./server/.env depends_on: - mongo_db mongo_db: container_name: mongo_db image: mongo volumes: - mongo_volume:/data/db expose: - 27017 ports: - 27017:27017 volumes: mongo_volume: Cùng đi sâu và tìm hiểu về nội dung cài đặt:\nChỉ định phiên bản định dạng của Docker Compose. Hiện tại phiên bản 3.7 được khuyến nghị cho Docker Engine 19.03.0 và cao hơn. version: \u0026#39;3.7\u0026#39; Start define our services. services: Cấu trúc của 1 service cơ bản sẽ như sau: nginx_app:\rcontainer_name: nginx_app\rbuild:\rcontext: ./nginx\rdockerfile: Dockerfile\rports:\r- 80:80\rrestart: always 3.1. Tên của service:\nnginx_app: 3.2. Tên của container:\ncontainer_name: nginx_app 3.3. Định nghĩa các thành phần sử dụng để dựng image:\nbuild: 3.4. Chỉ định thư mục chính để dựng image, Docker sau đó sẽ tìm kiếm DockerFile và các tài nguyên khác trong thư mục này. context: ./nginx\n3.5. Maps cổng 80 của máy chủ với cổng 80 của container, điều này cho phép máy chủ truy cập Nginx qua cổng 80. ports:\r- 80:80\r3.6. Container sẽ luôn chạy lại trừ khi nó hoàn toàn bị dừng lại. restart: always\r4. Đọc thêm về cách xây dựng 1 docker-compose file [Document](https://docs.docker.com/reference/compose-file/) "
+},
+{
+	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.1-createscriptfiles/",
+	"title": "Tạo Script Files",
+	"tags": [],
+	"description": "",
+	"content": "Tại bước Tạo AppSpec Reference File ta tạo 1 file chứa các hướng dẫn giúp CodeDeploy triển khai ứng dụng của chúng ta. Chúng ta cần định nghĩa những câu lệnh để khởi động / dừng các containers, trong bước này, ta sẽ tạo file scripts để định nghĩa các lệnh đó.\nBạn có thể xem các định nghĩa cơ bản của shell script tại đây\nĐầu tiên, tạo 1 folder đặt tên scripts ở trong thư mục gốc của dự án. Bên trong, ta tạo thêm 2 file start.sh và stop.sh với nội dung tương ứng:\nstart.sh file File này được dùng để khởi động các containers.\n#start.sh #!/bin/sh cd /home/tamlv/chat-app docker-compose up -d Thay đổi thư mục làm việc sang thư mục gốc của dự án. cd /home/tamlv/chat-app Lệnh này thực hiện công việc của các lệnh docker-compose build và docker-compose run. Nó build các images nếu chúng không có sẵn và khởi động các container. Nếu các images đã được build, nó sẽ khởi động container mà không cần build lại. docker-compose up -d stop.sh file #stop.sh #!/bin/sh cd /home/tamlv/chat-app sudo cp -r build/* nginx if ! docker info \u0026gt; /dev/null 2\u0026gt;\u0026amp;1; then service docker start fi docker-compose down echo $? Navigate to root directory of project cd /home/tamlv/chat-app Sao chép tất cả file build của frontend vào trong nginx context. sudo cp -r build/* nginx Kiểm tra xem docker service đã được khởi chạy hay chưa, nếu chưa, khởi chạy service. if ! docker info \u0026gt; /dev/null 2\u0026gt;\u0026amp;1; then\rservice docker start\rfi Tiếp theo chúng ta chuyển sang bước tạo appspec.yml file.\n"
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.1-createvpc/",
+	"title": "Tạo VPC",
+	"tags": [],
+	"description": "",
+	"content": "Tạo VPC Truy cập VPC service management console Chọn Your VPC. Chọn Create VPC. Tại trang Create VPC. Nhập ASG ở mục Name tag. Nhập 10.10.0.0/16 ở mục IPv4 CIDR. Cuối dùng click vào Create VPC. "
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.2-createserverimage/",
@@ -43,10 +43,31 @@
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/",
-	"title": "Các bước chuẩn bị",
+	"title": "Các bước chuẩn bị ",
 	"tags": [],
 	"description": "",
-	"content": "\rBạn cần tạo sẵn 1 Linux instance thuộc public subnet và 1 Window instance thuộc private subnet để thực hiện bài thực hành này.\nĐể tìm hiểu cách tạo các EC2 instance và VPC với public/private subnet các bạn có thể tham khảo bài lab :\nGiới thiệu về Amazon EC2 Làm việc với Amazon VPC Để sử dụng System Manager để quản lý window instance nói riêng và các instance nói chung của chúng ta trên AWS, ta cần phải cung cấp quyền cho các instance của chúng ta có thể làm việc với System Manager.Trong phần chuẩn bị này, chúng ta cũng sẽ tiến hành tạo IAM Role để cấp quyền cho các instance có thể làm việc với System Manager.\nNội dung Chuẩn bị VPC và EC2 Instance Tạo IAM Role "
+	"content": "\rWe need to learn some basics of Docker, Nginx to perform this lab.\nNginx nginx (engine x) là một máy chủ HTTP, reverse proxy, content cache, load balancer, TCP/UDP proxy server. Trong workshop này, chúng ta sử dụng nginx như là một reverse proxy.\nĐể tìm hiểu xem Nginx là gì, Ngix hoạt động như thế nào, các concepts cơ bản của Nginx và cách cấu hình một máy chủ Nginx cơ bản, ta có thể xem các hướng dẫn sau:\nNginx cho người mới Nginx với Docker Docker Docker là một platform mã nguồn mở hỗ trợ phát triển, chia sẻ và chạy các ứng dụng với container.\nTìm hiểu các định nghĩa cơ bản của Docker:\nDocker cho người mới Containerize Nodejs App Content Chuẩn bị cấu hình Nginx Chuẩn bị tài nguyên cho Docker Tạo IAM Role Chuẩn bị VPC và EC2 Tạo S3 Bucket "
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/",
+	"title": "Chuẩn bị tài cho Docker",
+	"tags": [],
+	"description": "",
+	"content": "Ở bước này, chúng ta sẽ tạo 2 Dockerfile để dựng images cho các thành phần tạo nên Chat App. Sau đó chúng ta tạo 1 file docker-compose.yml để quản lý tất cả các images đó.\nDockerfile là 1 file văn bản được dùng để định nghĩa tất cả các dòng lệnh mà người dùng sẽ thực thi để tạo nên 1 image. Có thể gọi đây là 1 sách hướng dẫn để Docker dựng image. Một vài tài liệu liên quan bạn có thể tìm hiểu thêm: Documents.\nDưới đây là tổng quan về cấu trúc thư mục của chúng ta sau khi hoàn thành toàn bộ bước 2:\nContent Tạo Dockerfile cho Server Tạo Dockerfile cho máy chủ Nginx "
+},
+{
+	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.2-createcodedeployymlfile/",
+	"title": "Tạo appspec.yml file",
+	"tags": [],
+	"description": "",
+	"content": "Ở bước này, chúng ta sẽ tạo file appspecyml được đọc bởi AWS CodeDeploy để quản lý tiến trình deployment.\nCần chú ý đây là file YAML, vì vậy ta cần tuân thủ chặt chẽ định dạng về cách lùi đầu dòng cũng như tên của từng section.\nMột vài tài liệu liên quan đến AppSpec Reference file:\nCodeDeploy AppSpec file reference AppSpec File structure AppSpec \u0026lsquo;hooks\u0026rsquo; section Tạo file appspec.yml Đầu tiên, chúng ta tạo 1 file ở thư mục gốc của dự án đặt tên appspec.yml với nội dung sau:\n#vi appspec.yml version: 0.0 os: linux files: - source: / destination: /home/ubuntu/chat-app permissions: - object: scripts/ mode: 777 type: - directory hooks: AfterInstall: - location: scripts/stop.sh timeout: 300 runas: root ApplicationStart: - location: scripts/start.sh timeout: 300 runas: ubuntu Với file này, ta định nghĩa các thông tin cần thiết cho quá trình Deploy như hệ điều hành, các quyền truy cập tài nguyên và các scripts sẽ được sử dụng trong từng giai đoạn như AfterInstall, ApplicationStart.\nTrong mục permissions, ta chỉnh mode về 777, cho phép đọc, ghi và thực thi cho tất cả các người dùng cho thư mục scripts và tất cả các file bên trong.\nTrong mục này, ta chỉ định phiên bản của file AppSpec. Đây là phần bắt buộc và không nên thay đổi.\nversion: 0.0 Ta cần chạy file stop.sh ở bước AfterInstall để sao chép các file build của frontend để Nginx có thể sử dụng trước khi chúng ta build container. Tiếp theo, chúng ta sẽ tạo Build Spec Reference file.\n"
+},
+{
+	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.3-createbuildspecfile/",
+	"title": "Tạo buildspec.yml file",
+	"tags": [],
+	"description": "",
+	"content": "Trong bước này, chúng ta sẽ tạo file buildspec.yml, file này sẽ được sử dụng bởi AWS CodeBuild. Builspec là một tập hợp các lệnh build và các cài đặt liên quan, viêt dưới định dạng YAML.\nCần chú ý đây là file YAML, vì vậy ta cần tuân thủ chặt chẽ định dạng về cách lùi đầu dòng cũng như tên của từng section.\nMột vài tài liệu chúng ta có thể tìm hiểu thêm về file buildspec:\nBuild specification reference for CodeBuild How CodeBuild works Tạo buildspec.yml file Đầu tiên, ta tạo 1 file ở trong thư mục gốc của dự án, đặt tên buildspec.yml với nội dung sau:\n#vi buildspec.yml version: 0.2 phases: install: commands: - echo \u0026#34;the installation phase begins\u0026#34; pre_build: commands: - echo \u0026#34;the prebuild phase begins\u0026#34; - cd client - npm install build: commands: - echo \u0026#34;the build phase begins\u0026#34; # - echo `pwd` - npm run build # - echo `ls -la` post_build: commands: - echo \u0026#34;the post build phase. navigating back to root path\u0026#34; - cp -R build/ ../ artifacts: files: - build/**/* - appspec.yml - server/**/* - nginx/* - scripts/* - docker-compose.yml - Dockerfile Trong phần đầu tiên, chúng ta định nghĩa thông tin cho quá trình Build cho các các stage, lệnh nào sẽ chạy trong mỗi stage (install, pre_build, build, post_build).\nartifacts/files là các tài nguyên cho quá trình build.\nTiếp theo, chúng ta sẽ tiến hành tạo AWS CodeBuild.\n"
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.3-createiamrole/",
@@ -60,21 +81,14 @@
 	"title": "Tạo Nginx Image",
 	"tags": [],
 	"description": "",
-	"content": "Tạo Nginx Image Trong thư mục gốc, ta tạo 1 file mới và đặt tên là Dockerfile với nội dung sau:\n#vi Dockerfile FROM nginx:latest WORKDIR /usr/share/nginx/html COPY . . RUN rm /etc/nginx/conf.d/default.conf COPY ./nginx.conf /etc/nginx/conf.d ENTRYPOINT [ \u0026#34;nginx\u0026#34; , \u0026#34;-g\u0026#34; , \u0026#34;daemon off;\u0026#34; ] Cùng tìm hiểu ý nghĩa từng dòng lệnh:\nChọn base image cho container. Ở dòng này chúng ta sử dụng phiên bản chính thức mới mất của Nginx image từ Docker Hub. FROM nginx:latest Sets the working directory inside the container to /usr/share/nginx/html. Which is the default location where Nginx serves static files, any subsequent commands will be executed in this directory. If it doesn\u0026rsquo;t exist, Docker will create it. WORKDIR /usr/share/nginx/html Copies all the remaining files from server\u0026rsquo;s directory into the working directory (/usr/share/nginx/html) of the container COPY . . This command removes the default Nginx configuration file. RUN rm /etc/nginx/conf.d/default.conf Copy our customized configuration file into container. Which we have created from Preparing Nginx Config COPY ./nginx.conf /etc/nginx/conf.d Runs Nginx in the foreground (daemon off;), which is necessary for containers since they terminate when their main process exits. This keeps the Nginx server running. ENTRYPOINT [ \u0026#34;nginx\u0026#34;, \u0026#34;-g\u0026#34;, \u0026#34;daemon off;\u0026#34; ]: End.\n"
+	"content": "Tạo Nginx Image Trong thư mục gốc, ta tạo 1 file mới và đặt tên là Dockerfile với nội dung sau:\n#vi Dockerfile FROM nginx:latest WORKDIR /usr/share/nginx/html COPY . . RUN rm /etc/nginx/conf.d/default.conf COPY ./nginx.conf /etc/nginx/conf.d ENTRYPOINT [ \u0026#34;nginx\u0026#34; , \u0026#34;-g\u0026#34; , \u0026#34;daemon off;\u0026#34; ] Cùng tìm hiểu ý nghĩa từng dòng lệnh:\nChọn base image cho container. Ở dòng này chúng ta sử dụng phiên bản chính thức mới mất của Nginx image từ Docker Hub. FROM nginx:latest Đặt thư mục làm việc bên trong container thành /usr/share/nginx/html. Đây là vị trí mặc định nơi Nginx phục vụ các tệp tĩnh, bất kỳ lệnh nào tiếp theo sẽ được thực thi trong thư mục này. Nếu thư mục này không tồn tại, Docker sẽ tạo nó. WORKDIR /usr/share/nginx/html Sao chép tất cả các files còn lại trong thư mục server vào thư mục làm việc vừa cài đặt ở bước 2 (/usr/share/nginx/html) COPY . . Xóa file cài đặt mặc định của Nginx. RUN rm /etc/nginx/conf.d/default.conf Sao chép file cài đặt của chúng ta vào trong container. COPY ./nginx.conf /etc/nginx/conf.d Chạy Nginx ở chế độ nền (daemon off;), điều này cần thiết cho các container vì chúng sẽ kết thúc khi tiến trình chính của chúng bị dừng. Chế độ nền giữ cho máy chủ Nginx luôn được chạy. ENTRYPOINT [ \u0026#34;nginx\u0026#34;, \u0026#34;-g\u0026#34;, \u0026#34;daemon off;\u0026#34; ]: Kết thúc.\n"
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.2-createpublicsubnet/",
-	"title": "Tạo Public subnet",
+	"title": "Tạo Public Subnet",
 	"tags": [],
 	"description": "",
-	"content": "Tạo Public subnet Click Subnets. Click Create subnet. Tại trang Create subnet. Tại mục VPC ID click chọn Lab VPC. Tại mục Subnet name điền Lab Public Subnet. Tại mục Availability Zone chọn Availability zone đầu tiên. Tại mục IPv4 CIRD block điền 10.10.1.0/24. Kéo xuống cuối trang , click Create subnet.\nClick chọn Lab Public Subnet.\nClick Actions. Click Edit subnet settings. Click chọn Enable auto-assign public IPv4 address. Click Save. Click Internet Gateways. Click Create internet gateway. Tại trang Create internet gateway. Tại mục Name tag điền Lab IGW. Click Create internet gateway. Sau khi tạo thành công, click Actions. Click Attach to VPC. Tại trang Attach to VPC. Tại mục Available VPCs chọn Lab VPC. Click Attach internet gateway. Kiểm tra quá trình attach thành công như hình dưới. Tiếp theo chúng ta sẽ tạo một custom route table để gán vào Lab Public Subnet. Click Route Tables. Click Create route table. Tại trang Create route table. Tại mục Name, điền Lab Publicrtb. Tại mục VPC, chọn Lab VPC. Click Create route table. Sau khi tạo route table thành công. Click Edit routes. Tại trang Edit routes. Click Add route. Tại mục Destination điền 0.0.0.0/0 Tại mục Target chọn Internet Gateway sau đó chọn Lab IGW. Click Save changes. Click tab Subnet associations. Click Edit subnet associations để tiến hành associate custom routable chúng ta vừa tạo vào Lab Public Subnet. Tại trang Edit subnet associations. Click chọn Lab Public Subnet. Click Save associations. Kiểm tra thông tin route table đã được associate với Lab Public Subnet và thông tin route đi internet đã được trỏ đến Internet Gateway như hình dưới. "
-},
-{
-	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.2-createcodedeployymlfile/",
-	"title": "Tạo S3 Bucket",
-	"tags": [],
-	"description": "",
-	"content": "Trong bước này, chúng ta sẽ tạo 1 S3 bucket để lưu trữ các session logs được gửi từ các EC2 instance.\nTạo S3 Bucket Truy cập giao diện quản trị dịch vụ S3 Click Create bucket. Tại trang Create bucket. Tại mục Bucket name điền tên bucket lab-yourname-bucket-0001 Tại mục Region chọn Region bạn đang làm lab hiện tại. Tên S3 bucket phải đảm bảo không trùng với toàn bộ S3 bucket khác trong hệ thống. Bạn có thể thay thế tên mình và điền số ngẫu nhiên khi tạo tên S3 bucket.\nKéo chuột xuống phía dưới và click Create bucket. Khi tạo S3 bucket chúng ta đã thực hiện Block all public access nên các EC2 instance của chúng ta sẽ không thể kết nối tới S3 thông qua mạng internet. Trong bước tiếp theo chúng ta sẽ cấu hình tính năng S3 Gateway Endpoint để cho phép các EC2 instance có thể kết nối tới S3 bucket thông qua mạng nội bộ của VPC.\n"
+	"content": "Tạo Public Subnet Chọn vào trang Subnets. Chọn Create subnet. Tại trang Create subnet. Tại mục VPC ID section, chọn ASG. Tại mục Subnet name, nhập Public Subnet. Tại phần Availability Zone, chọn AZ đầu tiên. Tại mục IPv4 CIRD block nhập 10.10.1.0/24. Kéo xuống dưới cùng trang và click Create subnet.\nClick vào Public Subnet vừa tạo.\nClick Actions. Click Edit subnet settings. Click Enable auto-assign public IPv4 address. Click Save. Click Internet Gateways. Click Create internet gateway. Tại trang Create internet gateway. Ở mục Name tag nhập IGW. Click Create internet gateway. Sau khi tạo thành công, click vào Actions. Click Attach to VPC. Ở trang Attach to VPC. Ở phần Available VPCs, chọn ASG. Click Attach internet gateway. Kiểm tra trạng thái đến khi hiện như hình sau. Tiếp theo ta cần tạo 1 Route Table cho Subnet vừa tạo. Click Route Tables. Click Create route table. Tại trang Create route table. Ở mục Name, nhập Public Route Table. Ở phần VPC chọn VPC. Click Create route table. Sau khi đã tạo thành công Route Table, ta cần cài đặt routes. Click Edit routes. Tại trang Edit routes. Click Add route. Ở mục Destination ta nhập 0.0.0.0/0 Ở mục Target, chọn Internet Gateway sau đó chọn IGW. Click Save changes. Chọn tab Subnet associations. Click Edit subnet associations để gắn Route Table ta vừa tạo trong Public Subnet. Tại tab Edit subnet associations. Click vào Public Subnet. Click Save associations. Kiểm tra lại các thông tin và trạng thái của các thành phần ta vừa tạo. "
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.1-createnginx/",
@@ -85,101 +99,87 @@
 },
 {
 	"uri": "//localhost:1313/vi/3-buildandtestimage/",
-	"title": "Tạo kết nối đến máy chủ EC2",
+	"title": "Kiểm tra Image",
 	"tags": [],
 	"description": "",
-	"content": "Trong bước này, chúng ta sẽ thực hiện tạo kết nối đến các máy chủ EC2 của chúng ta, nằm trong cả public và private subnet.\nNội dung 3.1. Tạo Kết nối đến máy chủ EC2 Public 3.2. Tạo Kết nối đến máy chủ EC2 Private\n"
-},
-{
-	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.3-createbuildspecfile/",
-	"title": "Tạo S3 Gateway endpoint",
-	"tags": [],
-	"description": "",
-	"content": " Truy cập vào giao diện quản trị dịch vụ VPC Click Endpoints. Click Create endpoint. Tại trang Create endpoint. Tại mục Name tag điền S3GW. Tại mục Service Category click chọn AWS services. Tại ô tìm kiếm điền S3, sau đó chọn com.amazonaws.[region].s3 Tại mục Services chọn com.amazonaws.[region].s3 có Type là Gateway. Tại mục VPC , chọn Lab VPC. Tại mục Route tables, chọn cả 2 route table. Kéo chuột xuống dưới cùng, click Create endpoint. Bước tiếp theo chúng ta sẽ tiến hành cấu hình Session Manager để có thể lưu trữ các session logs tới S3 bucket chúng ta đã tạo.\n"
-},
-{
-	"uri": "//localhost:1313/vi/4-createpipelinecomponents/",
-	"title": "Quản lý session logs",
-	"tags": [],
-	"description": "",
-	"content": "Với Session Manager chúng ta có thể xem được lịch sử các kết nối tới các instance thông qua Session history. Tuy nhiên chúng ta chưa xem được chi tiết các câu lệnh được sử dụng.\nTrong phần này chúng ta sẽ tiến hành tạo S3 bucket và thực hiện cấu hình lưu trữ các session logs để xem được chi tiết các câu lệnh được sử dụng trong session.\nNội dung: Cập nhật IAM Role Tạo S3 Bucket Tạo S3 Gateway endpoint Cấu hình Session logs "
+	"content": "Ở bước này, chúng ta sẽ tiến hành kiểm tra các tài nguyên Docker đã tạo ở bước Prepare Docker resources.\nA. Build Mở terminal trong thư mục gốc của dự án, nhập docker compose up và nhấn Enter. Docker Compose sẽ bắt đầu build các services ta đã định nghĩa trong docker-compose.yml. Mở một terminal khác, nhập docker image ls và nhấn Enter, kiểm tra 2 images chúng ta vừa tạo. Mở browser, trên thanh địa chỉ, ta nhập localhost:4000, nếu nhận được error Cannot GET / tức là backend của ta đã chạy trên cổng 4000. Mở browser, trên thanh địa chỉ, ta nhập localhost, ta sẽ thấy trang mặc định của nginx bởi vì chúng ta chưa đẩy file cấu hình vào trong nginx context phía trong container. Tất cả các container đã hoạt động. Chúng ta có thể chuyển sang bước tiếp theo.\n"
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.3-createsecgroup/",
-	"title": "Tạo các security group",
+	"title": "Tạo các security groups",
 	"tags": [],
 	"description": "",
-	"content": "Tạo các security group Trong bước này chúng ta sẽ tiến hành tạo các security group được sử dụng cho các instance của chúng ta. Các bạn có thể thấy, các securiy group này sẽ không cần phải mở các port truyền thống để ssh như port 22 hoặc remote desktop thông qua port 3389.\nTạo security group cho Linux instance nằm trong public subnet Truy cập giao diện quản trị dịch vụ VPC Click Security Group. Click Create security group. Tại mục Security group name, điền SG Public Linux Instance. Tại mục Description, điền SG Public Linux Instance. Tại mục VPC, click dấu X để chọn lại Lab VPC bạn đã tạo cho bài lab này. Giữ nguyên Outbound rule, kéo chuột xuống phía dưới. Click Create security group. Các bạn có thể thấy, security group chúng ta tạo sử dụng cho Linux public instance sẽ không cần phải mở các port truyền thống để ssh như port 22.\nTạo security group cho Windows instance nằm trong private subnet Sau khi tạo thành công security group cho Linux instance nằm trong public subnet, click vào link Security Groups để quay trở lại danh sách Security groups. Click Create security group.\nTại mục Security group name, điền SG Private Windows Instance.\nTại mục Description, điền SG Private Windows Instance. Tại mục VPC, click dấu X để chọn lại Lab VPC bạn đã tạo cho bài lab này. Kéo chuột xuống phía dưới. Thêm Outbound rule cho phép kết nối TCP 443 tới 10.10.0.0/16 ( CIDR của Lab VPC chúng ta đã tạo) Click Create security group. Đối với Instance trong private subnet, chúng ta sẽ kết nối tới endpoint của Session Manager qua kết nối đã được mã hóa TLS. vì thế chúng ta cần cho phép kết nối chiều ra từ instance của mình tới VPC CIDR thông qua port 443.\nTạo security group cho VPC Endpoint Trong bước này, chúng ta sẽ tạo security group cho VPC Endpoint của Session Manager. Sau khi tạo thành công security group cho Windows instance trong private subnet, click vào link Security Groups để quay trở lại danh sách Security groups. Click Create security group. Tại mục Security group name, điền SG VPC Endpoint. Tại mục Description, điền SG VPC Endpoint. Tại mục VPC, click dấu X để chọn lại Lab VPC bạn đã tạo cho bài lab này. Kéo chuột xuống phía dưới. Xóa Outbound rule. Thêm Inbound rule cho phép TCP 443 đến từ 10.10.0.0/16 ( CIDR của Lab VPC chúng ta đã tạo ). Click Create security group. Như vậy chúng ta đã tiến hành xong việc tạo các security group cần thiết cho các EC2 instance và VPC Endpoint.\n"
+	"content": "Tạo các security groups Ở bước này, ta sẽ tiến hành tạo các security groups cho instances của mình.\nTạo security group cho Linux instance được đặt trong public subnet Truy cập VPC service management console Click Security Group. Click Create security group. Ở mục Security group name ta nhập Public SG. ở mục Description ta nhập Allow SSH and Ping to Server. Ở phần VPC ta chọn X để chọn VPC có tên ASG mà ta đã tạo ở bước trước. Ở mục Inbound rules, click vào Add rule, chúng ta cần cài 2 rules cho instance của mình. Chọn Type SSH - Source My IP - Description Allow SSH and Ping to Server. Allow my IP access server with SSH protocol. Type HTTP - Source Anywhere-IPv4 - Description Allow access to Server. Allow everyone can access our website with HTTP protocol. Giữ nguyên cài đặt của Outbound rule. Click Create security group. Chúng ta đã hoàn thành tạo Security Group cho EC2 instance của mình.\n"
 },
 {
 	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.4-createcodebuild/",
-	"title": "Theo dõi session logs",
+	"title": "Chuẩn bị AWS CodeBuild",
 	"tags": [],
 	"description": "",
-	"content": "Theo dõi session logs Truy cập giao diện quản trị dịch vụ System Manager - Session Manager Click tab Preferences. Click Edit. Kéo chuột xuống phía dưới, tại mục S3 logging, click chọn Enable. Bỏ chọn Allow only encrypted S3 buckets. Click chọn Choose a bucket name from the list. Chọn S3 bucket bạn đã tạo. Kéo chuột xuống phía dưới, click Save để lưu cấu hình.\nTruy cập giao diện quản trị dịch vụ System Manager - Session Manager\nClick Start session. Click chọn Private Windows Instance. Click Start session. Gõ lệnh ipconfig. Gõ lệnh hostname. Click Terminate để thoát session, click Terminate 1 lần nữa để xác nhận. Kiểm tra Session logs trong S3 Truy cập vào giao diện quản trị dịch vụ S3 Click vào tên S3 bucket chúng ta đã tạo cho bài lab. Click vào tên file sessions log Tại trang chi tiết objects , click Open. File logs sẽ được mở ở 1 tab mới trên trình duyệt.Bạn có thể xem các câu lệnh đã được lưu trữ lại trong session logs. "
+	"content": "Chuẩn bị CodeBuild project Truy cập CodeBuild management console Click vào tab Create project. Ở mục Project name ta nhập chat-app-build Kéo xuống dưới phần Source -\u0026gt; Source 1 - Primary:\nỞ mục Source provider, chọn Github. Ở mục Credential, chọn Custom source credential. Ở mục Credential type, chọn GitHub App. Click vào create a new GitHub connection. Ở mục Create connection popup Ở mục Connection name, ta nhập chat-app-connection Click vào Connect to Github. Click vào Install a new app Click vào Sign In to Github Sau khi đăng nhập thành công, kéo xuống phía dưới tới mục Repository access:\nChọn Only select repositories. Chọn chat-app. Click vào Save. Quay trở lại Create connection popup Click vào Connect Quay trở lại mục Source 1 - Primary. Ở mục Connection, chọn kết nối mà ta vừa tạo ở bước trên. Ở mục Repository, chọn Repository in my Github account và chọn repo chat-app. Ở mục Primary source webhook events Chọn vào Rebuild every time a code change is pushed to this repository để bật tự động build lại. Chọn Single build Kéo xuống phần Environment Ở mục Service Role, chọn Existing service role. Ở mục Role ARN, chọn ChatAppBuildRole. Ở mục Build Spec -\u0026gt; Build specifications, ta chọn Use a buildspec file. Ở mục Buildspec name - optional, ta nhập buildspec.yml - đây là tên của buildspec referecne file chúng ta đã tạo từ bước Create buildspect.yml file Kéo xuống dưới phần Artifacts -\u0026gt; Artifact 1 - Primary Ở mục Type, ta chọn Amazon S3. Ở mục Bucket name, ta chọn tamlv-chat-app-bucket. Ở mục Name, ta nhập chatAppBuildArtifact Ở mục Artifacts packaging, ta chọn Zip Kéo xuống dưới đến phần Logs Check on CloudWatch logs - optional to enable logging. At Group name - optional, enter aws/codebuild/chat-app-build. Click Create build project. Kiểm tra Build process của CodeBuild Truy cập Build projects management Click vào tên của project mà ta đã tạo cho lab này ở bên trên. Click vào Start build Chờ cho quá trình build thành công. "
 },
 {
-	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.5-createcodedeploy/",
-	"title": "Theo dõi session logs",
+	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/",
+	"title": "Chuẩn bị VPC and EC2",
 	"tags": [],
 	"description": "",
-	"content": "Theo dõi session logs Truy cập giao diện quản trị dịch vụ System Manager - Session Manager Click tab Preferences. Click Edit. Kéo chuột xuống phía dưới, tại mục S3 logging, click chọn Enable. Bỏ chọn Allow only encrypted S3 buckets. Click chọn Choose a bucket name from the list. Chọn S3 bucket bạn đã tạo. Kéo chuột xuống phía dưới, click Save để lưu cấu hình.\nTruy cập giao diện quản trị dịch vụ System Manager - Session Manager\nClick Start session. Click chọn Private Windows Instance. Click Start session. Gõ lệnh ipconfig. Gõ lệnh hostname. Click Terminate để thoát session, click Terminate 1 lần nữa để xác nhận. Kiểm tra Session logs trong S3 Truy cập vào giao diện quản trị dịch vụ S3 Click vào tên S3 bucket chúng ta đã tạo cho bài lab. Click vào tên file sessions log Tại trang chi tiết objects , click Open. File logs sẽ được mở ở 1 tab mới trên trình duyệt.Bạn có thể xem các câu lệnh đã được lưu trữ lại trong session logs. "
-},
-{
-	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.6-createcodepipeline/",
-	"title": "Theo dõi session logs",
-	"tags": [],
-	"description": "",
-	"content": "Theo dõi session logs Truy cập giao diện quản trị dịch vụ System Manager - Session Manager Click tab Preferences. Click Edit. Kéo chuột xuống phía dưới, tại mục S3 logging, click chọn Enable. Bỏ chọn Allow only encrypted S3 buckets. Click chọn Choose a bucket name from the list. Chọn S3 bucket bạn đã tạo. Kéo chuột xuống phía dưới, click Save để lưu cấu hình.\nTruy cập giao diện quản trị dịch vụ System Manager - Session Manager\nClick Start session. Click chọn Private Windows Instance. Click Start session. Gõ lệnh ipconfig. Gõ lệnh hostname. Click Terminate để thoát session, click Terminate 1 lần nữa để xác nhận. Kiểm tra Session logs trong S3 Truy cập vào giao diện quản trị dịch vụ S3 Click vào tên S3 bucket chúng ta đã tạo cho bài lab. Click vào tên file sessions log Tại trang chi tiết objects , click Open. File logs sẽ được mở ở 1 tab mới trên trình duyệt.Bạn có thể xem các câu lệnh đã được lưu trữ lại trong session logs. "
+	"content": "\rChúng ta cần tạo 1 Linux instance chạy trong public subnet để thực hiện bài lab này.\nĐể tìm hiểu thêm về cách tạo EC2 instances và VPCs cùng public/private subnets, bạn có thể xem thêm các bài lab sau:\nVề Amazon EC2 Làm việc với Amazon VPC Content Tạo VPC Tạo Public Subnet Tạo Security Group Tạo EC2 Instance Kiểm tra kết nối "
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.4-createec2linux/",
-	"title": "Tạo Public Linux EC2",
+	"title": "Create EC2 Instance",
 	"tags": [],
 	"description": "",
-	"content": " Truy cập giao diện quản trị dịch vụ EC2 Click Instances. Click Launch instances. Tại trang Step 1: Choose an Amazon Machine Image (AMI). Click Select để lựa chọn AMI Amazon Linux 2 AMI. Tại trang Step 2: Choose an Instance Type. Click chọn Instance type t2.micro. Click Next: Configure Instance Details. Tại trang Step 3: Configure Instance Details Tại mục Network chọn Lab VPC. Tại mục Subnet chọn Lab Public Subnet. Tại mục Auto-assign Public IP chọn Use subnet setting (Enable) Click Next: Add Storage. Click Next: Add Tags để chuyển sang bước kế tiếp. Click Next: Configure Security Group để chuyển sang bước kế tiếp. Tại trang Step 6: Configure Security Group. Chọn Select an existing security group. Chọn security group SG Public Linux Instance. Click Review and Launch. Hộp thoại cảnh báo hiện lên vì chúng ta không cấu hình tường lửa cho phép kết nối vào port 22, Click Continue để tiếp tục.\nTại trang Step 7: Review Instance Launch.\nClick Launch. Tại hộp thoại Select an existing key pair or create a new key pair. Click chọn Create a new key pair. Tại mục Key pair name điền LabKeypair. Click Download Key Pair và lưu xuống máy tính của bạn. Click Launch Instances để tạo máy chủ EC2. Click View Instances để quay lại danh mục EC2 instances.\nClick vào biểu tượng edit dưới cột Name.\nTại hộp thoại Edit Name điền Public Linux Instance. Click Save. Tiếp theo chúng ta sẽ thực hiện tương tự để tạo 1 EC2 Instance Windows chạy trong Private subnet.\n"
+	"content": " Truy cập EC2 service management console Click Instances. Click Launch instances. Ở mục Step 1: Choose an Amazon Machine Image (AMI). Click Quick Start và chọn Ubuntu. Tại Amazon Machine Image, chọn Ubuntu Server 24.04 LTS (free tier eligible). Kéo đến phần Instance Type. Chọn t2.micro. Click Create new key pair tại mục Key pair (login). Trong Create key pair popup. Tại mục Key pair name ta nhập chat-app. Tại mục Key pair type chọn RSA. Tại mục Private key file format ta chọn .pem. Click Create key pair. Kéo xuống phần Network settings, click vào Edit Trong phần Network ta chọn ASG. Tại mục Subnet ta chọn Public Subnet. Tại mục Auto-assign Public IP ta chọn Use subnet setting (Enable) Tại mục Common security groups ta chọn Public SG Kéo xuống phần Advance details và mở rộng phần này ra. Ở phần IAM Instance profile, chọn EC2S3ReadPermission Policy mà chúng ta tạo tại bước Create IAM Role. Giữ các cài đặt khác ở chế độ mặc định vào kéo xuống dưới. Click Launch. Click vào View Instances để trở lại trang quản lý EC2 instances. "
+},
+{
+	"uri": "//localhost:1313/vi/4-createpipelinecomponents/",
+	"title": "Tạo các thành phần của Pipeline",
+	"tags": [],
+	"description": "",
+	"content": "The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services. In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.\nPipeline CI/CD được xây dựng để tự động hóa các quá trình build và deploy. Với các dịch vụ cloud-native, chúng ta sử dụng các dịch vụ CodeBuild, CodeDeploy, CodePipeline. Trong phần này, chúng ta sẽ tiến hành tạo CodeBuild, CodeDeploy, CodePipeline và cấu hình pipeline của chúng ta.\nContent: Tạo Scripts Files Tạo AppSpec file reference Tạo Build specification reference Tạo CodeBuild Tạo CodeDeploy Tạo CodePipeline "
 },
 {
 	"uri": "//localhost:1313/vi/5-cleanup/",
 	"title": "Dọn dẹp tài nguyên  ",
 	"tags": [],
 	"description": "",
-	"content": "Chúng ta sẽ tiến hành các bước sau để xóa các tài nguyên chúng ta đã tạo trong bài thực hành này.\nXóa EC2 instance Truy cập giao diện quản trị dịch vụ EC2 Click Instances. Click chọn cả 2 instance Public Linux Instance và Private Windows Instance. Click Instance state. Click Terminate instance, sau đó click Terminate để xác nhận. Truy cập giao diện quản trị dịch vụ IAM Click Roles. Tại ô tìm kiếm , điền SSM. Click chọn SSM-Role. Click Delete, sau đó điền tên role SSM-Role và click Delete để xóa role. Click Users. Click chọn user Portfwd. Click Delete, sau đó điền tên user Portfwd và click Delete để xóa user. Xóa S3 bucket Truy cập giao diện quản trị dịch vụ System Manager - Session Manager. Click tab Preferences. Click Edit. Kéo chuột xuống dưới. Tại mục S3 logging. Bỏ chọn Enable để tắt tính năng logging. Kéo chuột xuống dưới. Click Save. Truy cập giao diện quản trị dịch vụ S3 Click chọn S3 bucket chúng ta đã tạo cho bài thực hành. ( Ví dụ : lab-fcj-bucket-0001 ) Click Empty. Điền permanently delete, sau đó click Empty để tiến hành xóa object trong bucket. Click Exit. Sau khi xóa hết object trong bucket, click Delete Điền tên S3 bucket, sau đó click Delete bucket để tiến hành xóa S3 bucket. Xóa các VPC Endpoint Truy cập vào giao diện quản trị dịch vụ VPC Click Endpoints. Chọn 4 endpoints chúng ta đã tạo cho bài thực hành bao gồm SSM, SSMMESSAGES, EC2MESSAGES, S3GW. Click Actions. Click Delete VPC endpoints. Tại ô confirm , điền delete. Click Delete để tiến hành xóa các endpoints. Click biểu tượng refresh, kiểm tra tất cả các endpoints đã bị xóa trước khi làm bước tiếp theo. Xóa VPC Truy cập vào giao diện quản trị dịch vụ VPC Click Your VPCs. Click chọn Lab VPC. Click Actions. Click Delete VPC. Tại ô confirm, điền delete để xác nhận, click Delete để thực hiện xóa Lab VPC và các tài nguyên liên quan. "
-},
-{
-	"uri": "//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": ""
+	"content": "Chúng ta sẽ tiến hành các bước sau để xóa các tài nguyên chúng ta đã tạo trong bài thực hành này.\nXóa EC2 instance Truy cập giao diện quản trị dịch vụ EC2 Click Instances. Chọn ChatApp instance. Click Instance state. Click Terminate instance, sau đó click Terminate để xác nhận. Truy cập giao diện quản trị dịch vụ IAM Click Roles. Tại ô tìm kiếm, tìm kiếm các tên sau: ChatAppBuildRole, ChatAppCodeDeploy, ChatAppCodePipelineRole, EC2S3ReadPermission Click Delete Xóa S3 bucket Truy cập giao diện quản trị dịch vụ System Manager - Session Manager. Click vào S3 bucket mà chúng ta đã tạo cho bài lab này. (Example: tamlv-chat-app-bucket ) Click Empty. Điền permanently delete, sau đó click Empty để tiến hành xóa object trong bucket. Click Exit. Sau khi xóa hết object trong bucket, click Delete Điền tên S3 bucket, sau đó click Delete bucket để tiến hành xóa S3 bucket. Xóa VPC Truy cập VPC service management console Click Your VPCs. Chọn VPC ta đã tạo cho bài lab: ASG. Click Actions. Click Delete VPC. Trong ô xác nhận, nhập delete. Click Delete để tiến hành xóa VPC. Hành động này cũng sẽ xóa Internet Gateway, Security Group, Subnet, Route Table được gắn với VPC này. 3. Nhấn vào nút refresh, kiểm tra xem VPC đã xóa thành công hay chưa trước khi sang bước tiếp theo.\nXoa CodePipeline Truy cập CodePipeline service management console\nChọn Pipeline mà ta đã tạo cho bài lab: ChatAppCodePipeline. Click Delete Pipeline. Trong ô xác nhận, nhập delete.\nClick Delete để tiến hành xóa Pipeline. Click vào nút refresh, kiểm tra xem CodePipeline đã được xóa thành công hay chưa. Xóa CodeDeploy Go to CodeBuild Applications management console\nClick on the Application we created for the lab: ChatAppCodeDeploy. In the detail page, click Delete Application. In the confirm box, enter delete.\nClick Delete to proceed with deleting CodeDeploy Application. Return to Applications list page, make sure the ChatAppCodeDeploy is deleted before move to next section. Delete CodeBuild Go to CodeBuild Projects management console\nClick on the Project we created for the lab: chat-app-build. Click Actions Click Delete In the detail page, click Delete Application. In the confirm box, enter delete.\nClick Delete to proceed with deleting CodeBuild Project. Return to Projects list page, make sure the chat-app-build is deleted before move to next section. Delete Github Connections Go to CodeSuit Connection management console\nClick on the connection we created for the lab: chat-app-connection. Click Delete In the confirm box, enter delete.\nClick Delete to proceed with deleting connection. "
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.5-testconnection/",
-	"title": "",
+	"title": "Kiểm tra kết nối",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "\rTrong bước này, chúng ta tiến hành kiểm tra hoạt động instances của mình với VPC, Subnet và Security Group mà ta đã tạo ở các bước trước.\nĐể tìm hiểu thêm vè các cách kết nối tới EC2 instances, ta có thể xem bài lab sau: To learn how to connect EC2 instances, you can refer to the lab:\nTest EC2 Connection EC2 Instance Connect Endpoint Guide Ta sử dụng file .pem đã tạo ở bước Create EC2 Instance để xác thực kết nối đển EC2 instance.\nA. Sử dụng Terminal Mở terminal Terminal (hoặc PowerShell, Git Bash,\u0026hellip;) Nhập cd /path-to-pem-file và nhấn Enter Tiếp tục nhập ssh -i /path-to-pem-file ubuntu@public-ip và nhấn Enter Ở lần kết nối đầu tiền, hệ điều hành xác định host mới và sẽ hỏi xác nhận truy nhập, ta nhập yes và nhấn Enter Kiểm tra kết quả. Như trong hình là chúng ta đã thành công kết nối tới EC2. B. Sử dụng phần mềm Bitvise SSH Client với giao diện người dùng. Bitvise SSH Client sử dụng private key để xác thực kết nối vì vậy ta cần tạo một private key từ file pem mà AWS trả cho chúng ta từ bước tạo EC2 Instance.\nVào trang PuTTYgen Website để tải phần mềm. Mở phần mềm Puttygen để bắt đầu tạo private key.\nClick Load Chọn All Files Chọn file pem của EC2 Instance Tại Key passphrase và Confirm passphrase, nhập mật khẩu cho private key. Click Save private key Vào trang Download Bitvise SSH Client để tải phần mềm. Click Download Bitvise SSH Client Mở phần mềm Bitvise SSH Client Tại mục Host, nhập EC2 Instance public IP: 18.132.42.239 Tại mục Port, nhập port mặc định của SSH: 22 Tại mục Username, nhập ubuntu Click vào Client key manager để import private key. Click vào Import and select our generated private key Sau khi hoàn thành trở về màn hình chính và chọn Login.\nKết nối thành công tới EC2 instance. Như vậy EC2 Instance của chúng ta hoạt động tốt. Ta có thể đi tới bước tiếp theo.\n"
 },
 {
-	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.6-settingec2/",
-	"title": "",
+	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.5-createcodedeploy/",
+	"title": "Tạo AWS CodeDeploy",
 	"tags": [],
 	"description": "",
-	"content": ""
-},
-{
-	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": ""
+	"content": "Tạo CodeDeploy Application Truy cập vào CodeDeploy - AWS Developer Tools management console Click vào Create application. Tại mục Application configuration. Ở phần Application name ta nhập ChatAppCodeDeploy. Ở phần Compute platform, ta chọn EC2/On-premises. Click vào Create application. Quay trở lại phần Application Detail mà ta vừa tạo. Click vào Create deployment group Ở phần Deployment group name Nhập ChatAppDeploymentGroup Ở phần Service Role, ta chọn ChatAppCodeDeploy ta đã tạo ở bước Create IAM Role Ở phần Deployment Type, ta chọn In-place. Kéo xuống dưới phần Environment configuration. Chọn vào Amazon EC2 instances. Nhập Key: Name - Value: ChatApp để dễ dàng quản lý hơn. Kéo xuống dưới phần Load balancer. Bỏ chọn Enable load balancing. Click vào Create deployment group. Tạo Deployment Đi tới trang Detail page của Application chúng ta vừa tạo Click vào Create deployment Ở phần Deployment setting: Mục Revision type, ta chọn My application is stored in Amazon S3. Mục Revision location, sao chép URI của artifact trong S3 Bucket và dán ở đây. At Revision file type, select .zip Kéo xuống phía dưới, click vào Create deployment\nChờ đợi cho đến khi quá trình deploy thành công. "
 },
 {
 	"uri": "//localhost:1313/vi/2-prerequiste/2.5-creates3bucket/",
-	"title": "",
+	"title": "Tạo S3 Bucket",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "Chúng ta cần tạo 1 bucket để lưu các build artiface từ CodeBuild.\nTruy cập S3 service management console Click vào Buckets. Click vào Create Bucket. Tại mục Bucket Name ta nhập chat-app-bucket Các mục khác ta để mặc định sau đó kéo xuống dưới và click Create Bucket Trở lại trang chính và kiểm tra xem bucket đã tạo thành công hay chưa. Ta đã tạo thành công bucket cần thiết, chuyển sang bước tiếp theo!\n"
+},
+{
+	"uri": "//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.6-settingec2/",
+	"title": "Cài đặt EC2 Instance",
+	"tags": [],
+	"description": "",
+	"content": " Đầu tiên, kết nối tới EC2 instance của chúng ta. Bạn có thể xem lại hướng dẫn tại bước Connect to EC2. Cài đặt Docker Xem hướng dẫn từ trang chủ của Docker Docker document. Cài đặt Docker Compose Theo hướng dẫn bước 1 từ Digital Ocean. Cài đặt CodeDeploy agent. Làm theo hướng dẫn của AWS CodeDeploy Document "
+},
+{
+	"uri": "//localhost:1313/vi/4-createpipelinecomponents/4.6-createcodepipeline/",
+	"title": "Tạo AWS CodePipeline",
+	"tags": [],
+	"description": "",
+	"content": "Tạo AWS CodePipeline Truy cập vào S3 Management Console Click vào Buckets ở menu điều hướng bên tay trái. Chọn bucket tamlv-chat-app-bucket. Chọn vào chat-app-build, và click vào Copy S3 URI. Ta cần URI này khi cấu hình CodePipeline. Truy cập CodePipeline - Pipelines management console Click vào Create Pipeline. Kéo xuống phía dưới phần Pipeline settings. Ta nhập ChatAppCodePipeline ở mục Pipeline name. Ở phần Execution mode ta chọn Queued (Pipeline type V2 required). Ở phần Service role ta chọn New service role. Ta sẽ để AWS tạo 1 Role mới cho CodePipeline với tên ChatAppCodePipelineRole. Chọn vào Allow AWS CodePipeline to create a service role so it can be used with this new pipeline. Kéo xuống phía dưới phần Primary source webhook events. Chọn vào Rebuild every time a code changes is pushed to this repository. Lựa chọn này đảm bảo rằng pipeline của chúng ta sẽ được trigger mỗi khi ta push code mới lên repository. Click Next, ta chuyển tới phần Add source stage. Ở mục Source provider, ta chọn Amazon S3. Ở mục Bucket, ta chọn tamlv-chat-app-bucket, đây là bucket lưu artifact. Ở mục S3 object key, dán S3 URI mà ta đã sao chép từ bước 1. Chỉ giữ lại ChatAppBuildArtifact/chat-app-build.zip Ở mục Change detection options, ta chọn AWS CodePipeline. Click vào Next. Chuyển tới phần Build. Ở mục Build provider, chọn Other build providers. Chọn AWS CodeBuild. Chọn chat-app-build ở phần Project name. Kéo xuống dưới, click vào Next. Ta chuyển tới phần Deploy. Ở mục Deploy provider, ta chọn AWS CodeDeploy. Ở mục Input artifacts, ta chọn SourceArtifact. Ở mục Application name, ta chọn ChatAppCodeDeploy. Ở mục Deployment group, ta chọn ChatAppDeploymentGroup. Click vào Next. Tại trang Review, ta kiểm tra lại tất cả thông tin một lượt rồi sau đó click vào Create pipeline. Kiểm tra Pipeline. Chúng ta đẩy một commit tới đến Github Repository.\nKiểm tra từng stage của pipeline.\nTất cả các stage đã thành công. "
 },
 {
 	"uri": "//localhost:1313/vi/categories/",

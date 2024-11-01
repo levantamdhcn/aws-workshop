@@ -14,7 +14,7 @@ Docker Compose là 1 công cụ được dùng để định nghĩa và chạy n
 Cần chú ý đây là file YAML, vì vậy ta cần tuân thủ chặt chẽ định dạng về cách lùi đầu dòng cũng như tên của từng section.
 {{% /notice %}}
 
-![Docker Compose](images/2.prerequisite/046-createdockercompose.png)
+![Docker Compose](/images/2.prerequisite/046-createdockercompose.png)
 
 Tại thư mục gốc của dự án, tạo 1 file mới đặt tên docker-compose.yml với nội dung sau:
 ```bash
