@@ -231,18 +231,6 @@
                 href="//localhost:1313/vi/4-createpipelinecomponents/4.6-createcodepipeline/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/5-runpipeline/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="//localhost:1313/5-runpipeline/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="//localhost:1313/vi/5-runpipeline/"
-                />
-  </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.4-createec2linux/</loc>
     <xhtml:link
                 rel="alternate"
@@ -255,17 +243,17 @@
                 href="//localhost:1313/vi/2-prerequiste/2.4-createec2/2.4.4-createec2linux/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/6-cleanup/</loc>
+    <loc>//localhost:1313/vi/5-cleanup/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/6-cleanup/"
+                href="//localhost:1313/5-cleanup/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/6-cleanup/"
+                href="//localhost:1313/vi/5-cleanup/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/2-prerequiste/2.2-createdockerresource/2.2.3-createdockercompose/</loc>

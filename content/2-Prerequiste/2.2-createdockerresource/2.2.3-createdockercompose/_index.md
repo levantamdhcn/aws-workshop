@@ -32,7 +32,6 @@ services:
       restart: always
       depends_on:
         - node_app
-        - mongo_db
   node_app:
     container_name: node_app
     build:
@@ -43,22 +42,7 @@ services:
       - 4000
     ports:
       - "4000:4000"
-    links:
-      - mongo_db
     env_file: ./server/.env
-    depends_on:
-      - mongo_db
-  mongo_db:
-    container_name: mongo_db
-    image: mongo
-    volumes:
-      - mongo_volume:/data/db
-    expose:
-      - 27017
-    ports:
-      - 27017:27017
-volumes:
-  mongo_volume:
 ```
 
 Let's break down the configuration:

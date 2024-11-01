@@ -1,53 +1,62 @@
 ---
-title : "Monitor session logs"
+title : "Create AWS CodeDeploy"
 date : "`r Sys.Date()`"
 weight : 5
 chapter : false
 pre : " <b> 4.5 </b> "
 ---
 
-#### Monitor session logs
+#### Prepare CodeDeploy Application
 
-1. Access [System Manager - Session Manager service management console](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click the **Preferences** tab.
-  + Click **Edit**.
+1. Access [CodeDeploy - AWS Developer Tools management console](https://eu-west-2.console.aws.amazon.com/codesuite/codedeploy/start)
+  + Click **Create application**.
   
-![S3](/images/4.s3/010-s3.png)
+![CodeDeploy](/images/4.pipeline/017-codedeploy.png)
 
-2. Scroll down, at **S3 logging**, click **Enable**.
-  + Uncheck **Allow only encrypted S3 buckets**.
-  + Click **Choose a bucket name from the list**.
-  + Select the S3 bucket you created.
+2. At **Application configuration**.
+  + At **Application name**, enter **ChatAppCodeDeploy**.
+  + At **Compute platform**, select **EC2/On-premises**.
+  + Click **Create application**.
   
-![S3](/images/4.s3/011-s3.png)
+![CodeDeploy](/images/4.pipeline/018-codedeploy.png)
 
-3. Scroll down, click **Save** to save the configuration.
+3. Return to **Application Detail** we have just created.
+  + Click **Create deployment group**
+![CodeDeploy](/images/4.pipeline/019-codedeploy.png)
 
-4. Access [System Manager - Session Manager service management console](https://console.aws.amazon.com/systems-manager/session-manager)
-  + Click **Start session**.
-  + Click **Private Windows Instance**.
-  + Click **Start session**.
+4. At **Deployment group name**
+  + Enter **ChatAppDeploymentGroup**
+  + At **Service Role**, select **ChatAppCodeDeploy** we created from [Create IAM Role](/2-Prerequiste/2.3-createiamrole/)
+  + At **Deployment Type**, we use **In-place** for now (will have downtime).
+![CodeDeploy](/images/4.pipeline/020-codedeploy.png)
 
-5. Type the command **ipconfig**.
-  + Type the command **hostname**.
-  + Click **Terminate** to exit the session, click **Terminate** again to confirm.
+5. Scroll down to **Environment configuration**.
+  + Check on **Amazon EC2 instances**.
+  + Enter **Key: Name - Value: ChatApp** for better management.
 
-![S3](/images/4.s3/012-s3.png)
+![CodeDeploy](/images/4.pipeline/021-codedeploy.png)
+
+6. Scroll down to **Load balancer**.
+  + Uncheck on **Enable load balancing**, we don't need it for now.
+  + Click **Create deployment group**.
+
+![CodeDeploy](/images/4.pipeline/022-codedeploy.png)
 
 
-#### Check **Session logs** in **S3**
+#### Create Deployment
+1. Go to **Detail page** of Application we have just created
+  + Click **Create deployment**
 
-1. Go to [S3 service management console](https://s3.console.aws.amazon.com/s3/home)
-  + Click on the name of the S3 bucket we created for the lab.
+![CodeDeploy](/images/4.pipeline/023-codedeploy.png)
 
-2. Click on the object name sessions log
+2. At **Deployment setting**:
+  + At **Revision type**, select **My application is stored in Amazon S3**.
+  + At **Revision location**, copy URI of artifact in S3 Bucket and paste here.
+  + At **Revision file type**, select **.zip**
 
-![S3](/images/4.s3/013-s3.png)
+![CodeDeploy](/images/4.pipeline/024-codedeploy.png)
 
-3. On the objects detail page, click **Open**.
+3. Scroll down, click **Create deployment**
 
-![S3](/images/4.s3/014-s3.png)
-
-4. Object logs will be opened in a new tab in the browser. You can view the stored commands in session logs.
-
-![S3](/images/4.s3/015-s3.png)
+4. Waiting for deployment process success.
+![CodeDeploy](/images/4.pipeline/025-codedeploy.png)

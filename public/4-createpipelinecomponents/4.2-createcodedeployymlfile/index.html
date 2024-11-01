@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Create S3 Bucket :: AWS System Manager</title>
+    <title>Create appspec.yml file :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1729184492" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1729184492" rel="stylesheet">
-    <link href="/css/hybrid.css?1729184492" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1729184492" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1729184492" rel="stylesheet">
-    <link href="/css/auto-complete.css?1729184492" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1729184492" rel="stylesheet">
-    <link href="/css/theme.css?1729184492" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1729184492" rel="stylesheet">
+    <link href="/css/nucleus.css?1730391301" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1730391301" rel="stylesheet">
+    <link href="/css/hybrid.css?1730391301" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1730391301" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1730391301" rel="stylesheet">
+    <link href="/css/auto-complete.css?1730391301" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1730391301" rel="stylesheet">
+    <link href="/css/theme.css?1730391301" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1730391301" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1729184492" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1730391301" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1729184492"></script>
+    <script src="/js/jquery-3.3.1.min.js?1730391301"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1729184492"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1729184492"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1730391301"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1730391301"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1729184492"></script>
+<script type="text/javascript" src="/js/search.js?1730391301"></script>
 
     
   </div>
@@ -647,13 +647,13 @@
  
   
     
-    <li data-nav-id="/4-createpipelinecomponents/4.2-createcodedeployymlfile/" title="Create S3 Bucket" class="dd-item 
+    <li data-nav-id="/4-createpipelinecomponents/4.2-createcodedeployymlfile/" title="Create appspec.yml file" class="dd-item 
         
         active
         
         ">
       <a href="/4-createpipelinecomponents/4.2-createcodedeployymlfile/">
-           <b> 4.2 </b> Create S3 Bucket
+           <b> 4.2 </b> Create appspec.yml file
           
             <i class="fas fa-check read-icon"></i>
           
@@ -675,13 +675,13 @@
  
   
     
-    <li data-nav-id="/4-createpipelinecomponents/4.3-createbuildspecfile/" title="Create S3 Gateway endpoint" class="dd-item 
+    <li data-nav-id="/4-createpipelinecomponents/4.3-createbuildspecfile/" title="Create buildspec.yml file" class="dd-item 
         
         
         
         ">
       <a href="/4-createpipelinecomponents/4.3-createbuildspecfile/">
-           <b> 4.3 </b> Create S3 Gateway endpoint
+           <b> 4.3 </b> Create buildspec.yml file
           
             <i class="fas fa-check read-icon"></i>
           
@@ -703,13 +703,13 @@
  
   
     
-    <li data-nav-id="/4-createpipelinecomponents/4.4-createcodebuild/" title="Monitor session logs" class="dd-item 
+    <li data-nav-id="/4-createpipelinecomponents/4.4-createcodebuild/" title="Create AWS CodeBuild" class="dd-item 
         
         
         
         ">
       <a href="/4-createpipelinecomponents/4.4-createcodebuild/">
-           <b> 4.4 </b> Monitor session logs
+           <b> 4.4 </b> Create AWS CodeBuild
           
             <i class="fas fa-check read-icon"></i>
           
@@ -731,13 +731,13 @@
  
   
     
-    <li data-nav-id="/4-createpipelinecomponents/4.5-createcodedeploy/" title="Monitor session logs" class="dd-item 
+    <li data-nav-id="/4-createpipelinecomponents/4.5-createcodedeploy/" title="Create AWS CodeDeploy" class="dd-item 
         
         
         
         ">
       <a href="/4-createpipelinecomponents/4.5-createcodedeploy/">
-           <b> 4.5 </b> Monitor session logs
+           <b> 4.5 </b> Create AWS CodeDeploy
           
             <i class="fas fa-check read-icon"></i>
           
@@ -759,13 +759,13 @@
  
   
     
-    <li data-nav-id="/4-createpipelinecomponents/4.6-createcodepipeline/" title="Monitor session logs" class="dd-item 
+    <li data-nav-id="/4-createpipelinecomponents/4.6-createcodepipeline/" title="Create AWS CodePipeline" class="dd-item 
         
         
         
         ">
       <a href="/4-createpipelinecomponents/4.6-createcodepipeline/">
-           <b> 4.6 </b> Monitor session logs
+           <b> 4.6 </b> Create AWS CodePipeline
           
             <i class="fas fa-check read-icon"></i>
           
@@ -794,39 +794,13 @@
  
   
     
-    <li data-nav-id="/5-runpipeline/" title="Port Forwarding" class="dd-item 
+    <li data-nav-id="/5-cleanup/" title="Clean up resources" class="dd-item 
         
         
         
         ">
-      <a href="/5-runpipeline/">
-           <b> 5. </b> Port Forwarding
-          
-            <i class="fas fa-check read-icon"></i>
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-          
-          
-
-
-
-
- 
-  
-    
-    <li data-nav-id="/6-cleanup/" title="Clean up resources" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/6-cleanup/">
-          <b>6. </b>Clean up resources
+      <a href="/5-cleanup/">
+          <b>5. </b>Clean up resources
           
             <i class="fas fa-check read-icon"></i>
           
@@ -932,9 +906,7 @@
         <br>
             <b> Team </b> <br>
            
-            <i> <a href="https://www.linkedin.com/in/sutrinh/"  style="color:orange">Sử Trịnh  </a> <br>
                 <a href="https://www.linkedin.com/in/jotaguy"  style="color:orange">Gia Hưng </a> <br>
-                <a href="https://www.linkedin.com/in/hiepnguyendt"  style="color:orange">Thanh Hiệp </a>
                
         </i>
         </left>
@@ -979,7 +951,7 @@
             
           
           
-            <a href='/'>Build an CI/CD Pipeline for MERN App with Github</a> > <a href='/4-createpipelinecomponents/'>Create Pipeline Elements</a> > Create S3 Bucket
+            <a href='/'>Build an CI/CD Pipeline for MERN App with Github</a> > <a href='/4-createpipelinecomponents/'>Create Pipeline Elements</a> > Create appspec.yml file
           
         
           
@@ -1016,7 +988,7 @@
           
             <h1>
               
-              Create S3 Bucket
+              Create appspec.yml file
             </h1>
           
 
@@ -1024,15 +996,19 @@
 
 
 
-	<p>In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process.</p>
+	<p>In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process. appspec.yaml is not always required for AWS CodeDeploy. It&rsquo;s only necessary for &ldquo;Application&rdquo; deployment type.</p>
 
 <div class="notices info" ><p>Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).</p>
 </div>
 
+<p>Some documents we can refer:</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html">CodeDeploy AppSpec file reference</a></li>
+<li><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure.html">AppSpec File structure</a></li>
+<li><a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html">AppSpec &lsquo;hooks&rsquo; section</a></li>
+</ul>
 <h4 id="create-appspecyml-file">Create <strong>appspec.yml</strong> file</h4>
-<ol>
-<li>Create appspec.yml inside root directory of project with following content.</li>
-</ol>
+<p>First, create an appspec.yml file with the following contents inside the project&rsquo;s root directory.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#vi appspec.yml</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>version: 0.0
@@ -1054,28 +1030,22 @@
 </span></span><span style="display:flex;"><span>    - location: scripts/start.sh
 </span></span><span style="display:flex;"><span>      timeout: <span style="color:#ae81ff">300</span> 
 </span></span><span style="display:flex;"><span>      runas: ubuntu
-</span></span></code></pre></div><p><img alt="S3" src="/images/4.s3/005-s3.png"></p>
-<ol start="2">
-<li>At the <strong>Create bucket</strong> page.</li>
+</span></span></code></pre></div><ol>
+<li>
+<p>With this file, we define informations for Deploy process about operating system, permissions for sources and scripts to be used during stages like AfterInstall, ApplicationStart.</p>
+</li>
+<li>
+<p>In the permissions section, we set the mode to 777, which grants read, write, and execute permissions to everyone for the scripts folder and all the files inside it.</p>
+</li>
+<li>
+<p>This section specifies the version of the AppSpec file. Do not change this value. It is required. Currently, the only allowed value is 0.0. It is reserved by CodeDeploy for future use.</p>
+</li>
 </ol>
-<ul>
-<li>In the <strong>Bucket name</strong> field, enter the bucket name <strong>lab-yourname-bucket-0001</strong></li>
-<li>In the <strong>Region</strong> section, select <strong>Region</strong> you are doing the current lab.</li>
-</ul>
-<p><img alt="S3" src="/images/4.s3/006-s3.png"></p>
-
-<div class="notices tip" ><p>The name of the S3 bucket must not be the same as all other S3 buckets in the system. You can substitute your name and enter a random number when generating the S3 bucket name.</p>
-</div>
-
-<ol start="3">
-<li>Scroll down and click <strong>Create bucket</strong>.</li>
+<pre tabindex="0"><code>version: 0.0
+</code></pre><ol start="4">
+<li>We need to run stop.sh during the AfterInstall stage, even though this stage occurs before ApplicationStart. In stop.sh, we copy the built files into the destination folder, which will be used by the Nginx container. This container will start during the ApplicationStart stage.</li>
 </ol>
-<p><img alt="S3" src="/images/4.s3/007-s3.png"></p>
-
-<div class="notices tip" ><p>When we created the S3 bucket we did <strong>Block all public access</strong> so our EC2 instances won&rsquo;t be able to connect to S3 via the internet.
-In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2 instances to connect to the S3 bucket via the VPC&rsquo;s internal network.</p>
-</div>
-
+<p>Next, we will proceed to create Buil Spec Reference file.</p>
 
 
 
@@ -1530,22 +1500,6 @@ In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
         
@@ -1558,7 +1512,7 @@ In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2
 			<a class="nav nav-prev" href="/4-createpipelinecomponents/4.1-createscriptfiles/" title="Create Script Files"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/4-createpipelinecomponents/4.3-createbuildspecfile/" title="Create S3 Gateway endpoint" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/4-createpipelinecomponents/4.3-createbuildspecfile/" title="Create buildspec.yml file" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1568,19 +1522,19 @@ In the next step, we will configure the S3 Gateway Endpoint feature to allow EC2
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1729184492"></script>
-    <script src="/js/perfect-scrollbar.min.js?1729184492"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1729184492"></script>
-    <script src="/js/jquery.sticky.js?1729184492"></script>
-    <script src="/js/featherlight.min.js?1729184492"></script>
-    <script src="/js/highlight.pack.js?1729184492"></script>
+    <script src="/js/clipboard.min.js?1730391301"></script>
+    <script src="/js/perfect-scrollbar.min.js?1730391301"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1730391301"></script>
+    <script src="/js/jquery.sticky.js?1730391301"></script>
+    <script src="/js/featherlight.min.js?1730391301"></script>
+    <script src="/js/highlight.pack.js?1730391301"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1729184492"></script>
-    <script src="/js/learn.js?1729184492"></script>
-    <script src="/js/hugo-learn.js?1729184492"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1730391301"></script>
+    <script src="/js/learn.js?1730391301"></script>
+    <script src="/js/hugo-learn.js?1730391301"></script>
 
-    <link href="/mermaid/mermaid.css?1729184492" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1729184492"></script>
+    <link href="/mermaid/mermaid.css?1730391301" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1730391301"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -36,9 +36,7 @@ phases:
   build:
     commands:
       - echo "the build phase begins"
-      # - echo `pwd`
       - npm run build
-      # - echo `ls -la`
   post_build:
     commands:
       - echo "the post build phase. navigating back to root path"
@@ -54,7 +52,7 @@ artifacts:
     - Dockerfile
 ```
 
-1. In first section, we define informations for Build process about phases, which command to run in each phase (install, pre_build, build, post_build).
+1. In first section, we define information for Build process about phases, which command to run in each phase (install, pre_build, build, post_build).
 
 2. ``artifacts/files`` represents the locations that contain the build output artifacts in the build environment. Contains a sequence of scalars, with each scalar representing a separate location where CodeBuild can find build output artifacts.
 

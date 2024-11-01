@@ -5,7 +5,7 @@ weight : 2
 chapter : false
 pre : " <b> 4.2 </b> "
 ---
-In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process.
+In this step, we will create a appspec.yml file which used by AWS CodeDeploy to manage the deployment process. appspec.yaml is not always required for AWS CodeDeploy. It's only necessary for "Application" deployment type.
 
 {{% notice info %}}
 Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).
