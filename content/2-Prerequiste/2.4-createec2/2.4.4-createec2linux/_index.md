@@ -42,7 +42,6 @@ pre : " <b> 2.4.4 </b> "
 
 6. Scroll down to **Advance details** section and expand that.
   + At IAM Instance profile, choose **EC2S3ReadPermission** Policy that we create from [Create IAM Role](/2-Prerequiste/2.3-createiamrole/).
-![EC2](https://tamlv.buzz/aws-workshop/images/2.prerequisite/032-createec2.png)
 
 7. Keep default settings for other section, scroll down to bottom.
   + Click **Launch**.
