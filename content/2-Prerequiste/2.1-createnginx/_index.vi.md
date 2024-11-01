@@ -7,7 +7,7 @@ pre : " <b> 2.1 </b> "
 ---
 
 Cấu trúc thư mục của dự án:
-![ConnectPrivate](/images/folder_structure.png)
+![ConnectPrivate](https://tamlv.buzz/aws-workshop/images/folder_structure.png)
 Tạo 1 file mới đặt tên là nginx.conf năm trong thư mục nginx ở cấp ngoài cùng với nội dung sau:
 ```bash
 server {

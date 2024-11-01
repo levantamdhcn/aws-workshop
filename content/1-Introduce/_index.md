@@ -17,4 +17,4 @@ With CI/CD configuration, we got these positive effects:
 
 With above advantages, we should consider CI/CD for our application to save time and effort.
 
-![ConnectPrivate](/images/cicd_flow.png) 
+![ConnectPrivate](https://tamlv.buzz/aws-workshop/images/cicd_flow.png) 

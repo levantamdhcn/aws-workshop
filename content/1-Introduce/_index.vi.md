@@ -17,4 +17,4 @@ Với việc cài đặt CI/CD, ứng dụng sẽ có được những ưu đi�
 
 Với những ưu điểm trên, chúng ta hoàn toàn nên cân nhắc về việc triển khai CI/CD cho ứng dụng để tiết kiệm thời gian và công sức phát triển.
 
-![ConnectPrivate](/images/cicd_flow.png) 
+![ConnectPrivate](https://tamlv.buzz/aws-workshop/images/cicd_flow.png) 

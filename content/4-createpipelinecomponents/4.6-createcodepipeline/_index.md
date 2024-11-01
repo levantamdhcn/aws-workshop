@@ -16,7 +16,7 @@ pre : " <b> 4.6 </b> "
 2. Access [CodePipeline - Pipelines management console](https://eu-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines)
   + Click **Create Pipeline**.
   
-![CodePipeline](/images/4.pipeline/026-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/026-codepipeline.png)
 
 3. Scroll down, at **Pipeline settings**.
   + Enter **ChatAppCodePipeline** at **Pipeline name**.
@@ -24,12 +24,12 @@ pre : " <b> 4.6 </b> "
   + At **Service role**, select **New service role**. We gonna let AWS created new Role for our CodePipeline with name **ChatAppCodePipelineRole**.
   + Check on **Allow AWS CodePipeline to create a service role so it can be used with this new pipeline**.
   
-![CodePipeline](/images/4.pipeline/027-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/027-codepipeline.png)
 
 4. Scroll down to **Primary source webhook events**.
   + Check on **Rebuild every time a code changes is pushed to this repository**. This option make sure that our pipeline will run every time new code pushed.
 
-![CodePipeline](/images/4.pipeline/028-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/028-codepipeline.png)
 
 5. Click **Next**, we move to **Add source stage**.
   + At **Source provider**, select Amazon S3.
@@ -37,7 +37,7 @@ pre : " <b> 4.6 </b> "
   + At **S3 object key**, paste S3 URI we copied from step 1. Keep **ChatAppBuildArtifact/chat-app-build.zip**
   + At **Change detection options**, select **AWS CodePipeline**.
   + Click **Next**.
-![CodePipeline](/images/4.pipeline/029-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/029-codepipeline.png)
 
 6. We move to **Build** section.
   + At **Build provider**, choose **Other build providers**.
@@ -45,7 +45,7 @@ pre : " <b> 4.6 </b> "
   + Select **chat-app-build** at **Project name** section.
   + Scroll down, click **Next**.
 
-![CodePipeline](/images/4.pipeline/030-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/030-codepipeline.png)
 
 7. We move to **Deploy** section.
   + At **Deploy provider**, choose **AWS CodeDeploy**.
@@ -54,7 +54,7 @@ pre : " <b> 4.6 </b> "
   + At **Deployment group**, select **ChatAppDeploymentGroup**.
   + Click **Next**.
 
-![CodePipeline](/images/4.pipeline/031-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/031-codepipeline.png)
 
 8. At **Review** section, re-check all information and click **Create pipeline**.
 
@@ -63,8 +63,8 @@ pre : " <b> 4.6 </b> "
 
 2. See that pipeline go through each stage.
 
-![CodePipeline](/images/4.pipeline/032-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/032-codepipeline.png)
 
 3. All the stage success.
 
-![CodePipeline](/images/4.pipeline/033-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/033-codepipeline.png)

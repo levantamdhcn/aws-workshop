@@ -12,21 +12,21 @@
     <title>Create AWS CodePipeline :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1730476535" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1730476535" rel="stylesheet">
-    <link href="/css/hybrid.css?1730476535" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1730476535" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1730476535" rel="stylesheet">
-    <link href="/css/auto-complete.css?1730476535" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1730476535" rel="stylesheet">
-    <link href="/css/theme.css?1730476535" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1730476535" rel="stylesheet">
+    <link href="/css/nucleus.css?1730477276" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1730477276" rel="stylesheet">
+    <link href="/css/hybrid.css?1730477276" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1730477276" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1730477276" rel="stylesheet">
+    <link href="/css/auto-complete.css?1730477276" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1730477276" rel="stylesheet">
+    <link href="/css/theme.css?1730477276" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1730477276" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1730476535" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1730477276" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1730476535"></script>
+    <script src="/js/jquery-3.3.1.min.js?1730477276"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1730476535"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1730476535"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1730477276"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1730477276"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1730476535"></script>
+<script type="text/javascript" src="/js/search.js?1730477276"></script>
 
     
   </div>
@@ -1011,7 +1011,7 @@
 <ul>
 <li>Click <strong>Create Pipeline</strong>.</li>
 </ul>
-<p><img alt="CodePipeline" src="/images/4.pipeline/026-codepipeline.png"></p>
+<p><img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/026-codepipeline.png"></p>
 <ol start="3">
 <li>Scroll down, at <strong>Pipeline settings</strong>.</li>
 </ol>
@@ -1021,14 +1021,14 @@
 <li>At <strong>Service role</strong>, select <strong>New service role</strong>. We gonna let AWS created new Role for our CodePipeline with name <strong>ChatAppCodePipelineRole</strong>.</li>
 <li>Check on <strong>Allow AWS CodePipeline to create a service role so it can be used with this new pipeline</strong>.</li>
 </ul>
-<p><img alt="CodePipeline" src="/images/4.pipeline/027-codepipeline.png"></p>
+<p><img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/027-codepipeline.png"></p>
 <ol start="4">
 <li>Scroll down to <strong>Primary source webhook events</strong>.</li>
 </ol>
 <ul>
 <li>Check on <strong>Rebuild every time a code changes is pushed to this repository</strong>. This option make sure that our pipeline will run every time new code pushed.</li>
 </ul>
-<p><img alt="CodePipeline" src="/images/4.pipeline/028-codepipeline.png"></p>
+<p><img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/028-codepipeline.png"></p>
 <ol start="5">
 <li>Click <strong>Next</strong>, we move to <strong>Add source stage</strong>.</li>
 </ol>
@@ -1038,7 +1038,7 @@
 <li>At <strong>S3 object key</strong>, paste S3 URI we copied from step 1. Keep <strong>ChatAppBuildArtifact/chat-app-build.zip</strong></li>
 <li>At <strong>Change detection options</strong>, select <strong>AWS CodePipeline</strong>.</li>
 <li>Click <strong>Next</strong>.
-<img alt="CodePipeline" src="/images/4.pipeline/029-codepipeline.png"></li>
+<img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/029-codepipeline.png"></li>
 </ul>
 <ol start="6">
 <li>We move to <strong>Build</strong> section.</li>
@@ -1049,7 +1049,7 @@
 <li>Select <strong>chat-app-build</strong> at <strong>Project name</strong> section.</li>
 <li>Scroll down, click <strong>Next</strong>.</li>
 </ul>
-<p><img alt="CodePipeline" src="/images/4.pipeline/030-codepipeline.png"></p>
+<p><img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/030-codepipeline.png"></p>
 <ol start="7">
 <li>We move to <strong>Deploy</strong> section.</li>
 </ol>
@@ -1060,7 +1060,7 @@
 <li>At <strong>Deployment group</strong>, select <strong>ChatAppDeploymentGroup</strong>.</li>
 <li>Click <strong>Next</strong>.</li>
 </ul>
-<p><img alt="CodePipeline" src="/images/4.pipeline/031-codepipeline.png"></p>
+<p><img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/031-codepipeline.png"></p>
 <ol start="8">
 <li>At <strong>Review</strong> section, re-check all information and click <strong>Create pipeline</strong>.</li>
 </ol>
@@ -1073,11 +1073,11 @@
 <p>See that pipeline go through each stage.</p>
 </li>
 </ol>
-<p><img alt="CodePipeline" src="/images/4.pipeline/032-codepipeline.png"></p>
+<p><img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/032-codepipeline.png"></p>
 <ol start="3">
 <li>All the stage success.</li>
 </ol>
-<p><img alt="CodePipeline" src="/images/4.pipeline/033-codepipeline.png"></p>
+<p><img alt="CodePipeline" src="https://tamlv.buzz/aws-workshop/images/4.pipeline/033-codepipeline.png"></p>
 
 
 
@@ -1554,19 +1554,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1730476535"></script>
-    <script src="/js/perfect-scrollbar.min.js?1730476535"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1730476535"></script>
-    <script src="/js/jquery.sticky.js?1730476535"></script>
-    <script src="/js/featherlight.min.js?1730476535"></script>
-    <script src="/js/highlight.pack.js?1730476535"></script>
+    <script src="/js/clipboard.min.js?1730477276"></script>
+    <script src="/js/perfect-scrollbar.min.js?1730477276"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1730477276"></script>
+    <script src="/js/jquery.sticky.js?1730477276"></script>
+    <script src="/js/featherlight.min.js?1730477276"></script>
+    <script src="/js/highlight.pack.js?1730477276"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1730476535"></script>
-    <script src="/js/learn.js?1730476535"></script>
-    <script src="/js/hugo-learn.js?1730476535"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1730477276"></script>
+    <script src="/js/learn.js?1730477276"></script>
+    <script src="/js/hugo-learn.js?1730477276"></script>
 
-    <link href="/mermaid/mermaid.css?1730476535" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1730476535"></script>
+    <link href="/mermaid/mermaid.css?1730477276" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1730477276"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

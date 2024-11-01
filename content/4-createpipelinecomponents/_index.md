@@ -9,7 +9,7 @@ pre : " <b> 4. </b> "
 The CI/CD Pipeline is built from automate the build, deploy task. With cloud-native tools, we need help from CodeBuild, CodeDeploy, CodePipeline services.
 In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline and configure the our pipeline.
 
-![port-fwd](/images/arc-log.png) 
+![port-fwd](https://tamlv.buzz/aws-workshop/images/arc-log.png) 
 
 ### Content:
 

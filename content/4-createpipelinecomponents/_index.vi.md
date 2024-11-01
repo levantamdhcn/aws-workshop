@@ -12,7 +12,7 @@ In this section, we will proceed to create CodeBuild, CodeDeploy, CodePipeline a
 Pipeline CI/CD được xây dựng để tự động hóa các quá trình build và deploy. Với các dịch vụ cloud-native, chúng ta sử dụng các dịch vụ CodeBuild, CodeDeploy, CodePipeline.
 Trong phần này, chúng ta sẽ tiến hành tạo CodeBuild, CodeDeploy, CodePipeline và cấu hình pipeline của chúng ta.
 
-![port-fwd](/images/arc-log.png) 
+![port-fwd](https://tamlv.buzz/aws-workshop/images/tamlv.buzz/aws-workshop/images/arc-log.png) 
 
 ### Nội dung:
    - [Tạo Scripts Files](/4-CreatePipelineComponents/4.1-createscriptfiles/)
