@@ -14,7 +14,7 @@ Some reference we can learn about this file: [Documents](https://docs.docker.com
 
 The folder structure overview after you complete this step will be as follows:
 
-![Docker](/images/2.prerequisite/002-docker.png)
+![Docker](images/2.prerequisite/002-docker.png)
 
 ### Content
   - [Create Server's Dockerfile](2.1.1-createserverimage/)

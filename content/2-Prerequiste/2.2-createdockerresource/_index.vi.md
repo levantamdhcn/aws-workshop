@@ -14,7 +14,7 @@ Một vài tài liệu liên quan bạn có thể tìm hiểu thêm: [Documents]
 
 Dưới đây là tổng quan về cấu trúc thư mục của chúng ta sau khi hoàn thành toàn bộ bước 2:
 
-![Docker](/images/2.prerequisite/002-docker.png)
+![Docker](images/2.prerequisite/002-docker.png)
 
 ### Content
   - [Tạo Dockerfile cho Server](2.1.1-createserverimage/)
