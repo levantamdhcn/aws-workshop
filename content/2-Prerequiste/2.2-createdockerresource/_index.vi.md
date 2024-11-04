@@ -1,5 +1,5 @@
 ---
-title : "Chuẩn bị tài cho Docker"
+title : "Chuẩn bị tài nguyên cho Docker"
 date : "`r Sys.Date()`"
 weight : 2
 chapter : false

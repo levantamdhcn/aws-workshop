@@ -15,9 +15,9 @@ Trong phần này, chúng ta sẽ tiến hành tạo CodeBuild, CodeDeploy, Code
 ![port-fwd](https://tamlv.buzz/aws-workshop/images/arc-log.png) 
 
 ### Nội dung:
-   - [Tạo Scripts Files](/4-CreatePipelineComponents/4.1-createscriptfiles/)
-   - [Tạo AppSpec file reference](/4-CreatePipelineComponents/4.2-createcodedeployymlfile/)
-   - [Tạo Build specification reference](/4-CreatePipelineComponents/4.3-createbuildspecfile)
-   - [Tạo CodeBuild](/4-CreatePipelineComponents/4.4-createcodebuild/)
-   - [Tạo CodeDeploy](/4-CreatePipelineComponents/4.5-createcodedeploy/)
-   - [Tạo CodePipeline](/4-CreatePipelineComponents/4.6-createcodepipeline/)
+   - [Tạo Scripts Files](/4.1-createscriptfiles/)
+   - [Tạo AppSpec file reference](/4.2-createcodedeployymlfile/)
+   - [Tạo Build specification reference](/4.3-createbuildspecfile)
+   - [Tạo CodeBuild](/4.4-createcodebuild/)
+   - [Tạo CodeDeploy](/4.5-createcodedeploy/)
+   - [Tạo CodePipeline](/4.6-createcodepipeline/)

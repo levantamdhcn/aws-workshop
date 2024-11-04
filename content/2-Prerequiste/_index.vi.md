@@ -26,7 +26,7 @@ Tìm hiểu các định nghĩa cơ bản của Docker:
 
 ### Nội dung
   - [Chuẩn bị cấu hình Nginx](2.1-createnginx/)
-  - [Chuẩn bị tài nguyên cho Docker](2.2-createdocker/)
+  - [Chuẩn bị tài nguyên cho Docker](2.2-createdockerresource/)
   - [Tạo IAM Role](2.3-createiamrole/)
   - [Chuẩn bị VPC và EC2](2.4-createec2/)
   - [Tạo S3 Bucket](2.5-creates3bucket/)

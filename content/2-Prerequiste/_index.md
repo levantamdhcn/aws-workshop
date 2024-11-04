@@ -26,11 +26,7 @@ Learn basic concepts of Docker:
 
 ### Content
   - [Preparing Nginx Config](2.1-createnginx/)
-  - [Preparing Docker Resources](2.2-createdocker/)
+  - [Preparing Docker Resources](2.2-createdockerresource/)
   - [Create IAM Role](2.3-createiamrole/)
   - [Preparing VPC and EC2](2.4-createec2/)
   - [Create S3 Bucket](2.5-creates3bucket/)
-  - [Preparing spec files](2.6-createspecfiles/)
-  - [Create CodeBuild service](2.7-createcodebuild/)
-  - [Create CodeDeploy service](2.8-createcodedeploy/)
-  - [Create CodePipeline service](2.9-createcodepipeline/)
