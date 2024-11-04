@@ -1,7 +1,7 @@
 ---
 title : "Tạo Nginx Image"
 date : "`r Sys.Date()`"
-weight : 2
+weight : 1
 chapter : false
 pre : " <b> 2.1.2 </b> "
 ---

@@ -20,3 +20,4 @@ To learn how to create EC2 instances and VPCs with public/private subnets, you c
   - [Create Security Group](2.4.3-createsecgroup/)
   - [Create EC2 Instance](2.4.4-createec2linux/)
   - [Test Connection](2.4.5-testconnection/)
+  - [Setting up EC2](2-Prerequiste/2.4-createec2/2.4.6-settingec2)

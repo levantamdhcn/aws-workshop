@@ -1,6 +1,6 @@
 ---
-title : "Build an CI/CD Pipeline for MERN App with Github"
-date :  "`r Sys.Date()`" 
+title : "Build an CI/CD Pipeline with Github, AWS CodePipeline, AWS CodeDeploy, AWS Code Build."
+date :  "`r Sys.Date()`"
 weight : 1 
 chapter : false
 ---
@@ -14,7 +14,6 @@ This workshop will describe step by step how to build an CI/CD Pipeline using Gi
 ### Content
  1. [Introduction ](1-introduce/)
  2. [Preparation](2-prerequiste/)
- 3. [Connect to EC2 instance](3-accessibilitytoinstances/)
- 4. [Manage session logs](4-s3log/)
- 5. [Port Forwarding](5-Portfwd/)
- 6. [Clean up resources](6-cleanup/)
+ 3. [BuildAndTestImage](3-BuildAndTestImage/)
+ 4. [Create Pipeline Components](4-createpipelinecomponents/)
+ 5. [Clean up resources](5-cleanup/)

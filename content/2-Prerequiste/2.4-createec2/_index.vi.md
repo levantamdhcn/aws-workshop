@@ -20,3 +20,4 @@ Chúng ta cần tạo 1 Linux instance chạy trong public subnet để thực h
   - [Tạo Security Group](2.4.3-createsecgroup/)
   - [Tạo EC2 Instance](2.4.4-createec2linux/)
   - [Kiểm tra kết nối](2.4.5-testconnection/)
+  - [Cấu hình EC2](2-Prerequiste/2.4-createec2/2.4.6-settingec2)
