@@ -14,7 +14,7 @@ Chúng ta cần tạo 1 Linux instance chạy trong public subnet để thực h
   - [Về Amazon EC2](https://000004.awsstudygroup.com/en/)
   - [Làm việc với Amazon VPC](https://000003.awsstudygroup.com/en/)
 
-### Content
+### Nội dung
   - [Tạo VPC](2.4.1-createvpc/)
   - [Tạo Public Subnet](2.4.2-createpublicsubnet/)
   - [Tạo Security Group](2.4.3-createsecgroup/)

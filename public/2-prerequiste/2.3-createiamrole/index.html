@@ -12,21 +12,21 @@
     <title>Create IAM Role :: AWS System Manager</title>
 
     
-    <link href="/css/nucleus.css?1730391301" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1730391301" rel="stylesheet">
-    <link href="/css/hybrid.css?1730391301" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1730391301" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1730391301" rel="stylesheet">
-    <link href="/css/auto-complete.css?1730391301" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1730391301" rel="stylesheet">
-    <link href="/css/theme.css?1730391301" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1730391301" rel="stylesheet">
+    <link href="/css/nucleus.css?1730477275" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1730477275" rel="stylesheet">
+    <link href="/css/hybrid.css?1730477275" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1730477275" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1730477275" rel="stylesheet">
+    <link href="/css/auto-complete.css?1730477275" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1730477275" rel="stylesheet">
+    <link href="/css/theme.css?1730477275" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1730477275" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1730391301" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1730477275" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1730391301"></script>
+    <script src="/js/jquery-3.3.1.min.js?1730477275"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1730391301"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1730391301"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1730477275"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1730477275"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1730391301"></script>
+<script type="text/javascript" src="/js/search.js?1730477275"></script>
 
     
   </div>
@@ -1004,18 +1004,18 @@
 <li>Go to <a href="https://console.aws.amazon.com/iamv2/">IAM service administration interface</a></li>
 <li>In the left navigation bar, click <strong>Roles</strong>.</li>
 </ol>
-<p><img alt="createpolicy" src="/images/2.prerequisite/038-iamrole.png"></p>
+<p><img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/038-iamrole.png"></p>
 <ol start="3">
 <li>Click <strong>Create role</strong>.</li>
 </ol>
-<p><img alt="createpolicy" src="/images/2.prerequisite/039-iamrole.png"></p>
+<p><img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/039-iamrole.png"></p>
 <ol start="4">
 <li>Click <strong>AWS service</strong> and click <strong>EC2</strong>.</li>
 </ol>
 <ul>
 <li>Click <strong>Next: Permissions</strong>.</li>
 </ul>
-<p><img alt="createpolicy" src="/images/2.prerequisite/041-iamrole.png"></p>
+<p><img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/041-iamrole.png"></p>
 <ol start="5">
 <li>In the Search box, enter <strong>S3</strong> and press Enter to search for this policy.</li>
 </ol>
@@ -1023,7 +1023,7 @@
 <li>Click the policy <strong>AmazonS3ReadOnlyAccess</strong>.</li>
 <li>Click <strong>Next: Tags.</strong></li>
 </ul>
-<p><img alt="createpolicy" src="/images/2.prerequisite/040-iamrole.png"></p>
+<p><img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/040-iamrole.png"></p>
 <ol start="6">
 <li>Click <strong>Next: Review</strong>.</li>
 <li>Name the Role <strong>EC2S3ReadPermission</strong> in Role Name</li>
@@ -1031,7 +1031,7 @@
 <ul>
 <li>Click <strong>Create Role</strong> .</li>
 </ul>
-<p><img alt="namerole" src="/images/2.prerequisite/042-iamrole.png"></p>
+<p><img alt="namerole" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/042-iamrole.png"></p>
 <h3 id="create-iam-role-for-aws-codebuild">Create IAM Role For AWS CodeBuild</h3>
 <ol>
 <li>
@@ -1039,7 +1039,7 @@
 </li>
 <li>
 <p>Click <strong>Create role</strong>.
-<img alt="createpolicy" src="/images/2.prerequisite/045-iamrole.png"></p>
+<img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/045-iamrole.png"></p>
 </li>
 <li>
 <p>At <strong>Select trusted entity</strong></p>
@@ -1049,7 +1049,7 @@
 <li>Select <strong>AWS Service</strong>.</li>
 <li>At <strong>Service or use case</strong>, select <strong>CodeBuild</strong>.</li>
 <li>Click <strong>Next</strong>
-<img alt="createpolicy" src="/images/2.prerequisite/046-iamrole.png"></li>
+<img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/046-iamrole.png"></li>
 </ul>
 <ol start="4">
 <li>At <strong>Add permissions</strong></li>
@@ -1058,7 +1058,7 @@
 <li>At search bar, enter <strong>S3F</strong>.</li>
 <li>Check on <strong>Amazon S3 Full Access</strong>, our CodeBuild service will store artifact at S3 so we need grant full access..</li>
 <li>Click <strong>Next</strong>
-<img alt="createpolicy" src="/images/2.prerequisite/047-iamrole.png"></li>
+<img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/047-iamrole.png"></li>
 </ul>
 <ol start="5">
 <li>At <strong>Name, review, and create</strong></li>
@@ -1068,24 +1068,24 @@
 <li>Check on <strong>Amazon S3 Full Access</strong>, our CodeBuild service will store artifact at S3 so we need grant full access..</li>
 <li>Scroll down to bottom, click <strong>Create role</strong>.</li>
 </ul>
-<p><img alt="createpolicy" src="/images/2.prerequisite/048-iamrole.png"></p>
+<p><img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/048-iamrole.png"></p>
 <h3 id="create-iam-role-for-aws-codedeploy">Create IAM Role For AWS CodeDeploy</h3>
 <ol>
 <li>Back to <strong>Roles</strong> section.</li>
 <li>Click <strong>Create role</strong>.
-<img alt="createpolicy" src="/images/2.prerequisite/039-iamrole.png"></li>
+<img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/039-iamrole.png"></li>
 <li>Click <strong>AWS service</strong> and click <strong>CodeDeploy</strong>.</li>
 </ol>
 <ul>
 <li>Click <strong>Next: Permissions</strong>.
-<img alt="createpolicy" src="/images/2.prerequisite/043-iamrole.png"></li>
+<img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/043-iamrole.png"></li>
 </ul>
 <ol start="4">
 <li>Name the Role <strong>ChatAppCodeDeploy</strong> in Role Name</li>
 </ol>
 <ul>
 <li>Click <strong>Create Role</strong> .
-<img alt="createpolicy" src="/images/2.prerequisite/044-iamrole.png"></li>
+<img alt="createpolicy" src="https://tamlv.buzz/aws-workshop/images/2.prerequisite/044-iamrole.png"></li>
 </ul>
 <p>Next, we will create <strong>VPC</strong> and <strong>EC2</strong> to hold our application.</p>
 
@@ -1564,19 +1564,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1730391301"></script>
-    <script src="/js/perfect-scrollbar.min.js?1730391301"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1730391301"></script>
-    <script src="/js/jquery.sticky.js?1730391301"></script>
-    <script src="/js/featherlight.min.js?1730391301"></script>
-    <script src="/js/highlight.pack.js?1730391301"></script>
+    <script src="/js/clipboard.min.js?1730477275"></script>
+    <script src="/js/perfect-scrollbar.min.js?1730477275"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1730477275"></script>
+    <script src="/js/jquery.sticky.js?1730477275"></script>
+    <script src="/js/featherlight.min.js?1730477275"></script>
+    <script src="/js/highlight.pack.js?1730477275"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1730391301"></script>
-    <script src="/js/learn.js?1730391301"></script>
-    <script src="/js/hugo-learn.js?1730391301"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1730477275"></script>
+    <script src="/js/learn.js?1730477275"></script>
+    <script src="/js/hugo-learn.js?1730477275"></script>
 
-    <link href="/mermaid/mermaid.css?1730391301" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1730391301"></script>
+    <link href="/mermaid/mermaid.css?1730477275" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1730477275"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

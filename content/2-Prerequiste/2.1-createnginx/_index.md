@@ -7,7 +7,7 @@ pre : " <b> 2.1 </b> "
 ---
 
 Our project folder structure:
-![ConnectPrivate](images/folder_structure.png) 
+![ConnectPrivate](https://tamlv.buzz/aws-workshop/images/folder_structure.png) 
 We will create new file named nginx.conf inside nginx folder from root directory of project.
 ```bash
 server {

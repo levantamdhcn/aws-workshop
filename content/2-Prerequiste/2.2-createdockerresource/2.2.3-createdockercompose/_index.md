@@ -14,7 +14,7 @@ Docker Compose is a tool for defining and running multi-container application in
 Remember, this is a YAML file, so the formatting must be consistent (otherwise the build will fail).
 {{% /notice %}}
 
-![Docker Compose](images/2.prerequisite/046-createdockercompose.png)
+![Docker Compose](https://tamlv.buzz/aws-workshop/images/2.prerequisite/046-createdockercompose.png)
 
 In root folder, create file named docker-compose.yml with following content:
 ```bash

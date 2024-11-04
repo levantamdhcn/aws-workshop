@@ -16,7 +16,7 @@ pre : " <b> 4.6 </b> "
 2. Truy cập [CodePipeline - Pipelines management console](https://eu-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines)
   + Click vào **Create Pipeline**.
   
-![CodePipeline](images/4.pipeline/026-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/026-codepipeline.png)
 
 3. Kéo xuống phía dưới phần **Pipeline settings**.
   + Ta nhập **ChatAppCodePipeline** ở mục **Pipeline name**.
@@ -24,12 +24,12 @@ pre : " <b> 4.6 </b> "
   + Ở phần **Service role** ta chọn **New service role**. Ta sẽ để AWS tạo 1 Role mới cho CodePipeline với tên **ChatAppCodePipelineRole**.
   + Chọn vào **Allow AWS CodePipeline to create a service role so it can be used with this new pipeline**.
   
-![CodePipeline](images/4.pipeline/027-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/027-codepipeline.png)
 
 4. Kéo xuống phía dưới phần **Primary source webhook events**.
   + Chọn vào **Rebuild every time a code changes is pushed to this repository**. Lựa chọn này đảm bảo rằng pipeline của chúng ta sẽ được trigger mỗi khi ta push code mới lên repository.
 
-![CodePipeline](images/4.pipeline/028-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/028-codepipeline.png)
 
 5. Click **Next**, ta chuyển tới phần **Add source stage**.
   + Ở mục **Source provider**, ta chọn Amazon S3.
@@ -37,7 +37,7 @@ pre : " <b> 4.6 </b> "
   + Ở mục **S3 object key**, dán S3 URI mà ta đã sao chép từ bước 1. Chỉ giữ lại **ChatAppBuildArtifact/chat-app-build.zip**
   + Ở mục **Change detection options**, ta chọn **AWS CodePipeline**.
   + Click vào **Next**.
-![CodePipeline](images/4.pipeline/029-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/029-codepipeline.png)
 
 6. Chuyển tới phần **Build**.
   + Ở mục **Build provider**, chọn **Other build providers**.
@@ -45,7 +45,7 @@ pre : " <b> 4.6 </b> "
   + Chọn **chat-app-build** ở phần **Project name**.
   + Kéo xuống dưới, click vào **Next**.
 
-![CodePipeline](images/4.pipeline/030-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/030-codepipeline.png)
 
 7. Ta chuyển tới phần **Deploy**.
   + Ở mục **Deploy provider**, ta chọn **AWS CodeDeploy**.
@@ -54,7 +54,7 @@ pre : " <b> 4.6 </b> "
   + Ở mục **Deployment group**, ta chọn **ChatAppDeploymentGroup**.
   + Click vào **Next**.
 
-![CodePipeline](images/4.pipeline/031-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/031-codepipeline.png)
 
 8. Tại trang **Review**, ta kiểm tra lại tất cả thông tin một lượt rồi sau đó click vào **Create pipeline**.
 
@@ -63,8 +63,8 @@ pre : " <b> 4.6 </b> "
 
 2. Kiểm tra từng stage của pipeline.
 
-![CodePipeline](images/4.pipeline/032-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/032-codepipeline.png)
 
 3. Tất cả các stage đã thành công.
 
-![CodePipeline](images/4.pipeline/033-codepipeline.png)
+![CodePipeline](https://tamlv.buzz/aws-workshop/images/4.pipeline/033-codepipeline.png)

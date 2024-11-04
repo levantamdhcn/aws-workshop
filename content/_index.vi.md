@@ -4,12 +4,12 @@ date :  "`r Sys.Date()`"
 weight : 1 
 chapter : false
 ---
-# Xây dựng CI/CD Pipeline với Github
+# Xây dựng CI/CD Pipeline với Github, AWS CodePipeline, AWS CodeDeploy, AWS Code Build
 
 ### Tổng quan
 Workshop này sẽ mô tả chi tiết các bước xây dụng một CI/CD Pipeline sử dụng Github và một số công cụ được cung cấp bởi AWS như AWS CodeDeploy, AWS CodePipeline và AWS CodeBuild.
 
-![ConnectPrivate](images/arc-log.png) 
+![ConnectPrivate](https://tamlv.buzz/aws-workshop/images/arc-log.png) 
 
 ### Nội dung
 1. [Giới thiệu ](1-introduce/)

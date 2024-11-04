@@ -24,7 +24,7 @@ Tìm hiểu các định nghĩa cơ bản của Docker:
   - [Docker cho người mới](https://docs.docker.com/get-started/)
   - [Containerize Nodejs App](https://docs.docker.com/guides/language/nodejs/containerize/)
 
-### Content
+### Nội dung
   - [Chuẩn bị cấu hình Nginx](2.1-createnginx/)
   - [Chuẩn bị tài nguyên cho Docker](2.2-createdocker/)
   - [Tạo IAM Role](2.3-createiamrole/)
